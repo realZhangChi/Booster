@@ -5,11 +5,21 @@ VisualStudioVersion = 17.0.31710.8
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{02C87EE2-2EA7-459F-A27C-CC833482AAF3}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "bindings", "bindings", "{4CDB5EC2-FBFB-41C8-8D95-604DE78552B7}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "binding", "binding", "{4CDB5EC2-FBFB-41C8-8D95-604DE78552B7}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Maui.Toolkit.Bindings.WeChat", "Maui.Toolkit.Bindings.WeChat", "{9E802C76-68E5-493D-A784-A80191E3000F}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Maui.Toolkit.Binding.WeChat", "Maui.Toolkit.Binding.WeChat", "{9E802C76-68E5-493D-A784-A80191E3000F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Maui.Toolkit.Bindings.WeChat.Android", "bindings\Maui.Toolkit.Bindings.WeChat\Maui.Toolkit.Bindings.WeChat.Android\Maui.Toolkit.Bindings.WeChat.Android.csproj", "{21835679-3408-4F98-A887-C1823004A045}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Maui.Toolkit.WeChat", "Maui.Toolkit.WeChat", "{3117FD58-9952-45FA-A4E2-012445B8EED8}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Maui.Toolkit.WeChat.Abstraction", "src\Maui.Toolkit.WeChat\Maui.Toolkit.WeChat.Abstraction\Maui.Toolkit.WeChat.Abstraction.csproj", "{FCE50329-E4F0-4D7C-AF90-C0483734A454}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Maui.Toolkit.WeChat", "src\Maui.Toolkit.WeChat\Maui.Toolkit.WeChat\Maui.Toolkit.WeChat.csproj", "{70512AAB-F741-40FC-8243-AAB7C34812DD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "sample", "sample", "{C8E02FBF-0933-4931-82C5-D08452EB76E1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Maui.Toolkit.Binding.WeChat.Android", "binding\Maui.Toolkit.Binding.WeChat\Maui.Toolkit.Binding.WeChat.Android\Maui.Toolkit.Binding.WeChat.Android.csproj", "{21835679-3408-4F98-A887-C1823004A045}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Maui.Toolkit.Sample", "sample\Maui.Toolkit.Sample\Maui.Toolkit.Sample.csproj", "{943033BB-5588-41E5-8AF1-7A2968FC55F6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,17 +27,35 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FCE50329-E4F0-4D7C-AF90-C0483734A454}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FCE50329-E4F0-4D7C-AF90-C0483734A454}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FCE50329-E4F0-4D7C-AF90-C0483734A454}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FCE50329-E4F0-4D7C-AF90-C0483734A454}.Release|Any CPU.Build.0 = Release|Any CPU
+		{70512AAB-F741-40FC-8243-AAB7C34812DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{70512AAB-F741-40FC-8243-AAB7C34812DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{70512AAB-F741-40FC-8243-AAB7C34812DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{70512AAB-F741-40FC-8243-AAB7C34812DD}.Release|Any CPU.Build.0 = Release|Any CPU
 		{21835679-3408-4F98-A887-C1823004A045}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{21835679-3408-4F98-A887-C1823004A045}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{21835679-3408-4F98-A887-C1823004A045}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{21835679-3408-4F98-A887-C1823004A045}.Release|Any CPU.Build.0 = Release|Any CPU
+		{943033BB-5588-41E5-8AF1-7A2968FC55F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{943033BB-5588-41E5-8AF1-7A2968FC55F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{943033BB-5588-41E5-8AF1-7A2968FC55F6}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{943033BB-5588-41E5-8AF1-7A2968FC55F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{943033BB-5588-41E5-8AF1-7A2968FC55F6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{943033BB-5588-41E5-8AF1-7A2968FC55F6}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{9E802C76-68E5-493D-A784-A80191E3000F} = {4CDB5EC2-FBFB-41C8-8D95-604DE78552B7}
+		{3117FD58-9952-45FA-A4E2-012445B8EED8} = {02C87EE2-2EA7-459F-A27C-CC833482AAF3}
+		{FCE50329-E4F0-4D7C-AF90-C0483734A454} = {3117FD58-9952-45FA-A4E2-012445B8EED8}
+		{70512AAB-F741-40FC-8243-AAB7C34812DD} = {3117FD58-9952-45FA-A4E2-012445B8EED8}
 		{21835679-3408-4F98-A887-C1823004A045} = {9E802C76-68E5-493D-A784-A80191E3000F}
+		{943033BB-5588-41E5-8AF1-7A2968FC55F6} = {C8E02FBF-0933-4931-82C5-D08452EB76E1}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {33B25A3B-2AB6-446B-90AC-D7D0F63B969E}
