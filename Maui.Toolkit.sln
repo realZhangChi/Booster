@@ -1,0 +1,35 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31710.8
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{02C87EE2-2EA7-459F-A27C-CC833482AAF3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "bindings", "bindings", "{4CDB5EC2-FBFB-41C8-8D95-604DE78552B7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Maui.Toolkit.Bindings.WeChat", "Maui.Toolkit.Bindings.WeChat", "{9E802C76-68E5-493D-A784-A80191E3000F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Maui.Toolkit.Bindings.WeChat.Android", "bindings\Maui.Toolkit.Bindings.WeChat\Maui.Toolkit.Bindings.WeChat.Android\Maui.Toolkit.Bindings.WeChat.Android.csproj", "{21835679-3408-4F98-A887-C1823004A045}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{21835679-3408-4F98-A887-C1823004A045}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{21835679-3408-4F98-A887-C1823004A045}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{21835679-3408-4F98-A887-C1823004A045}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{21835679-3408-4F98-A887-C1823004A045}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{9E802C76-68E5-493D-A784-A80191E3000F} = {4CDB5EC2-FBFB-41C8-8D95-604DE78552B7}
+		{21835679-3408-4F98-A887-C1823004A045} = {9E802C76-68E5-493D-A784-A80191E3000F}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {33B25A3B-2AB6-446B-90AC-D7D0F63B969E}
+	EndGlobalSection
+EndGlobal
