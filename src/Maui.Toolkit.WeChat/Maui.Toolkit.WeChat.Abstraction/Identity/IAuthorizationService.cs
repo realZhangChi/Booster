@@ -10,5 +10,5 @@ public interface IAuthorizationService
 {
     Task<bool> AuthorizeAsync();
 
-    Task GetTokenAsync(string code);
+    Task AuthorizedAsync(string code);
 }

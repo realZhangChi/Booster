@@ -13,7 +13,7 @@ internal class NullAuthorizationService : IAuthorizationService
         return Task.FromResult(false);
     }
 
-    public Task GetTokenAsync(string code)
+    public Task AuthorizedAsync(string code)
     {
         return Task.CompletedTask;
     }

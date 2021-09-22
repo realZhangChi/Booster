@@ -15,11 +15,9 @@ internal class DefaultTokenService : ITokenService
     public async Task<Token> GetOrNullAsync()
     {
         var token = await SecureStorage.GetAsync(_key);
-        if (string.IsNullOrWhiteSpace(token))
-        {
-            return null;
-        }
-        return JsonSerializer.Deserialize<Token>(token);
+        return string.IsNullOrWhiteSpace(token) ? 
+            null :
+            JsonSerializer.Deserialize<Token>(token);
     }
 
     public Task SetAsync(Token token)

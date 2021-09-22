@@ -13,13 +13,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Maui.Toolkit.WeChat", "Maui
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Maui.Toolkit.WeChat.Abstraction", "src\Maui.Toolkit.WeChat\Maui.Toolkit.WeChat.Abstraction\Maui.Toolkit.WeChat.Abstraction.csproj", "{FCE50329-E4F0-4D7C-AF90-C0483734A454}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Maui.Toolkit.WeChat", "src\Maui.Toolkit.WeChat\Maui.Toolkit.WeChat\Maui.Toolkit.WeChat.csproj", "{70512AAB-F741-40FC-8243-AAB7C34812DD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Maui.Toolkit.WeChat", "src\Maui.Toolkit.WeChat\Maui.Toolkit.WeChat\Maui.Toolkit.WeChat.csproj", "{70512AAB-F741-40FC-8243-AAB7C34812DD}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "sample", "sample", "{C8E02FBF-0933-4931-82C5-D08452EB76E1}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Maui.Toolkit.Binding.WeChat.Android", "binding\Maui.Toolkit.Binding.WeChat\Maui.Toolkit.Binding.WeChat.Android\Maui.Toolkit.Binding.WeChat.Android.csproj", "{21835679-3408-4F98-A887-C1823004A045}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Maui.Toolkit.Sample", "sample\Maui.Toolkit.Sample\Maui.Toolkit.Sample.csproj", "{943033BB-5588-41E5-8AF1-7A2968FC55F6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Maui.Toolkit.Sample", "sample\Maui.Toolkit.Sample\Maui.Toolkit.Sample.csproj", "{943033BB-5588-41E5-8AF1-7A2968FC55F6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
