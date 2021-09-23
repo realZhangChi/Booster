@@ -11,6 +11,9 @@ public static class ServiceCollectionExtensions
         services.AddTransient<IAuthorizationService, NullAuthorizationService>();
         services.AddTransient<IAuthorizationHandler, NullAuthorizationHandler>();
         services.AddTransient<ITokenService, NullTokenService>();
+        services.AddTransient<ITokenStore, NullTokenStore>();
+        services.AddTransient<IUserInfoService, NullUserInfoService>();
+        services.AddTransient<IUserInfoStore, NullUserInfoStore>();
 
         return services;
     }

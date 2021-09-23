@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace Maui.Toolkit.WeChat.Identity;
 
-public interface ITokenService
+public interface IUserInfoStore
 {
-    Task<Token?> GetTokenFromWeChatAsync(string code);
+    Task<UserInfo?> GetOrNullAsync(string? key = null);
+
+    Task SetAsync(UserInfo userInfo, string? key = null);
 }

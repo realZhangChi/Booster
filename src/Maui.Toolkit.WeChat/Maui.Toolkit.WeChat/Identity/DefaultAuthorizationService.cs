@@ -13,19 +13,22 @@ public class DefaultAuthorizationService : IAuthorizationService
 {
     private readonly IAuthorizationHandler _handler;
     private readonly ITokenService _tokenService;
-    private readonly HttpClient _httpClinet;
-    private readonly WeChatOption _option;
+    private readonly ITokenStore _tokenStore;
+    private readonly IUserInfoService _userInfoService;
+    private readonly IUserInfoStore _userInfoStore;
 
     public DefaultAuthorizationService(
         IAuthorizationHandler handler,
         ITokenService tokenService,
-        HttpClient httpClient,
-        IOptions<WeChatOption> option)
+        ITokenStore tokenStore,
+        IUserInfoService userInfoService,
+        IUserInfoStore userInfoStore)
     {
         _handler = handler;
         _tokenService = tokenService;
-        _httpClinet = httpClient;
-        _option = option.Value;
+        _tokenStore = tokenStore;
+        _userInfoService = userInfoService;
+        _userInfoStore = userInfoStore;
     }
     public virtual Task<bool> AuthorizeAsync()
     {
@@ -34,26 +37,18 @@ public class DefaultAuthorizationService : IAuthorizationService
 
     public virtual async Task AuthorizedAsync(string code)
     {
-        var token = await GetTokenAsync(code);
-        await _tokenService.SetAsync(token);
-        await GetUserInfoAsync();
+        var token = await _tokenService.GetTokenFromWeChatAsync(code);
+        if (token == null)
+        {
+            throw new NotImplementedException();
+        }
+        await _tokenStore.SetAsync(token);
+
+        var userInfo = await _userInfoService.GetUserInfoFromWeChatAsync();
+        if (userInfo == null)
+        {
+            throw new NotImplementedException();
+        }
+        await _userInfoStore.SetAsync(userInfo);
     }
-
-    protected virtual async Task<Token> GetTokenAsync(string code)
-    {
-        var tokenEndpoint = $"https://api.weixin.qq.com/sns/oauth2/access_token?appid={_option.AppId}&secret={_option.AppSecret}&code={code}&grant_type=authorization_code";
-
-        var response = await _httpClinet.GetAsync(tokenEndpoint);
-        response.EnsureSuccessStatusCode();
-
-        var content = response.Content;
-        var token = await JsonSerializer.DeserializeAsync<Token>(await content.ReadAsStreamAsync());
-        return token;
-    }
-
-    protected virtual Task GetUserInfoAsync()
-    {
-        return Task.CompletedTask;
-    }
-
 }
