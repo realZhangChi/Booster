@@ -9,4 +9,6 @@ namespace Maui.Toolkit.WeChat.Identity;
 public interface ITokenService
 {
     Task<Token?> GetTokenFromWeChatAsync(string code);
+
+    Task<Token?> RefreshTokenAsync();
 }

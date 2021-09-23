@@ -10,6 +10,9 @@ public class Token
     [JsonPropertyName("expires_in")]
     public int ExpiresIn { get; set; }
 
+    [JsonIgnore]
+    public long IssuedAt { get; set; }
+
     [JsonPropertyName("refresh_token")]
     public string? RefreshToken { get; set; }
 

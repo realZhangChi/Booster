@@ -12,4 +12,9 @@ public class NullTokenService : ITokenService
     {
         return Task.FromResult((Token?)null);
     }
+
+    public Task<Token?> RefreshTokenAsync()
+    {
+        return Task.FromResult((Token?)null);
+    }
 }
