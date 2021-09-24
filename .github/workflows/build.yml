@@ -13,10 +13,16 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: Setup .NET
+    
+    - name: Setup .NET 5
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 5.0.x
+        
+    - name: Setup .NET 6
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 6.0.100-rc.1.21463.6
 
     - name: Maui Check
       run: dotnet tool install -g Redth.Net.Maui.Check && maui-check --fix --force-dotnet --non-interactive --skip vswin --skip edgewebview2 --skip androidemulator
