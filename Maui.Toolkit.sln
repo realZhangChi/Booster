@@ -21,6 +21,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Maui.Toolkit.Binding.WeChat
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Maui.Toolkit.Sample", "sample\Maui.Toolkit.Sample\Maui.Toolkit.Sample.csproj", "{943033BB-5588-41E5-8AF1-7A2968FC55F6}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{79B06E90-0EB4-491B-8F85-BC7A1AAEDD45}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Maui.Toolkit.TestBase", "test\Maui.Toolkit.TestBase\Maui.Toolkit.TestBase.csproj", "{3309500C-1090-47B5-BDDA-1B6B5F410C3F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Maui.Toolkit.WeChat", "Maui.Toolkit.WeChat", "{9683051E-7CF8-4745-9E34-426FD0368B45}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Maui.Toolkit.WeChat.Abstraction.Test", "test\Maui.Toolkit.WeChat\Maui.Toolkit.WeChat.Abstraction.Test\Maui.Toolkit.WeChat.Abstraction.Test.csproj", "{FF818707-D9DE-4068-87BE-0518AC00A4D6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +53,14 @@ Global
 		{943033BB-5588-41E5-8AF1-7A2968FC55F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{943033BB-5588-41E5-8AF1-7A2968FC55F6}.Release|Any CPU.Build.0 = Release|Any CPU
 		{943033BB-5588-41E5-8AF1-7A2968FC55F6}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{3309500C-1090-47B5-BDDA-1B6B5F410C3F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3309500C-1090-47B5-BDDA-1B6B5F410C3F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3309500C-1090-47B5-BDDA-1B6B5F410C3F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3309500C-1090-47B5-BDDA-1B6B5F410C3F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FF818707-D9DE-4068-87BE-0518AC00A4D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FF818707-D9DE-4068-87BE-0518AC00A4D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FF818707-D9DE-4068-87BE-0518AC00A4D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FF818707-D9DE-4068-87BE-0518AC00A4D6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -56,6 +72,9 @@ Global
 		{70512AAB-F741-40FC-8243-AAB7C34812DD} = {3117FD58-9952-45FA-A4E2-012445B8EED8}
 		{21835679-3408-4F98-A887-C1823004A045} = {9E802C76-68E5-493D-A784-A80191E3000F}
 		{943033BB-5588-41E5-8AF1-7A2968FC55F6} = {C8E02FBF-0933-4931-82C5-D08452EB76E1}
+		{3309500C-1090-47B5-BDDA-1B6B5F410C3F} = {79B06E90-0EB4-491B-8F85-BC7A1AAEDD45}
+		{9683051E-7CF8-4745-9E34-426FD0368B45} = {79B06E90-0EB4-491B-8F85-BC7A1AAEDD45}
+		{FF818707-D9DE-4068-87BE-0518AC00A4D6} = {9683051E-7CF8-4745-9E34-426FD0368B45}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {33B25A3B-2AB6-446B-90AC-D7D0F63B969E}

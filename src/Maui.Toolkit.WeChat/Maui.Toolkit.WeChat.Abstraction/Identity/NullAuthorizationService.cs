@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Maui.Toolkit.WeChat.Identity;
 
-internal class NullAuthorizationService : IAuthorizationService
+public class NullAuthorizationService : IAuthorizationService
 {
     public Task<bool> AuthorizeAsync()
     {
