@@ -17,13 +17,19 @@ jobs:
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 6.0.100-rc.1.21463.6
+        
     - name: Setup Java JDK
       uses: actions/setup-java@v2.3.0
       with:
         java-version: '11'
         distribution: 'temurin'
+        
+    - name: Setup Xamarin
+      # You may pin to the exact commit or the version.
+      # uses: maxim-lobanov/setup-xamarin@00b44a3ef9e2d1953010956de2022e8d095a196c
+      uses: maxim-lobanov/setup-xamarin@v1
     
-    - name: install workload
+    - name: Install workload
       run: dotnet workload install maui && dotnet workload install android-aot && dotnet workload install ios && dotnet workload install maccatalyst
       
     - name: Restore dependencies
