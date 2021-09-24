@@ -17,8 +17,8 @@ jobs:
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 6.0.100-rc.1.21463.6
-    - name: Install workloads
-      run: dotnet workload install maui && dotnet workload install maui-android && dotnet workload install maui-ios && dotnet workload install maui-maccatalyst
+    - name: Maui Check
+      run: dotnet tool install -g Redth.Net.Maui.Check && maui-check --non-interactive
     - name: Restore dependencies
       run: dotnet restore
     - name: Build
