@@ -19,7 +19,7 @@ jobs:
         dotnet-version: 5.0.x
 
     - name: Maui Check
-      run: maui-check --non-interactive --skip vswin --skip edgewebview2 --skip androidemulator
+      run: dotnet tool install -g Redth.Net.Maui.Check && maui-check --non-interactive --skip vswin --skip edgewebview2 --skip androidemulator
       
     - name: Restore dependencies
       run: dotnet restore
