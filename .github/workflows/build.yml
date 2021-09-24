@@ -43,7 +43,6 @@ jobs:
         & dotnet workload install maccatalyst
         & dotnet workload install maui
         & dotnet workload install wasm-tools
-        & dotnet workload install microsoft-net-sdk-emscripten
         
     - name: Install and Run maui-check Tool
       shell: pwsh
