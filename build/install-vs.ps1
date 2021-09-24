@@ -22,8 +22,8 @@ Invoke-WebRequest -UseBasicParsing `
     -OutFile "$env:TEMP\dd_vs_community.exe"
 
 Write-Host "Installing Visual Studio..."
-$exitCode = & "$env:TEMP\dd_vs_community.exe" --quiet --norestart --wait `
-  --add Microsoft.VisualStudio.Workload.NetCrossPlat;includeRecommended;includeOptional `
+$exitCode = & "$env:TEMP\dd_vs_community.exe" --quiet --norestart --wait --includeRecommended --includeOptional `
+  --add Microsoft.VisualStudio.Workload.NetCrossPlat `
   --add Microsoft.VisualStudio.Workload.NetCoreTools `
   --add Microsoft.VisualStudio.Workload.ManagedDesktop `
   --add Microsoft.VisualStudio.Workload.Universal `
