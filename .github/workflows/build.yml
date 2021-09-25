@@ -20,6 +20,12 @@ jobs:
     - name: Install Visual Studio Preview
       shell: pwsh
       run: powershell .\build\install-vs.ps1
+      
+    - name: setup-msbuild
+      uses: microsoft/setup-msbuild@v1.0.3
+      with:
+        # Enable searching for pre-release versions of Visual Studio/MSBuild
+        vs-prerelease: true
 
     #- name: Add msbuild to PATH
     #  shell: pwsh
