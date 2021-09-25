@@ -31,11 +31,11 @@ $exitCode = & "$env:TEMP\dd_vs_community.exe" --quiet --norestart --wait `
 
 Write-Host "Exit code: $exitCode"
 
-$vsLogs = 'output\vs-logs'
-New-Item -ItemType Directory -Force -Path "$vsLogs" | Out-Null
-Get-ChildItem "$env:TEMP\dd_*" |
-  Where-Object { $_.CreationTime -gt $startTime } |
-  Copy-Item -Destination "$vsLogs"
+# $vsLogs = 'output\vs-logs'
+# New-Item -ItemType Directory -Force -Path "$vsLogs" | Out-Null
+# Get-ChildItem "$env:TEMP\dd_*" |
+#   Where-Object { $_.CreationTime -gt $startTime } |
+#   Copy-Item -Destination "$vsLogs"
 
 # $vswhere = "${env:ProgramFiles(x86)}\Microsoft Visual Studio\Installer\vswhere.exe"
 
