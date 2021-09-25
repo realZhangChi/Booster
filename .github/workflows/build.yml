@@ -30,7 +30,7 @@ jobs:
     - name: Set MSBUILD path
       shell: pwsh
       run: |
-        SET MSBuildExtensionsPath=C:\Program Files\Microsoft Visual Studio\2022\Preview
+        SET MSBuildExtensionsPath="C:\Program Files\Microsoft Visual Studio\2022\Preview"
         
     - name:  install .NET 6 preview
       shell: pwsh
