@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Maui.Toolkit.WeChat.Models.Identity;
 
-namespace Maui.Toolkit.WeChat.Identity;
+namespace Maui.Toolkit.WeChat.Services.Identity;
 
 public class NullTokenService : ITokenService
 {

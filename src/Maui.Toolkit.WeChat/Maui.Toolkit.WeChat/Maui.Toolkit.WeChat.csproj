@@ -25,4 +25,8 @@
 		<ProjectReference Include="..\..\..\binding\Maui.Toolkit.Binding.WeChat\Maui.Toolkit.Binding.WeChat.Android\Maui.Toolkit.Binding.WeChat.Android.csproj" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <Folder Include="Views\" />
+	</ItemGroup>
+
 </Project>

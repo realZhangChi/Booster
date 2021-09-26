@@ -4,9 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Maui.Toolkit.WeChat.Identity;
+namespace Maui.Toolkit.WeChat.Services.Identity;
 
-public interface IAuthorizationHandler
+public interface IAuthorizationService
 {
     Task<bool> AuthorizeAsync();
+
+    Task AuthorizedAsync(string code);
 }

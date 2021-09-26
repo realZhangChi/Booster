@@ -1,12 +1,9 @@
-﻿using Microsoft.Maui.Essentials;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using Maui.Toolkit.WeChat.Models.Identity;
+using Microsoft.Maui.Essentials;
 using System.Text.Json;
 using System.Threading.Tasks;
 
-namespace Maui.Toolkit.WeChat.Identity;
+namespace Maui.Toolkit.WeChat.Services.Identity;
 
 public class DefaultUserInfoStore : IUserInfoStore
 {

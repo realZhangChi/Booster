@@ -7,7 +7,7 @@ using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 
-namespace Maui.Toolkit.WeChat.Identity;
+namespace Maui.Toolkit.WeChat.Services.Identity;
 
 public class DefaultAuthorizationService : IAuthorizationService
 {

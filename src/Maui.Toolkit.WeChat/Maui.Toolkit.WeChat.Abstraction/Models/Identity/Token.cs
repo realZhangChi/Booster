@@ -1,6 +1,6 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace Maui.Toolkit.WeChat.Identity;
+namespace Maui.Toolkit.WeChat.Models.Identity;
 
 public class Token
 {

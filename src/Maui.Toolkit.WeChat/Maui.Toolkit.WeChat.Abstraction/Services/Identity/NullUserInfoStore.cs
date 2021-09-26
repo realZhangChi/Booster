@@ -1,4 +1,6 @@
-﻿namespace Maui.Toolkit.WeChat.Identity;
+﻿using Maui.Toolkit.WeChat.Models.Identity;
+
+namespace Maui.Toolkit.WeChat.Services.Identity;
 
 public class NullUserInfoStore : IUserInfoStore
 {

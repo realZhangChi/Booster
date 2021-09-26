@@ -1,12 +1,9 @@
 ﻿using Microsoft.Maui.Essentials;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Text.Json;
+using Maui.Toolkit.WeChat.Models.Identity;
 
-namespace Maui.Toolkit.WeChat.Identity;
+namespace Maui.Toolkit.WeChat.Services.Identity;
 
 internal class DefaultTokenStore : ITokenStore
 {
