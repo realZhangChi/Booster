@@ -1,4 +1,4 @@
-﻿using Maui.Toolkit.WeChat.Identity;
+﻿using Maui.Toolkit.WeChat.Services.Identity;
 using Microsoft.Maui.Controls;
 using Microsoft.Maui.Essentials;
 using System;

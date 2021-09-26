@@ -4,13 +4,10 @@ using Com.Tencent.MM.Opensdk.Constants;
 using Com.Tencent.MM.Opensdk.Modelbase;
 using Com.Tencent.MM.Opensdk.Modelmsg;
 using Com.Tencent.MM.Opensdk.Openapi;
-using Maui.Toolkit.WeChat.Identity;
+using Maui.Toolkit.WeChat.Services.Identity;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Maui;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using static Com.Tencent.MM.Opensdk.Modelbase.BaseResp;
 

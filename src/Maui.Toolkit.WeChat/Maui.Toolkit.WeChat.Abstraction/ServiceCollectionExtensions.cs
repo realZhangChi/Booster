@@ -1,6 +1,6 @@
 ﻿using Microsoft.Maui;
 using Microsoft.Extensions.DependencyInjection;
-using Maui.Toolkit.WeChat.Identity;
+using Maui.Toolkit.WeChat.Services.Identity;
 
 namespace Maui.Toolkit.WeChat;
 

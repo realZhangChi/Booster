@@ -1,7 +1,7 @@
-﻿using Maui.Toolkit.WeChat.Identity;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Com.Tencent.MM.Opensdk.Modelmsg;
 using Com.Tencent.MM.Opensdk.Openapi;
+using Maui.Toolkit.WeChat.Services.Identity;
 
 namespace Maui.Toolkit.WeChat.Platforms.Android.Identity;
 
