@@ -26,12 +26,7 @@ jobs:
     #  run: |
     #    dotnet tool update -g dotnet-vs
     #    & echo "$(vs where preview --prop=InstallationPath)\MSBuild\Current\Bin" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
-    
-    - name: Set MSBUILD path
-      shell: pwsh
-      run: |
-        SET MSBuildExtensionsPath="C:\Program Files\Microsoft Visual Studio\2022\Preview"
-        
+ 
     - name:  install .NET 6 preview
       shell: pwsh
       run: |
@@ -39,21 +34,12 @@ jobs:
         Invoke-WebRequest -Uri "https://dot.net/v1/dotnet-install.ps1" -OutFile dotnet-install.ps1
         & .\dotnet-install.ps1 -Version ${{env.DOTNETVERSION}} -InstallDir "$env:ProgramFiles\dotnet\" -Verbose
         & dotnet --list-sdks
-        
-    - name: Install workload
-      shell: pwsh
-      run: |
-        & dotnet workload install android-aot
-        & dotnet workload install ios
-        & dotnet workload install maccatalyst
-        & dotnet workload install maui
-        & dotnet workload install wasm-tools
-        
+   
     - name: Install and Run maui-check Tool
       shell: pwsh
       run: |
         & dotnet tool update --global redth.net.maui.check
-        & maui-check --ci --non-interactive --fix --force-dotnet --skip vswin --skip edgewebview2 --skip androidemulator --skip dotnetworkloads-6.0.100-rc.1.21458.32
+        & maui-check --ci --non-interactive --fix --force-dotnet --skip vswin --skip edgewebview2 --skip androidemulator
 
     - name: Restore dependencies
       run: dotnet restore
