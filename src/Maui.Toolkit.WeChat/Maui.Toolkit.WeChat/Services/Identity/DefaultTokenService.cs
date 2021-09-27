@@ -1,4 +1,5 @@
 ﻿using Maui.Toolkit.WeChat.Models.Identity;
+using Maui.Toolkit.WeChat.Utils;
 using Microsoft.Extensions.Options;
 using System;
 using System.Net.Http;
@@ -28,10 +29,8 @@ internal class DefaultTokenService : ITokenService
         var tokenEndpoint = $"https://api.weixin.qq.com/sns/oauth2/access_token?appid={_option.AppId}&secret={_option.AppSecret}&code={code}&grant_type=authorization_code";
 
         var response = await _httpClinet.GetAsync(tokenEndpoint);
-        response.EnsureSuccessStatusCode();
 
-        var content = response.Content;
-        var token = await JsonSerializer.DeserializeAsync<Token>(await content.ReadAsStreamAsync());
+        var token = await response.EnsureSuccessAndDeserializeAsync<Token>();
         if (token is not null)
         {
             token.IssuedAt = DateTimeOffset.UtcNow.ToUnixTimeSeconds();
@@ -57,10 +56,8 @@ internal class DefaultTokenService : ITokenService
         var refreshTokenEndpoint = $"https://api.weixin.qq.com/sns/oauth2/refresh_token?appid={_option.AppId}&grant_type=refresh_token&refresh_token={token.RefreshToken}";
 
         var response = await _httpClinet.GetAsync(refreshTokenEndpoint);
-        response.EnsureSuccessStatusCode();
 
-        var content = response.Content;
-        var refreshedToken = await JsonSerializer.DeserializeAsync<Token>(await content.ReadAsStreamAsync());
+        var refreshedToken = await response.EnsureSuccessAndDeserializeAsync<Token>();
         if (refreshedToken is not null)
         {
             refreshedToken.IssuedAt = DateTimeOffset.UtcNow.ToUnixTimeSeconds();
