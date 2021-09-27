@@ -1,4 +1,4 @@
-﻿using Maui.Toolkit.WeChat.Identity;
+﻿using Maui.Toolkit.WeChat.Services.Identity;
 using Shouldly;
 using System.Threading.Tasks;
 using Xunit;

@@ -1,12 +1,6 @@
 ﻿using Maui.Toolkit.TestBase;
-using Maui.Toolkit.WeChat.Identity;
+using Maui.Toolkit.WeChat.Services.Identity;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Maui;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Xunit;
 
 namespace Maui.Toolkit.WeChat.Abstraction.Test;
