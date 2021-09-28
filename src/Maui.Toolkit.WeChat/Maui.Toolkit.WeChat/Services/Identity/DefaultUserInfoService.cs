@@ -1,8 +1,6 @@
 ﻿using Maui.Toolkit.WeChat.Models.Identity;
-using Maui.Toolkit.WeChat.Utils;
+using Maui.Toolkit.WeChat.Services.Http;
 using System;
-using System.Net.Http;
-using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace Maui.Toolkit.WeChat.Services.Identity;
@@ -11,16 +9,16 @@ public class DefaultUserInfoService : IUserInfoService
 {
     private readonly ITokenStore _tokenStore;
     private readonly ITokenService _tokenService;
-    private readonly HttpClient _httpClinet;
+    private readonly IWeChatHttpClient _weChatClient;
 
     public DefaultUserInfoService(
         ITokenStore tokenStore,
         ITokenService tokenService,
-        HttpClient httpClient)
+        IWeChatHttpClient weChatClient)
     {
         _tokenStore = tokenStore;
         _tokenService = tokenService;
-        _httpClinet = httpClient;
+        _weChatClient = weChatClient;
     }
 
     public async Task<UserInfo?> GetUserInfoFromWeChatAsync(string? openId = null)
@@ -30,17 +28,19 @@ public class DefaultUserInfoService : IUserInfoService
         {
             return null;
         }
+
         // 1200 seconds = 20 minutes
         if (token.IssuedAt + token.ExpiresIn - 1200 > DateTimeOffset.UtcNow.ToUnixTimeSeconds())
         {
             await _tokenService.RefreshTokenAsync();
         }
 
-        var userInfoEndpoint = $"https://api.weixin.qq.com/sns/userinfo?access_token={token.AccessToken}&openid={openId ?? token.OpenId}";
+        if (!string.IsNullOrWhiteSpace(openId))
+        {
+            token.OpenId = openId;
+        }
+        var userInfo = await _weChatClient.GetUserInfoAsync(token);
 
-        var response = await _httpClinet.GetAsync(userInfoEndpoint);
-
-        var userInfo = await response.EnsureSuccessAndDeserializeAsync<UserInfo>();
         return userInfo;
     }
 }

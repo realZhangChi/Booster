@@ -1,4 +1,5 @@
-﻿using Maui.Toolkit.WeChat.Services.Identity;
+﻿using Maui.Toolkit.WeChat.Services.Http;
+using Maui.Toolkit.WeChat.Services.Identity;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Maui;
@@ -17,6 +18,8 @@ public static class MauiAppBuilderExtensions
         builder.Services.AddWeChat();
 
         builder.Services.Configure<WeChatOption>(o => o = option);
+
+        builder.Services.AddTransient<IWeChatHttpClient, DefaultWeChatHttpClient>();
 
         builder.Services.Replace(
             new ServiceDescriptor(

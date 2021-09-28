@@ -1,9 +1,7 @@
 ﻿using Maui.Toolkit.WeChat.Models.Identity;
-using Maui.Toolkit.WeChat.Utils;
+using Maui.Toolkit.WeChat.Services.Http;
 using Microsoft.Extensions.Options;
 using System;
-using System.Net.Http;
-using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace Maui.Toolkit.WeChat.Services.Identity;
@@ -11,26 +9,19 @@ namespace Maui.Toolkit.WeChat.Services.Identity;
 internal class DefaultTokenService : ITokenService
 {
     private readonly ITokenStore _tokenStore;
-    private readonly HttpClient _httpClinet;
-    private readonly WeChatOption _option;
+    private readonly IWeChatHttpClient _weChatClinet;
 
     public DefaultTokenService(
         ITokenStore tokenStore,
-        HttpClient httpClient,
-        IOptions<WeChatOption> option)
+        IWeChatHttpClient weChatClient)
     {
         _tokenStore = tokenStore;
-        _httpClinet = httpClient;
-        _option = option.Value;
+        _weChatClinet = weChatClient;
     }
 
     public virtual async Task<Token?> GetTokenFromWeChatAsync(string code)
     {
-        var tokenEndpoint = $"https://api.weixin.qq.com/sns/oauth2/access_token?appid={_option.AppId}&secret={_option.AppSecret}&code={code}&grant_type=authorization_code";
-
-        var response = await _httpClinet.GetAsync(tokenEndpoint);
-
-        var token = await response.EnsureSuccessAndDeserializeAsync<Token>();
+        var token = await _weChatClinet.GetTokenAsync(code);
         if (token is not null)
         {
             token.IssuedAt = DateTimeOffset.UtcNow.ToUnixTimeSeconds();
@@ -53,11 +44,7 @@ internal class DefaultTokenService : ITokenService
             throw new NotImplementedException();
         }
 
-        var refreshTokenEndpoint = $"https://api.weixin.qq.com/sns/oauth2/refresh_token?appid={_option.AppId}&grant_type=refresh_token&refresh_token={token.RefreshToken}";
-
-        var response = await _httpClinet.GetAsync(refreshTokenEndpoint);
-
-        var refreshedToken = await response.EnsureSuccessAndDeserializeAsync<Token>();
+        var refreshedToken = await _weChatClinet.RefreshTokenAsync(token.RefreshToken);
         if (refreshedToken is not null)
         {
             refreshedToken.IssuedAt = DateTimeOffset.UtcNow.ToUnixTimeSeconds();
