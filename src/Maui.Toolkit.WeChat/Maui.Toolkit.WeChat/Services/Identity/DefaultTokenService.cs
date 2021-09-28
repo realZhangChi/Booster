@@ -1,10 +1,4 @@
-﻿using Maui.Toolkit.WeChat.Models.Identity;
-using Maui.Toolkit.WeChat.Services.Http;
-using Microsoft.Extensions.Options;
-using System;
-using System.Threading.Tasks;
-
-namespace Maui.Toolkit.WeChat.Services.Identity;
+﻿namespace Maui.Toolkit.WeChat.Services.Identity;
 
 internal class DefaultTokenService : ITokenService
 {

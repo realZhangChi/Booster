@@ -1,15 +1,4 @@
-﻿using Maui.Toolkit.WeChat.Services.Http;
-using Maui.Toolkit.WeChat.Services.Identity;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.DependencyInjection.Extensions;
-using Microsoft.Maui;
-using System;
-
-#if __ANDROID__
-using Maui.Toolkit.WeChat.Platforms.Android;
-#endif
-
-namespace Maui.Toolkit.WeChat;
+﻿namespace Maui.Toolkit.WeChat;
 
 public static class MauiAppBuilderExtensions
 {

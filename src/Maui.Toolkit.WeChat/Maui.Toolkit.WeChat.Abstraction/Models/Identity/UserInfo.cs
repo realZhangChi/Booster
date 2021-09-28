@@ -1,7 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Text.Json.Serialization;
-
-namespace Maui.Toolkit.WeChat.Models.Identity;
+﻿namespace Maui.Toolkit.WeChat.Models.Identity;
 
 public class UserInfo
 {

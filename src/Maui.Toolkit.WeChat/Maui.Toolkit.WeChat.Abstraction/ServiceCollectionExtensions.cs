@@ -1,8 +1,4 @@
-﻿using Microsoft.Maui;
-using Microsoft.Extensions.DependencyInjection;
-using Maui.Toolkit.WeChat.Services.Identity;
-
-namespace Maui.Toolkit.WeChat;
+﻿namespace Maui.Toolkit.WeChat;
 
 public static class ServiceCollectionExtensions
 {

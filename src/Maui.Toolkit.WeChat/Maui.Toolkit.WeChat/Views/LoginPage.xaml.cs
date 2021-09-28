@@ -1,7 +1,4 @@
-﻿using Microsoft.Maui.Controls;
-
-
-namespace Maui.Toolkit.WeChat.Views;
+﻿namespace Maui.Toolkit.WeChat.Views;
 
 public partial class LoginPage : ContentPage
 {

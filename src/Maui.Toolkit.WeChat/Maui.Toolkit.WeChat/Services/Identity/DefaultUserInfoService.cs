@@ -1,9 +1,4 @@
-﻿using Maui.Toolkit.WeChat.Models.Identity;
-using Maui.Toolkit.WeChat.Services.Http;
-using System;
-using System.Threading.Tasks;
-
-namespace Maui.Toolkit.WeChat.Services.Identity;
+﻿namespace Maui.Toolkit.WeChat.Services.Identity;
 
 public class DefaultUserInfoService : IUserInfoService
 {
