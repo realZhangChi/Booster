@@ -13,4 +13,12 @@ public class WeChatOption
     public string AppId { get; set; }
 
     public string AppSecret { get; set; }
+
+    public WeChatOption(
+        string appId,
+        string appSecret)
+    {
+        AppId = appId;
+        AppSecret = appSecret;
+    }
 }

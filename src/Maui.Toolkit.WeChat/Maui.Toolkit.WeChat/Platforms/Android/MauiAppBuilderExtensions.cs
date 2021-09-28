@@ -5,6 +5,7 @@ using Android.App;
 using Maui.Toolkit.WeChat.Platforms.Android.Identity;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Maui.Toolkit.WeChat.Services.Identity;
+using System;
 
 namespace Maui.Toolkit.WeChat.Platforms.Android;
 
@@ -15,6 +16,11 @@ internal static class ServiceCollectionExtensions
         services.AddTransient(provider =>
         {
             var api = WXAPIFactory.CreateWXAPI(Application.Context, option.AppId, true);
+            if (api is null)
+            {
+                // TODO: best practice
+                throw new NotImplementedException();
+            }
             api.RegisterApp(option?.AppId);
             return api;
         });

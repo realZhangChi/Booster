@@ -22,33 +22,41 @@ public abstract class WxEntryActivity : MauiAppCompatActivity, IWXAPIEventHandle
         _wxApi = MauiApplication.Current.Services.GetRequiredService<IWXAPI>();
     }
 
-    protected override void OnCreate(Bundle savedInstanceState)
+    protected override void OnCreate(Bundle? savedInstanceState)
     {
         base.OnCreate(savedInstanceState);
     }
 
-    protected override void OnNewIntent(Intent intent)
+    protected override void OnNewIntent(Intent? intent)
     {
         base.OnNewIntent(intent);
         _wxApi.HandleIntent(intent, this);
     }
 
-    public void OnReq(BaseReq p0)
+    public void OnReq(BaseReq? p0)
     {
         throw new NotImplementedException();
     }
 
-    public async void OnResp(BaseResp response)
+    public async void OnResp(BaseResp? response)
     {
-        switch (response.Err_Code)
+        if (response is null)
         {
-            case ErrCode.ErrOk:
+            return;
+        }
+
+        switch (response?.Err_Code)
+        {
+            case IErrCode.ErrOk:
                 {
                     switch (response.Type)
                     {
-                        case ConstantsAPI.CommandSendauth:
+                        case IConstantsAPI.CommandSendauth:
                             {
-                                await AuthorizedAsync((response as SendAuth.Resp).Code);
+                                if (response is SendAuth.Resp authResponse)
+                                {
+                                    await AuthorizedAsync(authResponse.Code ?? string.Empty);
+                                }
                                 break;
                             }
                         default:
