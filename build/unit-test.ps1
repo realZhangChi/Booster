@@ -1,7 +1,7 @@
 $rootPath = (Get-Item -Path "./" -Verbose).FullName
 
 $unitTestPaths = @(
-		"../test/Maui.Toolkit.WeChat/Maui.Toolkit.WeChat.Abstraction.Test"
+		"../test/Maui.Toolkit.WeChat/Maui.Toolkit.WeChat.Abstraction.UnitTest"
 	)
 
 foreach ($unitTestPath in $unitTestPaths) {    
