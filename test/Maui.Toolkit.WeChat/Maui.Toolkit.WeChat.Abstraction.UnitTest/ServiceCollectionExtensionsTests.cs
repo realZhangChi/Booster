@@ -1,9 +1,6 @@
-﻿using Maui.Toolkit.TestBase;
-using Maui.Toolkit.WeChat.Services.Identity;
-using Microsoft.Extensions.DependencyInjection;
-using Xunit;
+﻿
 
-namespace Maui.Toolkit.WeChat.Abstraction.Test;
+namespace Maui.Toolkit.WeChat.Abstraction.UnitTest;
 
 public class ServiceCollectionExtensionsTests
 {

@@ -59,6 +59,6 @@ public abstract class WxEntryActivity : MauiAppCompatActivity, IWXAPIEventHandle
     protected virtual Task AuthorizedAsync(string code)
     {
         var authService = MauiApplication.Current.Services.GetRequiredService<IAuthorizationService>();
-        return authService.AuthorizedAsync(code);
+        return authService.AuthorizeCallbackAsync(code);
     }
 }

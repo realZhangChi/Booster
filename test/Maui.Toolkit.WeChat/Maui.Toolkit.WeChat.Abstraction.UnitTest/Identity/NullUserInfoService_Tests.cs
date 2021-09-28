@@ -1,15 +1,10 @@
-﻿using Maui.Toolkit.WeChat.Services.Identity;
-using Shouldly;
-using System.Threading.Tasks;
-using Xunit;
+﻿namespace Maui.Toolkit.WeChat.Abstraction.UnitTest.Identity;
 
-namespace Maui.Toolkit.WeChat.Abstraction.Test.Identity;
-
-public class NullUserInfoServiceTests
+public class NullUserInfoService_Tests
 {
     private readonly IUserInfoService _userInfoService;
 
-    public NullUserInfoServiceTests()
+    public NullUserInfoService_Tests()
     {
         _userInfoService = new NullUserInfoService();
     }

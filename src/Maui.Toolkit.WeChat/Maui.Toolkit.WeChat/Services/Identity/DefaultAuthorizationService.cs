@@ -26,7 +26,7 @@ public class DefaultAuthorizationService : IAuthorizationService
         return _handler.AuthorizeAsync();
     }
 
-    public virtual async Task AuthorizedAsync(string code)
+    public virtual async Task AuthorizeCallbackAsync(string code)
     {
         var token = await _tokenService.GetTokenFromWeChatAsync(code);
         if (token == null)

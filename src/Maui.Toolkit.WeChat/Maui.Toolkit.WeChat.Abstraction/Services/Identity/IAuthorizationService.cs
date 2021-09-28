@@ -4,5 +4,5 @@ public interface IAuthorizationService
 {
     Task<bool> AuthorizeAsync();
 
-    Task AuthorizedAsync(string code);
+    Task AuthorizeCallbackAsync(string code);
 }

@@ -1,16 +1,10 @@
-﻿using Maui.Toolkit.WeChat.Models.Identity;
-using Maui.Toolkit.WeChat.Services.Identity;
-using Shouldly;
-using System.Threading.Tasks;
-using Xunit;
+﻿namespace Maui.Toolkit.WeChat.Abstraction.UnitTest.Identity;
 
-namespace Maui.Toolkit.WeChat.Abstraction.Test.Identity;
-
-public class NullTokenStoreTests
+public class NullTokenStore_Tests
 {
     private readonly ITokenStore _tokenStore;
 
-    public NullTokenStoreTests()
+    public NullTokenStore_Tests()
     {
         _tokenStore = new NullTokenStore();
     }
