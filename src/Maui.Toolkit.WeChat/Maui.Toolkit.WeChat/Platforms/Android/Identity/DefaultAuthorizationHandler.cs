@@ -1,9 +1,4 @@
-﻿using System.Threading.Tasks;
-using Com.Tencent.MM.Opensdk.Modelmsg;
-using Com.Tencent.MM.Opensdk.Openapi;
-using Maui.Toolkit.WeChat.Services.Identity;
-
-namespace Maui.Toolkit.WeChat.Platforms.Android.Identity;
+﻿namespace Maui.Toolkit.WeChat.Platforms.Android.Identity;
 
 internal class DefaultAuthorizationHandler : IAuthorizationHandler
 {

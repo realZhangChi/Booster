@@ -1,17 +1,4 @@
-﻿using Android.Content;
-using Android.OS;
-using Com.Tencent.MM.Opensdk.Constants;
-using Com.Tencent.MM.Opensdk.Modelbase;
-using Com.Tencent.MM.Opensdk.Modelmsg;
-using Com.Tencent.MM.Opensdk.Openapi;
-using Maui.Toolkit.WeChat.Services.Identity;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Maui;
-using System;
-using System.Threading.Tasks;
-using static Com.Tencent.MM.Opensdk.Modelbase.BaseResp;
-
-namespace Maui.Toolkit.WeChat.Platforms.Android.WxApi;
+﻿namespace Maui.Toolkit.WeChat.Platforms.Android.WxApi;
 
 public abstract class WxEntryActivity : MauiAppCompatActivity, IWXAPIEventHandler
 {
@@ -47,7 +34,7 @@ public abstract class WxEntryActivity : MauiAppCompatActivity, IWXAPIEventHandle
 
         switch (response?.Err_Code)
         {
-            case IErrCode.ErrOk:
+            case BaseResp.IErrCode.ErrOk:
                 {
                     switch (response.Type)
                     {

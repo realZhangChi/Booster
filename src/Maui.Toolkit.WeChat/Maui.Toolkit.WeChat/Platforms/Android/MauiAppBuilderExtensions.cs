@@ -1,11 +1,4 @@
-﻿using Microsoft.Maui;
-using Microsoft.Extensions.DependencyInjection;
-using Com.Tencent.MM.Opensdk.Openapi;
-using Android.App;
-using Maui.Toolkit.WeChat.Platforms.Android.Identity;
-using Microsoft.Extensions.DependencyInjection.Extensions;
-using Maui.Toolkit.WeChat.Services.Identity;
-using System;
+﻿using Application = Android.App.Application;
 
 namespace Maui.Toolkit.WeChat.Platforms.Android;
 

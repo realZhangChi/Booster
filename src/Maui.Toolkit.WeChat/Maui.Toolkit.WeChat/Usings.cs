@@ -15,4 +15,11 @@ global using System.Text.Json;
 
 #if __ANDROID__
 global using Maui.Toolkit.WeChat.Platforms.Android;
+global using Maui.Toolkit.WeChat.Platforms.Android.Identity;
+global using Com.Tencent.MM.Opensdk.Openapi;
+global using Com.Tencent.MM.Opensdk.Modelmsg;
+global using Com.Tencent.MM.Opensdk.Constants;
+global using Com.Tencent.MM.Opensdk.Modelbase;
+global using Android.Content;
+global using Android.OS;
 #endif
