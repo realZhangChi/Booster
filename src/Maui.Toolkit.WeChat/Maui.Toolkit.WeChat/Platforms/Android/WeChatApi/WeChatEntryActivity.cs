@@ -16,14 +16,14 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 using Microsoft.Maui;
 
-namespace Maui.Toolkit.WeChat.Platforms.Android.WxApi;
+namespace Maui.Toolkit.WeChat.Platforms.Android.WeChatApi;
 
-public abstract class WxEntryActivity : MauiAppCompatActivity, IWXAPIEventHandler
+public abstract class WeChatEntryActivity : MauiAppCompatActivity, IWXAPIEventHandler
 {
     private readonly IWXAPI _wxApi;
     private readonly WeChatMobileOptions _options;
 
-    public WxEntryActivity()
+    public WeChatEntryActivity()
     {
         _wxApi = MauiApplication.Current.Services.GetRequiredService<IWXAPI>();
         _options = MauiApplication.Current.Services.GetRequiredService<IOptions<WeChatMobileOptions>>().Value;
