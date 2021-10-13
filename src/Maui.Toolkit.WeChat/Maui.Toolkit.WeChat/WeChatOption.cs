@@ -1,12 +1,19 @@
-﻿namespace Maui.Toolkit.WeChat;
+﻿using System;
+
+namespace Maui.Toolkit.WeChat;
 
 public class WeChatOption
 {
     public const string Name = "WeChat";
 
-    public string AppId { get; private set; }
+    public string AppId { get; set; }
 
-    public string AppSecret { get; private set; }
+    public string AppSecret { get; set; }
+
+    public WeChatOption()
+    {
+
+    }
 
     public WeChatOption(
         string appId,

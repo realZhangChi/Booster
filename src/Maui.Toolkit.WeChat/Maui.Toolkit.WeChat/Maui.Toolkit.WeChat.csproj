@@ -1,34 +1,30 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
 		<TargetFrameworks>net6.0;net6.0-ios;net6.0-android;net6.0-maccatalyst</TargetFrameworks>
-		<!-- <TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows')) and '$(MSBuildRuntimeType)' == 'Full'">$(TargetFrameworks);net6.0-windows10.0.19041</TargetFrameworks> -->
+		 <TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows')) and '$(MSBuildRuntimeType)' == 'Full'">$(TargetFrameworks);net6.0-windows10.0.19041</TargetFrameworks> 
 		<TargetPlatformMinVersion Condition="$(TargetFramework.Contains('-windows'))">10.0.17763.0</TargetPlatformMinVersion>
 		<UseMaui>true</UseMaui>
-		<Nullable>enable</Nullable>
 		<SingleProject>true</SingleProject>
+
+		<SupportedOSPlatformVersion Condition="'$(TargetFramework)' == 'net6.0-ios'">14.2</SupportedOSPlatformVersion>
+		<SupportedOSPlatformVersion Condition="'$(TargetFramework)' == 'net6.0-maccatalyst'">14.0</SupportedOSPlatformVersion>
+		<SupportedOSPlatformVersion Condition="'$(TargetFramework)' == 'net6.0-android'">21.0</SupportedOSPlatformVersion>
+		<SupportedOSPlatformVersion Condition="$(TargetFramework.Contains('-windows'))">10.0.18362.0</SupportedOSPlatformVersion>
 	</PropertyGroup>
 
-	<ItemGroup Condition="$(TargetFramework.Contains('-windows'))">
-		<PackageReference Include="Microsoft.WindowsAppSDK" Version="1.0.0-experimental1" />
+	<ItemGroup>
+	  <PackageReference Include="CommunityToolkit.Maui" Version="1.0.0-pre2" />
+	  <PackageReference Include="IdentityModel" Version="5.1.1" />
+	  <PackageReference Include="Microsoft.Extensions.Http" Version="6.0.0-rc.2.21480.5" />
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Microsoft.Extensions.Http" Version="6.0.0-rc.1.21451.13" />
-	</ItemGroup>
-	
-	<ItemGroup>
-		<ProjectReference Include="..\Maui.Toolkit.WeChat.Abstraction\Maui.Toolkit.WeChat.Abstraction.csproj" />
+	  <ProjectReference Include="..\Maui.Toolkit.WeChat.Abstraction\Maui.Toolkit.WeChat.Abstraction.csproj" />
 	</ItemGroup>
 
 	<ItemGroup Condition="'$(TargetFramework)' == 'net6.0-android'">
 		<ProjectReference Include="..\..\..\binding\Maui.Toolkit.Binding.WeChat\Maui.Toolkit.Binding.WeChat.Android\Maui.Toolkit.Binding.WeChat.Android.csproj" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <MauiXaml Update="Views\LoginPage.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
 	</ItemGroup>
 
 </Project>

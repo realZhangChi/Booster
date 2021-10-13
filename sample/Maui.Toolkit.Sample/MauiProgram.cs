@@ -16,7 +16,7 @@ namespace Maui.Toolkit.Sample
 
             builder
                 .UseMauiApp<App>()
-                .UseWeChat(new WeChatOption("", ""))
+                .UseWeChat(new WeChatOption("test", "test"))
                 .ConfigureFonts(fonts =>
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");

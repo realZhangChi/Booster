@@ -1,4 +1,7 @@
-﻿namespace Maui.Toolkit.WeChat.Services.Identity;
+﻿using System;
+using System.Threading.Tasks;
+
+namespace Maui.Toolkit.WeChat.Services.Identity;
 
 public class DefaultAuthorizationService : IAuthorizationService
 {

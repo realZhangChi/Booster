@@ -1,4 +1,20 @@
-﻿namespace Maui.Toolkit.WeChat.Platforms.Android.WxApi;
+﻿using System;
+using System.Threading.Tasks;
+
+using Android.Content;
+using Android.OS;
+
+using Com.Tencent.MM.Opensdk.Constants;
+using Com.Tencent.MM.Opensdk.Modelbase;
+using Com.Tencent.MM.Opensdk.Modelmsg;
+using Com.Tencent.MM.Opensdk.Openapi;
+
+using Maui.Toolkit.WeChat.Services.Identity;
+
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Maui;
+
+namespace Maui.Toolkit.WeChat.Platforms.Android.WxApi;
 
 public abstract class WxEntryActivity : MauiAppCompatActivity, IWXAPIEventHandler
 {

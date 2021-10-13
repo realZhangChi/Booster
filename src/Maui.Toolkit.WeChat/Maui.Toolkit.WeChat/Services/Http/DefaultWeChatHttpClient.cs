@@ -1,4 +1,13 @@
-﻿namespace Maui.Toolkit.WeChat.Services.Http;
+﻿using System;
+using System.Net.Http;
+using System.Threading.Tasks;
+
+using Maui.Toolkit.WeChat.Models.Identity;
+using Maui.Toolkit.WeChat.Utils;
+
+using Microsoft.Extensions.Options;
+
+namespace Maui.Toolkit.WeChat.Services.Http;
 
 public class DefaultWeChatHttpClient : IWeChatHttpClient
 {

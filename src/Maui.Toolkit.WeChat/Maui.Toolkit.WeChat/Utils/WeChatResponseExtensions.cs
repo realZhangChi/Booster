@@ -1,4 +1,9 @@
-﻿namespace Maui.Toolkit.WeChat.Utils;
+﻿using System;
+using System.Net.Http;
+using System.Text.Json;
+using System.Threading.Tasks;
+
+namespace Maui.Toolkit.WeChat.Utils;
 
 internal static class WeChatResponseExtensions
 {
