@@ -9,9 +9,11 @@ using Com.Tencent.MM.Opensdk.Modelbase;
 using Com.Tencent.MM.Opensdk.Modelmsg;
 using Com.Tencent.MM.Opensdk.Openapi;
 
+using Maui.Toolkit.WeChat.Extensions;
 using Maui.Toolkit.WeChat.Services.Identity;
 
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Options;
 using Microsoft.Maui;
 
 namespace Maui.Toolkit.WeChat.Platforms.Android.WxApi;
@@ -19,10 +21,12 @@ namespace Maui.Toolkit.WeChat.Platforms.Android.WxApi;
 public abstract class WxEntryActivity : MauiAppCompatActivity, IWXAPIEventHandler
 {
     private readonly IWXAPI _wxApi;
+    private readonly WeChatMobileOptions _options;
 
     public WxEntryActivity()
     {
         _wxApi = MauiApplication.Current.Services.GetRequiredService<IWXAPI>();
+        _options = MauiApplication.Current.Services.GetRequiredService<IOptions<WeChatMobileOptions>>().Value;
     }
 
     protected override void OnCreate(Bundle? savedInstanceState)
@@ -75,6 +79,6 @@ public abstract class WxEntryActivity : MauiAppCompatActivity, IWXAPIEventHandle
     protected virtual Task AuthorizedAsync(string code)
     {
         var authService = MauiApplication.Current.Services.GetRequiredService<IAuthorizationService>();
-        return authService.AuthorizeCallbackAsync(code);
+        return authService.AuthorizeCallbackAsync(_options.AppId, _options.AppSecret, code);
     }
 }

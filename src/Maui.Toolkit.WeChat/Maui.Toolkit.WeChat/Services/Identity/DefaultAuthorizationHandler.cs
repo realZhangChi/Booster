@@ -1,11 +1,12 @@
 ﻿using System;
-using Maui.Toolkit.WeChat.Views;
 using System.Threading.Tasks;
+
+using Maui.Toolkit.WeChat.Views;
+
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Maui.Controls;
-using Maui.Toolkit.WeChat.Services.Identity;
 
-namespace Maui.Toolkit.WeChat.Platforms.Windows.Identity;
+namespace Maui.Toolkit.WeChat.Services.Identity;
 
 public class DefaultAuthorizationHandler : IAuthorizationHandler
 {
@@ -15,10 +16,12 @@ public class DefaultAuthorizationHandler : IAuthorizationHandler
     {
         _serviceProvider = serviceProvider;
     }
+
     public async Task<bool> AuthorizeAsync()
     {
         var loginPage = _serviceProvider.GetRequiredService<LoginPage>();
-        await Application.Current?.MainPage?.Navigation.PushModalAsync(loginPage);
+        await Application.Current.MainPage.Navigation.PushModalAsync(loginPage);
         return true;
     }
 }
+

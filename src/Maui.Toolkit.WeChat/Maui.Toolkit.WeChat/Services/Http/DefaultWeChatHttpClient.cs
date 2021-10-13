@@ -12,28 +12,24 @@ namespace Maui.Toolkit.WeChat.Services.Http;
 public class DefaultWeChatHttpClient : IWeChatHttpClient
 {
     private readonly HttpClient _httpClient;
-    private readonly WeChatOption _option;
 
     public DefaultWeChatHttpClient(
-        HttpClient httpClient,
-        IOptions<WeChatOption> option)
+        HttpClient httpClient)
     {
         _httpClient = httpClient;
         _httpClient.BaseAddress = new Uri("https://api.weixin.qq.com");
-
-        _option = option.Value;
     }
 
-    public async Task<Token?> GetTokenAsync(string code)
+    public async Task<Token> GetTokenAsync(string appId, string appSecret, string code)
     {
-        var tokenUrl = $"/sns/oauth2/access_token?appid={_option.AppId}&secret={_option.AppSecret}&code={code}&grant_type=authorization_code";
+        var tokenUrl = $"/sns/oauth2/access_token?appid={appId}&secret={appSecret}&code={code}&grant_type=authorization_code";
 
         var response = await _httpClient.GetAsync(tokenUrl);
 
         return await response.EnsureSuccessAndDeserializeAsync<Token>();
     }
 
-    public async Task<UserInfo?> GetUserInfoAsync(Token token)
+    public async Task<UserInfo> GetUserInfoAsync(Token token)
     {
 
         var userInfoUrl = $"/sns/userinfo?access_token={token.AccessToken}&openid={token.OpenId}";
@@ -43,9 +39,9 @@ public class DefaultWeChatHttpClient : IWeChatHttpClient
         return await response.EnsureSuccessAndDeserializeAsync<UserInfo>();
     }
 
-    public async Task<Token?> RefreshTokenAsync(string refreshToken)
+    public async Task<Token> RefreshTokenAsync(string appId, string refreshToken)
     {
-        var refreshTokenUrl = $"/sns/oauth2/refresh_token?appid={_option.AppId}&grant_type=refresh_token&refresh_token={refreshToken}";
+        var refreshTokenUrl = $"/sns/oauth2/refresh_token?appid={appId}&grant_type=refresh_token&refresh_token={refreshToken}";
 
         var response = await _httpClient.GetAsync(refreshTokenUrl);
 

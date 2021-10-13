@@ -5,6 +5,8 @@ using Microsoft.Maui.Controls.Hosting;
 using Microsoft.Maui.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Configuration;
+using Maui.Toolkit.WeChat.Extensions;
+using Microsoft.Extensions.Options;
 
 namespace Maui.Toolkit.Sample
 {
@@ -16,7 +18,18 @@ namespace Maui.Toolkit.Sample
 
             builder
                 .UseMauiApp<App>()
-                .UseWeChat(new WeChatOption("test", "test"))
+                .UseWeChat(
+                    new WeChatWebOptions
+                    {
+                        AppId = "test",
+                        AppSecret = "test",
+                        RedirectUrl = "WeChatRedirect"
+                    },
+                    new WeChatMobileOptions()
+                    {
+                        AppId = "test",
+                        AppSecret = "test"
+                    })
                 .ConfigureFonts(fonts =>
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");

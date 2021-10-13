@@ -19,9 +19,9 @@ internal class DefaultTokenService : ITokenService
         _weChatClinet = weChatClient;
     }
 
-    public virtual async Task<Token?> GetTokenFromWeChatAsync(string code)
+    public virtual async Task<Token?> GetTokenFromWeChatAsync(string appId, string appSecret, string code)
     {
-        var token = await _weChatClinet.GetTokenAsync(code);
+        var token = await _weChatClinet.GetTokenAsync(appId, appSecret, code);
         if (token is not null)
         {
             token.IssuedAt = DateTimeOffset.UtcNow.ToUnixTimeSeconds();
@@ -29,7 +29,7 @@ internal class DefaultTokenService : ITokenService
         return token;
     }
 
-    public async Task<Token?> RefreshTokenAsync()
+    public async Task<Token?> RefreshTokenAsync(string appId)
     {
         var token = await _tokenStore.GetOrNullAsync();
         if (token is null || string.IsNullOrWhiteSpace(token.RefreshToken))
@@ -44,7 +44,7 @@ internal class DefaultTokenService : ITokenService
             throw new NotImplementedException();
         }
 
-        var refreshedToken = await _weChatClinet.RefreshTokenAsync(token.RefreshToken);
+        var refreshedToken = await _weChatClinet.RefreshTokenAsync(appId, token.RefreshToken);
         if (refreshedToken is not null)
         {
             refreshedToken.IssuedAt = DateTimeOffset.UtcNow.ToUnixTimeSeconds();

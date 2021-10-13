@@ -29,16 +29,16 @@ public class DefaultAuthorizationService : IAuthorizationService
         return _handler.AuthorizeAsync();
     }
 
-    public virtual async Task AuthorizeCallbackAsync(string code)
+    public virtual async Task AuthorizeCallbackAsync(string appId, string appSecret, string code)
     {
-        var token = await _tokenService.GetTokenFromWeChatAsync(code);
+        var token = await _tokenService.GetTokenFromWeChatAsync(appId, appSecret, code);
         if (token == null)
         {
             throw new NotImplementedException();
         }
         await _tokenStore.SetAsync(token);
 
-        var userInfo = await _userInfoService.GetUserInfoFromWeChatAsync();
+        var userInfo = await _userInfoService.GetUserInfoFromWeChatAsync(appId);
         if (userInfo == null)
         {
             throw new NotImplementedException();

@@ -7,11 +7,11 @@ using Maui.Toolkit.WeChat.Services.Identity;
 
 namespace Maui.Toolkit.WeChat.Platforms.Android.Identity;
 
-internal class DefaultAuthorizationHandler : IAuthorizationHandler
+internal class AndroidAuthorizationHandler : IAuthorizationHandler
 {
     private readonly IWXAPI _wxApi;
 
-    public DefaultAuthorizationHandler(IWXAPI wxApi)
+    public AndroidAuthorizationHandler(IWXAPI wxApi)
     {
         _wxApi = wxApi;
     }

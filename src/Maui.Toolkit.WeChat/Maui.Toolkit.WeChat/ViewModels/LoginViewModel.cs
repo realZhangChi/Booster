@@ -2,6 +2,8 @@
 using System.Threading.Tasks;
 using System.Windows.Input;
 
+using Maui.Toolkit.WeChat.Extensions;
+
 using Microsoft.Extensions.Options;
 using Microsoft.Maui.Controls;
 
@@ -9,7 +11,7 @@ namespace Maui.Toolkit.WeChat.ViewModels;
 
 public class LoginViewModel
 {
-    private readonly WeChatWebOption _options;
+    private readonly WeChatWebOptions _options;
     private readonly IServiceProvider _service;
 
     private const string AuthUrl = "https://open.weixin.qq.com/connect/qrconnect";
@@ -17,7 +19,7 @@ public class LoginViewModel
     public string LoginUrl { get; init; }
 
     public LoginViewModel(
-        IOptions<WeChatWebOption> options,
+        IOptions<WeChatWebOptions> options,
         IServiceProvider service)
     {
         _options = options.Value;

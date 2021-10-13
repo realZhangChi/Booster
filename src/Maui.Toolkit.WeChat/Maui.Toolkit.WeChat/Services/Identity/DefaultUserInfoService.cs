@@ -22,7 +22,7 @@ public class DefaultUserInfoService : IUserInfoService
         _weChatClient = weChatClient;
     }
 
-    public async Task<UserInfo?> GetUserInfoFromWeChatAsync(string? openId = null)
+    public async Task<UserInfo?> GetUserInfoFromWeChatAsync(string appId, string? openId = null)
     {
         var token = await _tokenStore.GetOrNullAsync();
         if (token == null)
@@ -33,7 +33,7 @@ public class DefaultUserInfoService : IUserInfoService
         // 1200 seconds = 20 minutes
         if (token.IssuedAt + token.ExpiresIn - 1200 > DateTimeOffset.UtcNow.ToUnixTimeSeconds())
         {
-            await _tokenService.RefreshTokenAsync();
+            await _tokenService.RefreshTokenAsync(appId);
         }
 
         if (!string.IsNullOrWhiteSpace(openId))

@@ -9,20 +9,29 @@ using Microsoft.Maui.Hosting;
 
 #if __ANDROID__
 using Maui.Toolkit.WeChat.Platforms.Android;
-#elif WINDOWS
-using Maui.Toolkit.WeChat.Platforms.Windows;
 #endif
 
-namespace Maui.Toolkit.WeChat;
+namespace Maui.Toolkit.WeChat.Extensions;
 
 public static class MauiAppBuilderExtensions
 {
-    public static MauiAppBuilder UseWeChat(this MauiAppBuilder builder, WeChatOption option)
+    public static MauiAppBuilder UseWeChat(this MauiAppBuilder builder, WeChatWebOptions webOptions, WeChatMobileOptions mobileOptions)
     {
         builder.Services.AddWeChat();
 
-        builder.Services.Configure<WeChatOption>(o => o = option);
-        builder.Services.Configure<WeChatWebOption>(o => o = new WeChatWebOption(option.AppId, option.AppSecret, "test"));
+        builder.Services.AddOptions<WeChatWebOptions>()
+            .Configure(options =>
+            {
+                options.AppId = webOptions.AppId;
+                options.AppSecret = webOptions.AppSecret;
+                options.RedirectUrl = webOptions.RedirectUrl;
+            });
+        builder.Services.AddOptions<WeChatMobileOptions>()
+            .Configure(options =>
+            {
+                options.AppId = mobileOptions.AppId;
+                options.AppSecret = mobileOptions.AppSecret;
+            });
 
         builder.Services.AddTransient<IWeChatHttpClient, DefaultWeChatHttpClient>();
 
@@ -30,6 +39,11 @@ public static class MauiAppBuilderExtensions
 
         builder.Services.AddTransient<LoginPage>();
 
+        builder.Services.Replace(
+            new ServiceDescriptor(
+                typeof(IAuthorizationHandler),
+                typeof(DefaultAuthorizationHandler),
+                ServiceLifetime.Transient));
         builder.Services.Replace(
             new ServiceDescriptor(
                 typeof(IAuthorizationService),
@@ -44,9 +58,7 @@ public static class MauiAppBuilderExtensions
             );
 
 #if __ANDROID__
-        builder.Services.AddAndroid(option);
-#elif WINDOWS
-        builder.Services.AddWindows(option);
+        builder.Services.AddAndroid(mobileOptions);
 #endif
 
 

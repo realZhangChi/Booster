@@ -7,7 +7,7 @@ public class NullAuthorizationService : IAuthorizationService
         return Task.FromResult(false);
     }
 
-    public Task AuthorizeCallbackAsync(string code)
+    public Task AuthorizeCallbackAsync(string appId, string appSecret, string code)
     {
         return Task.CompletedTask;
     }

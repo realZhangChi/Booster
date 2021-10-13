@@ -2,6 +2,7 @@
 
 using Com.Tencent.MM.Opensdk.Openapi;
 
+using Maui.Toolkit.WeChat.Extensions;
 using Maui.Toolkit.WeChat.Platforms.Android.Identity;
 using Maui.Toolkit.WeChat.Services.Identity;
 
@@ -14,7 +15,7 @@ namespace Maui.Toolkit.WeChat.Platforms.Android;
 
 internal static class ServiceCollectionExtensions
 {
-    internal static IServiceCollection AddAndroid(this IServiceCollection services, WeChatOption option)
+    internal static IServiceCollection AddAndroid(this IServiceCollection services, WeChatMobileOptions option)
     {
         services.AddTransient(provider =>
         {
@@ -31,7 +32,7 @@ internal static class ServiceCollectionExtensions
         services.Replace(
             new ServiceDescriptor(
                 typeof(IAuthorizationHandler),
-                typeof(DefaultAuthorizationHandler),
+                typeof(AndroidAuthorizationHandler),
                 ServiceLifetime.Transient)
             );
 
