@@ -51,7 +51,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\..\src\Maui.Toolkit.WeChat\Maui.Toolkit.WeChat\Maui.Toolkit.WeChat.csproj" />
+	  <ProjectReference Include="..\..\src\Maui.Toolkit.WeChat\Maui.Toolkit.WeChat.csproj" />
 	</ItemGroup>
 
 	<PropertyGroup Condition="$(TargetFramework.Contains('-windows'))">
