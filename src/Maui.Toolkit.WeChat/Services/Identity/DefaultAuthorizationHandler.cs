@@ -20,8 +20,13 @@ public class DefaultAuthorizationHandler : IAuthorizationHandler
     public async Task<bool> AuthorizeAsync()
     {
         var loginPage = _serviceProvider.GetRequiredService<LoginPage>();
-        await Application.Current.MainPage.Navigation.PushModalAsync(loginPage);
-        return true;
+        if (Application.Current is not null && Application.Current.MainPage is not null)
+        {
+            await Application.Current.MainPage.Navigation.PushModalAsync(loginPage);
+            return true;
+        }
+
+        return false;
     }
 }
 

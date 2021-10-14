@@ -2,8 +2,12 @@
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-using Maui.Toolkit.WeChat.Extensions;
+using IdentityModel.Client;
 
+using Maui.Toolkit.WeChat.Extensions;
+using Maui.Toolkit.WeChat.Services.Identity;
+
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 using Microsoft.Maui.Controls;
 
@@ -32,14 +36,18 @@ public class LoginViewModel
     private async Task NavigateAsync(string url)
     {
         var unescapedUrl = System.Net.WebUtility.UrlDecode(url);
-        //if (unescapedUrl.Contains(_options.RedirectUrl))
-        //{
-        //    var authResponse = new AuthorizeResponse(url);
-        //    if (!string.IsNullOrWhiteSpace(authResponse.Code))
-        //    {
-        //        var authorizationService = _service.GetRequiredService<IAuthorizationService>();
-        //        await authorizationService.AuthorizeCallbackAsync(authResponse.Code);
-        //    }
-        //}
+        if (unescapedUrl.Contains(_options.RedirectUrl))
+        {
+            var authResponse = new AuthorizeResponse(url);
+            if (!string.IsNullOrWhiteSpace(authResponse.Code))
+            {
+                var authorizationService = _service.GetRequiredService<IAuthorizationService>();
+                await authorizationService.AuthorizeCallbackAsync(_options.AppId, _options.AppSecret, authResponse.Code);
+                if (Application.Current is not null && Application.Current.MainPage is not null)
+                {
+                    await Application.Current.MainPage.Navigation.PopModalAsync();
+                }
+            }
+        }
     }
 }
