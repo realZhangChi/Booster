@@ -24,8 +24,6 @@ public static class MauiAppBuilderExtensions
 {
     public static MauiAppBuilder UseWeChat(this MauiAppBuilder builder, WeChatWebOptions webOptions, WeChatMobileOptions mobileOptions)
     {
-        builder.Services.AddWeChat();
-
         ConfigureOptions(builder, webOptions, mobileOptions);
 
         AddServices(builder, mobileOptions);
@@ -39,27 +37,16 @@ public static class MauiAppBuilderExtensions
 
     private static void AddServices(MauiAppBuilder builder, WeChatMobileOptions mobileOptions)
     {
+        builder.Services.AddHttpClient();
+
         builder.Services.AddTransient<IWeChatHttpClient, DefaultWeChatHttpClient>();
 
-        builder.Services.Replace(
-            new ServiceDescriptor(
-                typeof(IAuthorizationHandler),
-                typeof(DefaultAuthorizationHandler),
-                ServiceLifetime.Transient));
-        builder.Services.Replace(
-            new ServiceDescriptor(
-                typeof(IAuthorizationService),
-                typeof(DefaultAuthorizationService),
-                ServiceLifetime.Transient)
-            );
-        builder.Services.Replace(
-            new ServiceDescriptor(
-                typeof(ITokenService),
-                typeof(DefaultTokenService),
-                ServiceLifetime.Transient)
-            );
-
-        builder.Services.AddHttpClient();
+        builder.Services.AddTransient<IAuthorizationHandler, DefaultAuthorizationHandler>();
+        builder.Services.AddTransient<IAuthorizationService, DefaultAuthorizationService>();
+        builder.Services.AddTransient<ITokenService, DefaultTokenService>();
+        builder.Services.AddTransient<ITokenStore, DefaultTokenStore>();
+        builder.Services.AddTransient<IUserInfoService, DefaultUserInfoService>();
+        builder.Services.AddTransient<IUserInfoStore, DefaultUserInfoStore>();
 
 #if __ANDROID__
         builder.Services.AddTransient(provider =>

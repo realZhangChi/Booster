@@ -20,10 +20,6 @@
 	  <PackageReference Include="Microsoft.Extensions.Http" Version="6.0.0-rc.2.21480.5" />
 	</ItemGroup>
 
-	<ItemGroup>
-	  <ProjectReference Include="..\Maui.Toolkit.WeChat.Abstraction\Maui.Toolkit.WeChat.Abstraction.csproj" />
-	</ItemGroup>
-
 	<ItemGroup Condition="'$(TargetFramework)' == 'net6.0-android'">
 		<ProjectReference Include="..\..\..\binding\Maui.Toolkit.Binding.WeChat\Maui.Toolkit.Binding.WeChat.Android\Maui.Toolkit.Binding.WeChat.Android.csproj" />
 	</ItemGroup>

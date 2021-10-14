@@ -11,8 +11,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Maui.Toolkit.Binding.WeChat
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Maui.Toolkit.WeChat", "Maui.Toolkit.WeChat", "{3117FD58-9952-45FA-A4E2-012445B8EED8}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Maui.Toolkit.WeChat.Abstraction", "src\Maui.Toolkit.WeChat\Maui.Toolkit.WeChat.Abstraction\Maui.Toolkit.WeChat.Abstraction.csproj", "{FCE50329-E4F0-4D7C-AF90-C0483734A454}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "sample", "sample", "{C8E02FBF-0933-4931-82C5-D08452EB76E1}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Maui.Toolkit.Binding.WeChat.Android", "binding\Maui.Toolkit.Binding.WeChat\Maui.Toolkit.Binding.WeChat.Android\Maui.Toolkit.Binding.WeChat.Android.csproj", "{21835679-3408-4F98-A887-C1823004A045}"
@@ -25,8 +23,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Maui.Toolkit.TestBase", "te
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Maui.Toolkit.WeChat", "Maui.Toolkit.WeChat", "{9683051E-7CF8-4745-9E34-426FD0368B45}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Maui.Toolkit.WeChat.Abstraction.UnitTest", "test\Maui.Toolkit.WeChat\Maui.Toolkit.WeChat.Abstraction.UnitTest\Maui.Toolkit.WeChat.Abstraction.UnitTest.csproj", "{148940BE-E86C-4DA2-BCCA-E1FE65C3D291}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Maui.Toolkit.WeChat", "src\Maui.Toolkit.WeChat\Maui.Toolkit.WeChat\Maui.Toolkit.WeChat.csproj", "{351642C6-CD9A-4177-BEF1-12FA96D1DE1D}"
 EndProject
 Global
@@ -35,10 +31,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{FCE50329-E4F0-4D7C-AF90-C0483734A454}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FCE50329-E4F0-4D7C-AF90-C0483734A454}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FCE50329-E4F0-4D7C-AF90-C0483734A454}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FCE50329-E4F0-4D7C-AF90-C0483734A454}.Release|Any CPU.Build.0 = Release|Any CPU
 		{21835679-3408-4F98-A887-C1823004A045}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{21835679-3408-4F98-A887-C1823004A045}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{21835679-3408-4F98-A887-C1823004A045}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -53,10 +45,6 @@ Global
 		{3309500C-1090-47B5-BDDA-1B6B5F410C3F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3309500C-1090-47B5-BDDA-1B6B5F410C3F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3309500C-1090-47B5-BDDA-1B6B5F410C3F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{148940BE-E86C-4DA2-BCCA-E1FE65C3D291}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{148940BE-E86C-4DA2-BCCA-E1FE65C3D291}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{148940BE-E86C-4DA2-BCCA-E1FE65C3D291}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{148940BE-E86C-4DA2-BCCA-E1FE65C3D291}.Release|Any CPU.Build.0 = Release|Any CPU
 		{351642C6-CD9A-4177-BEF1-12FA96D1DE1D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{351642C6-CD9A-4177-BEF1-12FA96D1DE1D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{351642C6-CD9A-4177-BEF1-12FA96D1DE1D}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -68,12 +56,10 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{9E802C76-68E5-493D-A784-A80191E3000F} = {4CDB5EC2-FBFB-41C8-8D95-604DE78552B7}
 		{3117FD58-9952-45FA-A4E2-012445B8EED8} = {02C87EE2-2EA7-459F-A27C-CC833482AAF3}
-		{FCE50329-E4F0-4D7C-AF90-C0483734A454} = {3117FD58-9952-45FA-A4E2-012445B8EED8}
 		{21835679-3408-4F98-A887-C1823004A045} = {9E802C76-68E5-493D-A784-A80191E3000F}
 		{943033BB-5588-41E5-8AF1-7A2968FC55F6} = {C8E02FBF-0933-4931-82C5-D08452EB76E1}
 		{3309500C-1090-47B5-BDDA-1B6B5F410C3F} = {79B06E90-0EB4-491B-8F85-BC7A1AAEDD45}
 		{9683051E-7CF8-4745-9E34-426FD0368B45} = {79B06E90-0EB4-491B-8F85-BC7A1AAEDD45}
-		{148940BE-E86C-4DA2-BCCA-E1FE65C3D291} = {9683051E-7CF8-4745-9E34-426FD0368B45}
 		{351642C6-CD9A-4177-BEF1-12FA96D1DE1D} = {3117FD58-9952-45FA-A4E2-012445B8EED8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
