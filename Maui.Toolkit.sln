@@ -19,6 +19,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{79B06E90-0
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Maui.Toolkit.WeChat", "src\Maui.Toolkit.WeChat\Maui.Toolkit.WeChat.csproj", "{0785ED88-2A31-4482-AF9A-307862F08FC1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Maui.Toolkit.DeviceTest", "test\Maui.Toolkit.DeviceTest\Maui.Toolkit.DeviceTest.csproj", "{E8C8FE66-4D40-4BF4-B2DA-66EC76F23E0E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Maui.Toolkit.WeChat", "Maui.Toolkit.WeChat", "{E8D0F965-DB11-45F9-A9D9-689518BFF281}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Maui.Toolkit.WeChat.DeviceTest", "test\Maui.Toolkit.WeChat\Maui.Toolkit.WeChat.DeviceTest\Maui.Toolkit.WeChat.DeviceTest.csproj", "{160BA5C8-D3C4-41C1-B4BE-312AA29419F1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +45,15 @@ Global
 		{0785ED88-2A31-4482-AF9A-307862F08FC1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0785ED88-2A31-4482-AF9A-307862F08FC1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0785ED88-2A31-4482-AF9A-307862F08FC1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E8C8FE66-4D40-4BF4-B2DA-66EC76F23E0E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E8C8FE66-4D40-4BF4-B2DA-66EC76F23E0E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E8C8FE66-4D40-4BF4-B2DA-66EC76F23E0E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E8C8FE66-4D40-4BF4-B2DA-66EC76F23E0E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{160BA5C8-D3C4-41C1-B4BE-312AA29419F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{160BA5C8-D3C4-41C1-B4BE-312AA29419F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{160BA5C8-D3C4-41C1-B4BE-312AA29419F1}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{160BA5C8-D3C4-41C1-B4BE-312AA29419F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{160BA5C8-D3C4-41C1-B4BE-312AA29419F1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -48,6 +63,9 @@ Global
 		{21835679-3408-4F98-A887-C1823004A045} = {9E802C76-68E5-493D-A784-A80191E3000F}
 		{943033BB-5588-41E5-8AF1-7A2968FC55F6} = {C8E02FBF-0933-4931-82C5-D08452EB76E1}
 		{0785ED88-2A31-4482-AF9A-307862F08FC1} = {02C87EE2-2EA7-459F-A27C-CC833482AAF3}
+		{E8C8FE66-4D40-4BF4-B2DA-66EC76F23E0E} = {79B06E90-0EB4-491B-8F85-BC7A1AAEDD45}
+		{E8D0F965-DB11-45F9-A9D9-689518BFF281} = {79B06E90-0EB4-491B-8F85-BC7A1AAEDD45}
+		{160BA5C8-D3C4-41C1-B4BE-312AA29419F1} = {E8D0F965-DB11-45F9-A9D9-689518BFF281}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {33B25A3B-2AB6-446B-90AC-D7D0F63B969E}
