@@ -1,5 +1,4 @@
 ﻿using System;
-using System.CodeDom;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,37 +8,30 @@ using Maui.Toolkit.WeChat.Models.Share;
 
 namespace Maui.Toolkit.WeChat.Services.Share;
 
-public class DefaultShareService : IShareService
+public class DefaultShareHandler : IShareHandler
 {
-    private readonly IShareHandler _shareHandler;
-
-    public DefaultShareService(IShareHandler shareHandler)
-    {
-        _shareHandler = shareHandler;
-    }
-
     public Task ShareImageAsync(ImageMessage message)
     {
-        return _shareHandler.ShareImageAsync(message);
+        return Task.CompletedTask;
     }
 
     public Task ShareMusicAsync(MusicMessage message)
     {
-        return _shareHandler.ShareMusicAsync(message);
+        return Task.CompletedTask;
     }
 
     public Task ShareTextAsync(TextMessage message)
     {
-        return _shareHandler.ShareTextAsync(message);
+        return Task.CompletedTask;
     }
 
     public Task ShareVideoAsync(VideoMessage message)
     {
-        return _shareHandler.ShareVideoAsync(message);
+        return Task.CompletedTask;
     }
 
     public Task ShareWebPageAsync(WebPageMessage message)
     {
-        return _shareHandler.ShareWebPageAsync(message);
+        return Task.CompletedTask;
     }
 }

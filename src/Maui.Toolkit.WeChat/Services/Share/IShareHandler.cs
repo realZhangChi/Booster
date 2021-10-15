@@ -8,7 +8,7 @@ using Maui.Toolkit.WeChat.Models.Share;
 
 namespace Maui.Toolkit.WeChat.Services.Share;
 
-public interface IShareService
+public interface IShareHandler
 {
     Task ShareTextAsync(TextMessage message);
 
