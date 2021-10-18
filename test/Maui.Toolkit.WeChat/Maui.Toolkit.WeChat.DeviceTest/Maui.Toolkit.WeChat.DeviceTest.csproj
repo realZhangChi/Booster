@@ -13,7 +13,7 @@
 		<ApplicationTitle>Maui.Toolkit.WeChat.DeviceTest</ApplicationTitle>
 
 		<!-- App Identifier -->
-		<ApplicationId>com.companyname.Maui.Toolkit.WeChat.DeviceTest</ApplicationId>
+		<ApplicationId>com.companyname.maui.toolkit.wechat.devicetest</ApplicationId>
 
 		<!-- Versions -->
 		<ApplicationVersion>1</ApplicationVersion>
@@ -57,9 +57,12 @@
 	<ItemGroup>
 		<ProjectReference Include="..\..\..\maui\src\TestUtils\src\DeviceTests\TestUtils.DeviceTests.csproj" />
 		<ProjectReference Include="..\..\..\maui\src\TestUtils\src\DeviceTests.Runners\TestUtils.DeviceTests.Runners.csproj" />
-		<ProjectReference Include="..\..\..\maui\src\TestUtils\src\DeviceTests.Runners.SourceGen\TestUtils.DeviceTests.Runners.SourceGen.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
+		<!--<ProjectReference Include="..\..\..\maui\src\TestUtils\src\DeviceTests.Runners.SourceGen\TestUtils.DeviceTests.Runners.SourceGen.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />-->
 	</ItemGroup>
 
+	<ItemGroup>
+		<AndroidEnvironment Include="Platforms\Android\environment.txt" />
+	</ItemGroup>
 
 	<PropertyGroup Condition="$(TargetFramework.Contains('-windows'))">
 		<OutputType>WinExe</OutputType>
