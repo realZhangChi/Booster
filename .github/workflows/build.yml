@@ -25,6 +25,13 @@ jobs:
       shell: pwsh
       run: |
         & dotnet workload install maui
+        & dotnet workload install android-aot
+        & dotnet workload install ios
+        & dotnet workload install maccatalyst
+        & dotnet workload install tvos
+        & dotnet workload install macos
+        & dotnet workload install wasm-tools
+        & dotnet workload install microsoft-net-sdk-emscripten
         
     - name: Install and Run maui-check Tool
       shell: pwsh
