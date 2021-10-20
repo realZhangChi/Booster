@@ -34,12 +34,17 @@ jobs:
       run: |
         & dotnet tool update --global redth.net.maui.check
         & maui-check --ci --non-interactive --fix --force-dotnet --skip vswin --skip xcode --skip edgewebview2 --skip android-emulator --skip dotnetworkloads-6.0.100-rc.2.21505.57
-    
+
     - name: Build
       shell: pwsh
       run: |
         & dotnet restore
         & dotnet build --no-restore -p:EmbedAssembliesIntoApk=true
+        
+    - uses: actions/upload-artifact@v2
+      with:
+        name: artifact
+        path: ./
 
     # - name: Test
     #   run: .\unit-test.ps1
