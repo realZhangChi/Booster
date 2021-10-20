@@ -8,7 +8,6 @@ on:
     
 jobs:
   build:
-
     runs-on: windows-latest
 
     steps:
@@ -53,3 +52,19 @@ jobs:
     #   run: .\unit-test.ps1
     #   working-directory: .\build
     #   shell: powershell
+    
+  test:
+    runs-on: macos-latest
+    needs: build
+    steps:
+      - uses: actions/download-artifact@v2
+        name: download artifact
+        with:
+          name: artifact
+          path: ./
+
+      - uses: actions/setup-dotnet@v1
+        name: setup dotnet
+        with:
+          dotnet-version: '6.0.x'
+          include-prerelease: true
