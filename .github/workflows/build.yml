@@ -42,7 +42,7 @@ jobs:
       shell: pwsh
       run: |
         & dotnet tool update --global redth.net.maui.check
-        & maui-check --ci --non-interactive --fix --force-dotnet --skip vswin --skip edgewebview2
+        & maui-check --manifest https://github.com/realZhangChi/Maui.Toolkit/blob/main/maui-check-manifest.json --ci --non-interactive --fix --force-dotnet --skip vswin --skip edgewebview2
 
     - name: Restore dependencies
       run: dotnet restore
