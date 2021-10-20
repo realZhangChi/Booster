@@ -31,7 +31,6 @@ jobs:
         & dotnet workload install tvos
         & dotnet workload install macos
         & dotnet workload install wasm-tools
-        & dotnet workload install microsoft-net-sdk-emscripten
         
     - name: Install and Run maui-check Tool
       shell: pwsh
