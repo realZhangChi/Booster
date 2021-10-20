@@ -47,7 +47,7 @@ jobs:
     - uses: actions/upload-artifact@v2
       with:
         name: artifact
-        path: ./
+        path: ./**/bin/Debug/net6.0-android/*-Signed.apk
 
     # - name: Test
     #   run: .\unit-test.ps1
