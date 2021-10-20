@@ -50,6 +50,12 @@ jobs:
     - name: Build
       run: dotnet build --no-restore
       
+    - name: Start Android Emulator
+      shell: pwsh
+      run: |
+        & cd 'C:\Program Files (x86)\Android\android-sdk\emulator\'
+        & .\emulator.EXE -no-boot-anim -accel on -avd Android_Emulator_31 -prop monodroid.avdname=Android_Emulator_31
+      
     # - name: Test
     #   run: .\unit-test.ps1
     #   working-directory: .\build
