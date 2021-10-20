@@ -71,12 +71,11 @@
       ],
       "emulators": [
         {
-          "sdkId": "system-images;android-31;google_apis;x86",
+          "sdkId": "system-images;android-31;google_apis_playstore;arm64-v8a",
           "alternateSdkIds": [
-            "system-images;android-31;google_apis_playstore;x86",
             "system-images;android-30;google_apis;arm64-v8a"
           ],
-          "desc": "Android Emulator - x86 - API31 - Google API's",
+          "desc": "Android Emulator - arm64-v8a - API31 - Google API's",
           "apiLevel": 31,
           "tag": "google_apis",
           "device": "pixel"
