@@ -36,7 +36,7 @@ jobs:
       shell: pwsh
       run: |
         & dotnet tool update --global redth.net.maui.check
-        & maui-check --ci --non-interactive --fix --force-dotnet --skip vswin --skip xcode --skip edgewebview2 --skip android-emulator
+        & maui-check --ci --non-interactive --fix --force-dotnet --skip vswin --skip xcode --skip edgewebview2 --skip androidemulator
 
     - name: Build
       shell: pwsh
