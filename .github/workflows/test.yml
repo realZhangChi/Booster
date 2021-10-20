@@ -1,0 +1,73 @@
+name: test
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: macos-latest
+
+    steps:
+      - uses: actions/download-artifact@v2
+      - name: download artifact
+        with:
+          name: artifact
+          path: ./
+      
+      - uses: actions/setup-dotnet@v1
+      - name: setup dotnet
+        with:
+          dotnet-version: '6.0.x'
+          include-prerelease: true
+          
+      - name: Android Emulator Runner
+        # You may pin to the exact commit or the version.
+        # uses: ReactiveCircus/android-emulator-runner@f71c6d1f84f7ccec53da56aa69c2b11fd56da227
+        uses: ReactiveCircus/android-emulator-runner@v2.20.0
+        with:
+          # API level of the platform and system image - e.g. 23 for Android Marshmallow, 29 for Android 10
+          api-level: 31
+          # target of the system image - default, google_apis, google_apis_playstore, android-wear, android-wear-cn, android-tv or google-tv
+          target: google_apis_playstore
+          # CPU architecture of the system image - x86, x86_64 or arm64-v8a
+          arch: x86_64
+          # hardware profile used for creating the AVD - e.g. `Nexus 6`
+          profile: Pixel 5
+          # the number of cores to use for the emulator
+          # cores: # optional, default is 2
+          # size of RAM to use for this AVD, in KB or MB, denoted with K or M. - e.g. `2048M`
+          # ram-size: # optional
+          # path to the SD card image for this AVD or the size of a new SD card image to create for this AVD, in KB or MB, denoted with K or M. - e.g. `path/to/sdcard`, or `1000M`
+          # sdcard-path-or-size: # optional
+          # custom AVD name used for creating the Android Virtual Device
+          avd-name: pixel_5_31
+          # whether to force create the AVD by overwriting an existing AVD with the same name as `avd-name` - `true` or `false`
+          #force-avd-creation: # optional, default is true
+          # command-line options used when launching the emulator - e.g. `-no-window -no-snapshot -camera-back emulated`
+          # emulator-options: # optional, default is -no-window -gpu swiftshader_indirect -no-snapshot -noaudio -no-boot-anim
+          # whether to disable animations - true or false
+          # disable-animations: # optional, default is true
+          # whether to disable spellchecker - `true` or `false`
+          # disable-spellchecker: # optional, default is false
+          # whether to disable hardware acceleration on Linux machines - `true` or `false`
+          disable-linux-hw-accel: false
+          # build number of a specific version of the emulator binary to use - e.g. `6061023` for emulator v29.3.0.0
+          # emulator-build: # optional
+          # A custom working directory - e.g. `./android` if your root Gradle project is under the `./android` sub-directory within your repository
+          # working-directory: # optional
+          # version of NDK to install - e.g. 21.0.6113669
+          # ndk: # optional
+          # version of CMake to install - e.g. 3.10.2.4988404
+          # cmake: # optional
+          # Channel to download the SDK components from - `stable`, `beta`, `dev`, `canary`
+          # channel: # optional, default is stable
+          # custom script to run - e.g. `./gradlew connectedCheck`
+          # script: 
+
+
