@@ -6,7 +6,7 @@ on:
   pull_request:
     branches: [ main ]
 env:
-    DOTNETVERSION:  6.0.100-rc.1.21463.6
+    DOTNETVERSION:  6.0.100-rc.2.21505.57
     
 jobs:
   build:
@@ -29,20 +29,20 @@ jobs:
         & .\dotnet-install.ps1 -Version ${{env.DOTNETVERSION}} -InstallDir "$env:ProgramFiles\dotnet\" -Verbose
         & dotnet --list-sdks
    
-    - name: Install workload
-      shell: pwsh
-      run: |
-        & dotnet workload install android-aot
-        & dotnet workload install ios
-        & dotnet workload install maccatalyst
-        & dotnet workload install maui
-        & dotnet workload install wasm-tools
+    # - name: Install workload
+    #  shell: pwsh
+    #  run: |
+    #    & dotnet workload install android-aot
+    #    & dotnet workload install ios
+    #    & dotnet workload install maccatalyst
+    #    & dotnet workload install maui
+    #    & dotnet workload install wasm-tools
         
     - name: Install and Run maui-check Tool
       shell: pwsh
       run: |
         & dotnet tool update --global redth.net.maui.check
-        & maui-check --ci --non-interactive --fix --force-dotnet --skip vswin --skip edgewebview2 --skip androidemulator --skip dotnetworkloads-6.0.100-rc.1.21458.32
+        & maui-check --ci --non-interactive --fix --force-dotnet --skip vswin --skip edgewebview2
 
     - name: Restore dependencies
       run: dotnet restore
@@ -50,7 +50,7 @@ jobs:
     - name: Build
       run: dotnet build --no-restore
       
-    - name: Test
-      run: .\unit-test.ps1
-      working-directory: .\build
-      shell: powershell
+    # - name: Test
+    #   run: .\unit-test.ps1
+    #   working-directory: .\build
+    #   shell: powershell
