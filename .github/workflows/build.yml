@@ -69,13 +69,6 @@ jobs:
           & dotnet tool install Microsoft.DotNet.XHarness.CLI --global --add-source https://pkgs.dev.azure.com/dnceng/public/_packaging/dotnet-eng/nuget/v3/index.json --version "1.0.0-prerelease*"
 
       - name: run device test
-        shell: pwsh
-        run: ./script/device-test.ps1
-
-  run-android-emulator:
-    runs-on: macos-latest
-    steps:
-      - name: Android Emulator Runner
         uses: ReactiveCircus/android-emulator-runner@v2.20.0
         with:
           api-level: 30
@@ -84,4 +77,4 @@ jobs:
           #profile: pixel_5
           avd-name: pixel_5_30
           disable-linux-hw-accel: false
-          script: "avdmanager list"
+          script: ./script/device-test.ps1
