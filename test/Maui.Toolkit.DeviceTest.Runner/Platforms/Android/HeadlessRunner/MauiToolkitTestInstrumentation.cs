@@ -11,12 +11,12 @@ using System.Threading.Tasks;
 
 namespace Maui.Toolkit.DeviceTest.Runner
 {
-    public class TestInstrumentation : Instrumentation
+    public class MauiToolkitTestInstrumentation : Instrumentation
     {
 		public IServiceProvider Services { get; private set; } = null!;
 		private readonly TaskCompletionSource<Application> _waitForApplication = new();
 
-		public TestInstrumentation(IntPtr handle, JniHandleOwnership transfer)
+		public MauiToolkitTestInstrumentation(IntPtr handle, JniHandleOwnership transfer)
 			: base(handle, transfer)
 		{
 
