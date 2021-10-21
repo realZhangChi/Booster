@@ -82,3 +82,13 @@ jobs:
             ls
             sudo chmod 755 script/device-test.ps1
             ./script/device-test.ps1
+
+  permission-test:
+    runs-on: macos-latest
+    needs: build
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: run script
+        shell: pwsh
+        run: ./script/device-test.ps1
