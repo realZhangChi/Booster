@@ -2,73 +2,77 @@ name: build
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
   pull_request:
-    branches: [ main ]
-    
+    branches: [main]
+
 jobs:
   build:
     runs-on: windows-latest
 
     steps:
-    - uses: actions/checkout@v2
-    
-    - uses: actions/setup-dotnet@v1
-      with:
-        dotnet-version: '5.0.x'
-        
-    - uses: actions/setup-dotnet@v1
-      with:
-        dotnet-version: '6.0.x'
-        include-prerelease: true
-    
+      - uses: actions/checkout@v2
 
-    # - name: Install workload
-    #  shell: pwsh
-    #  run: |
-    #    & dotnet workload install maui
-    #    & dotnet workload install android-aot
-    #    & dotnet workload install ios
-    #    & dotnet workload install maccatalyst
-        
-    - name: Install and Run maui-check Tool
-      shell: pwsh
-      run: |
-        & dotnet tool update --global redth.net.maui.check
-        & maui-check --ci --non-interactive --fix --force-dotnet --skip vswin --skip xcode --skip edgewebview2 --skip androidemulator
+      - name: setup dotnet 5.0
+      - uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: "5.0.x"
 
-    - name: Build
-      shell: pwsh
-      run: |
-        & dotnet restore
-        & dotnet build --no-restore -p:EmbedAssembliesIntoApk=true
-        
-    - uses: actions/upload-artifact@v2
-      with:
-        name: artifact
-        path: ./**/bin/Debug/net6.0-android/*-Signed.apk
+      - name: setup dotnet 6.0
+      - uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: "6.0.x"
+          include-prerelease: true
 
-    # - name: Test
-    #   run: .\unit-test.ps1
-    #   working-directory: .\build
-    #   shell: powershell
-    
-  test:
+      - name: maui-check
+        shell: pwsh
+        run: |
+          & dotnet tool update --global redth.net.maui.check
+          & maui-check --ci --non-interactive --fix --force-dotnet --skip vswin --skip xcode --skip edgewebview2 --skip androidemulator
+
+      - name: Build
+        shell: pwsh
+        run: |
+          & dotnet restore
+          & dotnet build --no-restore -p:EmbedAssembliesIntoApk=true
+
+      - uses: actions/upload-artifact@v2
+        with:
+          name: android-device-test
+          path: |
+            ./test/*.DeviceTest/bin/Debug/net6.0-android/*-Signed.apk
+            ./script/device-test.ps1
+
+  android-device-test:
     runs-on: macos-latest
     needs: build
     steps:
       - uses: actions/download-artifact@v2
         name: download artifact
         with:
-          name: artifact
+          name: android-device-test
           path: ./
-          
+
       - name: list apk
         shell: pwsh
-        run: ./test.ps1
+        run: ./script/test.ps1
 
       - uses: actions/setup-dotnet@v1
         name: setup dotnet
         with:
-          dotnet-version: '6.0.x'
+          dotnet-version: "6.0.x"
           include-prerelease: true
+
+  run-android-emulator:
+    runs-on: macos-latest
+    steps:
+
+    - name: Android Emulator Runner
+      uses: ReactiveCircus/android-emulator-runner@v2.20.0
+      with:
+          api-level: 30
+          target: google_apis_playstore
+          arch: x86_64
+          profile: `Pixel 5`
+          avd-name: pixel_5_30
+          disable-linux-hw-accel: false
