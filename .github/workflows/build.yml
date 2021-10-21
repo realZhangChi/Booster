@@ -52,6 +52,11 @@ jobs:
         with:
           name: android-device-test
           path: ./
+      
+      - name: install pwsh
+        run: |
+          & brew install --cask powershell
+          & pwsh
 
       - name: list apk
         shell: pwsh
