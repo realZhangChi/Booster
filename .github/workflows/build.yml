@@ -73,7 +73,7 @@ jobs:
           api-level: 30
           target: google_apis_playstore
           arch: x86_64
-          profile: pixel_5
+          #profile: pixel_5
           avd-name: pixel_5_30
           disable-linux-hw-accel: false
-          script: "./gradlew connectedCheck"
+          script: "avdmanager list"
