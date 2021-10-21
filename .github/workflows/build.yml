@@ -75,7 +75,7 @@ jobs:
           api-level: 30
           target: google_apis_playstore
           arch: x86_64
-          profile: "Pixel 4"
+          profile: "pixel_4"
           avd-name: pixel_4_30
           disable-linux-hw-accel: false
           script: |
