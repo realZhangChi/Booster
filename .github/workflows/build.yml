@@ -52,15 +52,11 @@ jobs:
         with:
           name: android-device-test
           path: ./
-      
-      - name: install pwsh
-        run: |
-          & brew install --cask powershell
-          & pwsh
 
-      - name: list apk
-        shell: pwsh
-        run: ./script/test.ps1
+      # - name: install pwsh
+      #   run: |
+      #     & brew install --cask powershell
+      #     & pwsh
 
       - uses: actions/setup-dotnet@v1
         name: setup dotnet
@@ -68,13 +64,20 @@ jobs:
           dotnet-version: "6.0.x"
           include-prerelease: true
 
+      - name: install XHarness
+        run: |
+          & dotnet tool install Microsoft.DotNet.XHarness.CLI --global --add-source https://pkgs.dev.azure.com/dnceng/public/_packaging/dotnet-eng/nuget/v3/index.json --version "1.0.0-prerelease*"
+
+      - name: run device test
+        shell: pwsh
+        run: ./script/device-test.ps1
+
   run-android-emulator:
     runs-on: macos-latest
     steps:
-
-    - name: Android Emulator Runner
-      uses: ReactiveCircus/android-emulator-runner@v2.20.0
-      with:
+      - name: Android Emulator Runner
+        uses: ReactiveCircus/android-emulator-runner@v2.20.0
+        with:
           api-level: 30
           target: google_apis_playstore
           arch: x86_64
