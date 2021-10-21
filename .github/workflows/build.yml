@@ -81,7 +81,7 @@ jobs:
           script: |
             ls
             sudo chmod 755 script/device-test.ps1
-            ./script/device-test.ps1
+            pwsh ./script/device-test.ps1
 
   permission-test:
     runs-on: macos-latest
@@ -90,4 +90,4 @@ jobs:
 
       - name: run script
         shell: pwsh
-        run: ./script/device-test.ps1
+        run: pwsh
