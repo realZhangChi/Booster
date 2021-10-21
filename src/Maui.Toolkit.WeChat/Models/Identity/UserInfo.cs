@@ -3,7 +3,8 @@ using System.Text.Json.Serialization;
 
 namespace Maui.Toolkit.WeChat.Models.Identity;
 
-public class UserInfo
+// TODO: JsonPropertyNameAttribute should be remove
+public record UserInfo
 {
     [JsonPropertyName("openid")]
     public string? OpenId { get; set; }

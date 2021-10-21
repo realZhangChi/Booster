@@ -19,7 +19,7 @@ internal static class WeChatResponseExtensions
             var errorCode = errorCodeElement.GetInt32();
             if (errorCode != 0)
             {
-                throw new NotImplementedException(jsonDoc.RootElement.ToString());
+                throw new HttpRequestException(jsonDoc.RootElement.ToString());
             }
         }
 

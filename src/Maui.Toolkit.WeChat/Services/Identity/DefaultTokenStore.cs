@@ -1,4 +1,5 @@
-﻿using System.Text.Json;
+﻿using System;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 using Maui.Toolkit.WeChat.Models.Identity;
@@ -7,13 +8,13 @@ using Microsoft.Maui.Essentials;
 
 namespace Maui.Toolkit.WeChat.Services.Identity;
 
-internal class DefaultTokenStore : ITokenStore
+public class DefaultTokenStore : ITokenStore
 {
-    private const string _keyPrefix = "Maui.Toolkit.WeChat.Identity.Token:";
+    private const string _key = "Maui.Toolkit.WeChat.Identity.Token";
 
-    public async Task<Token?> GetOrNullAsync(string? key = null)
+    public async Task<Token?> GetOrNullAsync()
     {
-        var token = await SecureStorage.GetAsync(_keyPrefix + key);
+        var token = await SecureStorage.GetAsync(_key);
         if (string.IsNullOrWhiteSpace(token))
         {
             return null;
@@ -22,8 +23,13 @@ internal class DefaultTokenStore : ITokenStore
         return JsonSerializer.Deserialize<Token>(token);
     }
 
-    public Task SetAsync(Token token, string? key = null)
+    public Task SetAsync(Token token)
     {
-        return SecureStorage.SetAsync(_keyPrefix + key, JsonSerializer.Serialize(token));
+        if (token is null)
+        {
+            throw new ArgumentNullException(nameof(token));
+        }
+
+        return SecureStorage.SetAsync(_key, JsonSerializer.Serialize(token));
     }
 }

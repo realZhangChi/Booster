@@ -2,7 +2,8 @@
 
 namespace Maui.Toolkit.WeChat.Models.Identity;
 
-public class Token
+// TODO: JsonPropertyNameAttribute Shoule Be Remove 
+public record Token
 {
     [JsonPropertyName("access_token")]
     public string? AccessToken { get; set; }
@@ -10,7 +11,7 @@ public class Token
     [JsonPropertyName("expires_in")]
     public int ExpiresIn { get; set; }
 
-    [JsonIgnore]
+    [JsonPropertyName("issued_at")]
     public long IssuedAt { get; set; }
 
     [JsonPropertyName("refresh_token")]

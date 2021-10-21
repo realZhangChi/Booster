@@ -51,10 +51,23 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <BundleResource Remove="out\**" />
+	  <Compile Remove="out\**" />
+	  <EmbeddedResource Remove="out\**" />
+	  <ImageAsset Remove="out\**" />
+	  <InterfaceDefinition Remove="out\**" />
+	  <MauiCss Remove="out\**" />
+	  <MauiXaml Remove="out\**" />
+	  <None Remove="out\**" />
+	  <SceneKitAsset Remove="out\**" />
+	</ItemGroup>
+
+	<ItemGroup>
 	  <PackageReference Include="Shouldly" Version="4.0.3" />
 	</ItemGroup>
 
 	<ItemGroup>
+	  <ProjectReference Include="..\..\..\src\Maui.Toolkit.WeChat\Maui.Toolkit.WeChat.csproj" />
 	  <ProjectReference Include="..\..\Maui.Toolkit.DeviceTest.Runner\Maui.Toolkit.DeviceTest.Runner.csproj" />
 	</ItemGroup>
 
@@ -66,5 +79,13 @@
 	<PropertyGroup Condition="$(TargetFramework.Contains('-android'))">
 		<RuntimeIdentifiers>android-arm;android-arm64;android-x86;android-x64</RuntimeIdentifiers>
 	</PropertyGroup>
+
+	<ItemGroup>
+	  <_MauiCompileToAdd Remove="out\**" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <_MauiXamlToRemove Remove="out\**" />
+	</ItemGroup>
 	
 </Project>
