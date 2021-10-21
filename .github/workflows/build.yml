@@ -76,4 +76,4 @@ jobs:
           profile: "Pixel 5"
           avd-name: pixel_5_30
           disable-linux-hw-accel: false
-          script: "./gradlew connectedCheck“
+          script: "./gradlew connectedCheck"
