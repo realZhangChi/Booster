@@ -43,9 +43,25 @@ jobs:
             ./test/**/*.DeviceTest/bin/Debug/net6.0-android/*-Signed.apk
             ./script/device-test.ps1
 
+  unit-test:
+    runs-on: windows-latest
+    needs: build
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: setup dotnet 6.0
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: "6.0.x"
+          include-prerelease: true
+
+      - name: test
+        shell: pwsh
+        run: ./script/device-test.ps1
+
   android-device-test:
     runs-on: macos-latest
-    needs: build
+    needs: unit-test
     steps:
       - uses: actions/download-artifact@v2
         name: download artifact

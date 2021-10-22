@@ -6,22 +6,25 @@ using Maui.Toolkit.WeChat.Services.Http;
 
 namespace Maui.Toolkit.WeChat.Services.Identity;
 
-internal class DefaultTokenService : ITokenService
+public class DefaultTokenService : ITokenService
 {
-    private readonly ITokenStore _tokenStore;
-    private readonly IWeChatHttpClient _weChatClinet;
+    private readonly IWeChatHttpClient _weChatClient;
 
-    public DefaultTokenService(
-        ITokenStore tokenStore,
-        IWeChatHttpClient weChatClient)
+    public DefaultTokenService(IWeChatHttpClient weChatClient)
     {
-        _tokenStore = tokenStore;
-        _weChatClinet = weChatClient;
+        _weChatClient = weChatClient;
     }
 
     public virtual async Task<Token?> GetTokenFromWeChatAsync(string appId, string appSecret, string code)
     {
-        var token = await _weChatClinet.GetTokenAsync(appId, appSecret, code);
+        if (string.IsNullOrWhiteSpace(appId))
+            throw new ArgumentNullException(nameof(appId));
+        if (string.IsNullOrWhiteSpace(appSecret))
+            throw new ArgumentNullException(nameof(appSecret));
+        if (string.IsNullOrWhiteSpace(code))
+            throw new ArgumentNullException(nameof(code));
+
+        var token = await _weChatClient.GetTokenAsync(appId, appSecret, code);
         if (token is not null)
         {
             token.IssuedAt = DateTimeOffset.UtcNow.ToUnixTimeSeconds();
@@ -29,22 +32,14 @@ internal class DefaultTokenService : ITokenService
         return token;
     }
 
-    public async Task<Token?> RefreshTokenAsync(string appId)
+    public async Task<Token?> RefreshTokenAsync(string appId, string refreshToken)
     {
-        var token = await _tokenStore.GetOrNullAsync();
-        if (token is null || string.IsNullOrWhiteSpace(token.RefreshToken))
-        {
-            // TODO: NULL token exception
-            throw new NotImplementedException();
-        }
-        // 2419200 seconds = 28 days
-        if (token.IssuedAt + 2419200 > DateTimeOffset.UtcNow.ToUnixTimeSeconds())
-        {
-            // TODO: refresh_token expired exception
-            throw new NotImplementedException();
-        }
+        if (string.IsNullOrWhiteSpace(appId))
+            throw new ArgumentNullException(nameof(appId));
+        if (string.IsNullOrWhiteSpace(refreshToken))
+            throw new ArgumentNullException(nameof(refreshToken));
 
-        var refreshedToken = await _weChatClinet.RefreshTokenAsync(appId, token.RefreshToken);
+        var refreshedToken = await _weChatClient.RefreshTokenAsync(appId, refreshToken);
         if (refreshedToken is not null)
         {
             refreshedToken.IssuedAt = DateTimeOffset.UtcNow.ToUnixTimeSeconds();

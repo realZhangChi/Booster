@@ -8,5 +8,5 @@ public interface ITokenService
 {
     Task<Token?> GetTokenFromWeChatAsync(string appId, string appSecret, string code);
 
-    Task<Token?> RefreshTokenAsync(string appId);
+    Task<Token?> RefreshTokenAsync(string appId, string refreshToken);
 }

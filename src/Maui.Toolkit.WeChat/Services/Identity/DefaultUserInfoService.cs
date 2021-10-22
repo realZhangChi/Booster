@@ -22,7 +22,7 @@ public class DefaultUserInfoService : IUserInfoService
         _weChatClient = weChatClient;
     }
 
-    public async Task<UserInfo?> GetUserInfoFromWeChatAsync(string appId, string? openId = null)
+    public async Task<UserInfo?> GetUserInfoFromWeChatAsync(string appId)
     {
         var token = await _tokenStore.GetOrNullAsync();
         if (token == null)
@@ -33,14 +33,18 @@ public class DefaultUserInfoService : IUserInfoService
         // 1200 seconds = 20 minutes
         if (token.IssuedAt + token.ExpiresIn - 1200 > DateTimeOffset.UtcNow.ToUnixTimeSeconds())
         {
-            await _tokenService.RefreshTokenAsync(appId);
+            // 2419200 seconds = 28 days
+            if (token.IssuedAt + 2419200 > DateTimeOffset.UtcNow.ToUnixTimeSeconds())
+            {
+                // TODO: refresh_token expired exception
+                throw new NotImplementedException();
+            }
+
+            await _tokenService.RefreshTokenAsync(appId, token.RefreshToken);
         }
 
-        if (!string.IsNullOrWhiteSpace(openId))
-        {
-            token.OpenId = openId;
-        }
-        var userInfo = await _weChatClient.GetUserInfoAsync(token);
+
+        var userInfo = await _weChatClient.GetUserInfoAsync(token.AccessToken, token.OpenId);
 
         return userInfo;
     }

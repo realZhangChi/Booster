@@ -37,7 +37,10 @@ public static class MauiAppBuilderExtensions
 
     private static void AddServices(MauiAppBuilder builder, WeChatMobileOptions mobileOptions)
     {
-        builder.Services.AddHttpClient();
+        builder.Services.AddHttpClient<IWeChatHttpClient, DefaultWeChatHttpClient>(client =>
+        {
+            client.BaseAddress = new Uri(DefaultWeChatHttpClient.BaseAddress);
+        });
 
         builder.Services.AddTransient<IWeChatHttpClient, DefaultWeChatHttpClient>();
 

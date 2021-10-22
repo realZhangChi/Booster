@@ -25,11 +25,11 @@ namespace Maui.Toolkit.WeChat.DeviceTest.Services.Identity
             var token = new Token()
             {
                 AccessToken = "ACCESS TOKEN",
+                ExpiresIn = 7200,
                 RefreshToken = "REFRESH TOKEN",
-                ExpiresIn = 100,
-                IssuedAt = 100,
                 OpenId = "OPEN ID",
-                Scope = "SCOPE"
+                Scope = "SCOPE",
+                IssuedAt = DateTimeOffset.UtcNow.ToUnixTimeSeconds()
             };
 
             await _tokenStore.SetAsync(token);
