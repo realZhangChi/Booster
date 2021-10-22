@@ -49,7 +49,7 @@ jobs:
 
   android-device-test:
     runs-on: macos-latest
-    needs: build
+    needs: build-test
     steps:
       - uses: actions/download-artifact@v2
         name: download artifact
