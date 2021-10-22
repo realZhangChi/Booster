@@ -38,7 +38,7 @@ jobs:
 
       - name: unit test
         shell: pwsh
-        run: ./script/device-test.ps1
+        run: ./script/unit-test.ps1
 
       - uses: actions/upload-artifact@v2
         with:
