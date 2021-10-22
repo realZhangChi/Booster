@@ -7,7 +7,7 @@ on:
     branches: [main]
 
 jobs:
-  build:
+  build-test:
     runs-on: windows-latest
 
     steps:
@@ -30,11 +30,15 @@ jobs:
           & dotnet tool update --global redth.net.maui.check
           & maui-check --ci --non-interactive --fix --force-dotnet --skip vswin --skip xcode --skip edgewebview2 --skip androidemulator
 
-      - name: Build
+      - name: build
         shell: pwsh
         run: |
           & dotnet restore
           & dotnet build --no-restore -p:EmbedAssembliesIntoApk=true
+
+      - name: unit test
+        shell: pwsh
+        run: ./script/device-test.ps1
 
       - uses: actions/upload-artifact@v2
         with:
@@ -43,25 +47,9 @@ jobs:
             ./test/**/*.DeviceTest/bin/Debug/net6.0-android/*-Signed.apk
             ./script/device-test.ps1
 
-  unit-test:
-    runs-on: windows-latest
-    needs: build
-    steps:
-      - uses: actions/checkout@v2
-
-      - name: setup dotnet 6.0
-        uses: actions/setup-dotnet@v1
-        with:
-          dotnet-version: "6.0.x"
-          include-prerelease: true
-
-      - name: test
-        shell: pwsh
-        run: ./script/device-test.ps1
-
   android-device-test:
     runs-on: macos-latest
-    needs: unit-test
+    needs: build
     steps:
       - uses: actions/download-artifact@v2
         name: download artifact
