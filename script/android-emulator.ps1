@@ -1,7 +1,7 @@
 $sdkRootPath = (Get-Item -Path $Env:ANDROID_SDK_ROOT -Verbose).FullName
 
-$toolsPath = (Join-Path $sdkRootPath "./tools/bin")
-$emulatorPath = (Join-Path $sdkRootPath "./emulator")
+$toolsPath = (Join-Path $sdkRootPath "tools/bin")
+$emulatorPath = (Join-Path $sdkRootPath "emulator")
 
 Write-Host("toolsPath:" + $toolsPath)
 Write-Host("emulatorPath:" + $emulatorPath)
