@@ -13,4 +13,5 @@ if (-Not $?) {
 }
 
 Set-Location $emulatorPath
-./emulator -avd android_31 -no-window -gpu swiftshader_indirect -no-snapshot -noaudio -no-boot-anim
+# ./emulator -avd android_31 -no-window -gpu swiftshader_indirect -no-snapshot -noaudio -no-boot-anim
+ls
