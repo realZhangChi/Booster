@@ -1,6 +1,6 @@
 Write-Host($Env:ANDROID_SDK_ROOT)
-$avdManagerPath = (Join-Path $Env:ANDROID_SDK_ROOT '/tools/bin').FullName
-$emulatorPath = (Join-Path $Env:ANDROID_SDK_ROOT '/emulator').FullName
+$avdManagerPath = (Join-Path $Env:ANDROID_SDK_ROOT './tools/bin/avdmanager').FullName
+$emulatorPath = (Join-Path $Env:ANDROID_SDK_ROOT './emulator/emulator').FullName
 Write-Host($avdManagerPath)
 Write-Host($emulatorPath)
 
