@@ -6,7 +6,7 @@ $emulatorPath = (Join-Path $sdkRootPath "emulator")
 Set-Location $toolsPath
 ./sdkmanager --list
 ./sdkmanager "system-images;android-31;google_apis_playstore;x86_64"
-./sdkmanager --licenses
+yes |./sdkmanager --licenses
 ./avdmanager create avd --force -n android_31 -k "system-images;android-31;google_apis_playstore;x86_64"
 if (-Not $?) {
     Write-Host ("Avd creation failed.")
