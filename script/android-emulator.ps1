@@ -4,7 +4,7 @@ $toolsPath = (Join-Path $sdkRootPath "tools/bin")
 $emulatorPath = (Join-Path $sdkRootPath "emulator")
 
 Set-Location $toolsPath
-./avdmanager create avd --verbose --force -n android_31 -k "system-images;android-31;google_apis_playstore;x86_64" --device "Pixel 5"
+./avdmanager create avd --force -n android_31 -k "system-images;android-31;google_apis;x86" --device pixel
 ./avdmanager list avd
 ./avdmanager list device
 ./avdmanager list target
