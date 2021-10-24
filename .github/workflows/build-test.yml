@@ -13,11 +13,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: setup dotnet 5.0
-        uses: actions/setup-dotnet@v1
-        with:
-          dotnet-version: "5.0.x"
-
       - name: setup dotnet 6.0
         uses: actions/setup-dotnet@v1
         with:
@@ -63,19 +58,21 @@ jobs:
           dotnet-version: "6.0.x"
           include-prerelease: true
 
+      - name: maui-check
+        shell: pwsh
+        run: |
+          & dotnet tool update --global redth.net.maui.check
+          & maui-check --ci --non-interactive --fix --force-dotnet --skip vswin --skip xcode --skip edgewebview2 --skip dotnet-workload-dedup --skip dotnetsentinel --skip dotnetworkloads-6.0.100-rc.2.21505.57
+
       - name: install XHarness
         shell: pwsh
         run: |
           & dotnet tool install Microsoft.DotNet.XHarness.CLI --global --add-source https://pkgs.dev.azure.com/dnceng/public/_packaging/dotnet-eng/nuget/v3/index.json --version "1.0.0-prerelease*"
 
+      - name: start emulator
+        shell: pwsh
+        run: ./script/android-emulator.ps1
+
       - name: run test
-        uses: ReactiveCircus/android-emulator-runner@v2.20.0
-        with:
-          api-level: 30
-          target: google_apis_playstore
-          arch: x86_64
-          profile: "pixel_4"
-          avd-name: pixel_4_30
-          disable-linux-hw-accel: false
-          script: |
-            pwsh ./script/device-test.ps1
+        shell: pwsh
+        run: ./script/device-test.ps1
