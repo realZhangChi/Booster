@@ -25,21 +25,26 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
-      # Runs a single command using the runners shell
-      - name: Run a one-line script
-        run: echo $ANDROID_SDK_ROOT
+      - name: setup dotnet 6.0
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: "6.0.x"
+          include-prerelease: true
 
       - name: install package
         shell: pwsh
         run: ./script/install-android-package.ps1
 
+      - name: maui-check
+        shell: pwsh
+        run: |
+          & dotnet tool update --global redth.net.maui.check
+          & maui-check --ci --non-interactive --fix --force-dotnet --skip vswin --skip xcode --skip edgewebview2 --skip dotnet-workload-dedup --skip dotnetsentinel --skip dotnetworkloads-6.0.100-rc.2.21505.57
+
       # - name: accept licenses
       #   shell: pwsh
-      #   run: ./script/sdkmanager-accept-licenses.sh
-
-      - name: Setup Android SDK
-        uses: android-actions/setup-android@v2
-
+      #   run: ./script/sdkmanager-accept-li
+      
       # Runs a set of commands using the runners shell
       - name: create avd
         shell: pwsh
