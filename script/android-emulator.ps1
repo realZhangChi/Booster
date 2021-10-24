@@ -6,12 +6,11 @@ $emulatorPath = (Join-Path $sdkRootPath "emulator")
 Set-Location $toolsPath
 ./sdkmanager --install "system-images;android-31;google_apis_playstore;x86_64" --verbose
 yes | ./sdkmanager --licenses --verbose
-
-# (./avdmanager create avd --force -n android_31 -k "system-images;android-31;google_apis_playstore;x86_64")
-
-
-Set-Location $emulatorPath
-# ./emulator -avd android_31 -no-window -gpu swiftshader_indirect -no-snapshot -noaudio -no-boot-anim
-ls
-
-exit
+if (-Not $?) {
+    Write-Host ("Build failed for the solution")
+    exit $LASTEXITCODE
+}
+else {
+    Write-Host ("Success!")
+    exit 0
+}
