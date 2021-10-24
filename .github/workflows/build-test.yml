@@ -13,11 +13,9 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: setup dotnet 6.0
-        uses: actions/setup-dotnet@v1
-        with:
-          dotnet-version: "6.0.x"
-          include-prerelease: true
+      - name:  install .NET 6 preview
+        shell: pwsh
+        run: ./script/dotnet.ps1
 
       - name: maui-check
         shell: pwsh
@@ -52,11 +50,9 @@ jobs:
           name: android-device-test
           path: ./
 
-      - uses: actions/setup-dotnet@v1
-        name: setup dotnet
-        with:
-          dotnet-version: "6.0.x"
-          include-prerelease: true
+      - name:  install .NET 6 preview
+        shell: pwsh
+        run: ./script/dotnet.ps1
 
       - name: maui-check
         shell: pwsh
