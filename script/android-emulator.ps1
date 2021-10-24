@@ -4,7 +4,8 @@ $toolsPath = (Join-Path $sdkRootPath "tools/bin")
 $emulatorPath = (Join-Path $sdkRootPath "emulator")
 
 Set-Location $toolsPath
-yes | ./sdkmanager "system-images;android-31;google_apis_playstore;x86_64" --licenses
+./sdkmanager --install "system-images;android-31;google_apis_playstore;x86_64" --verbose
+yes | ./sdkmanager --licenses --verbose
 
 # (./avdmanager create avd --force -n android_31 -k "system-images;android-31;google_apis_playstore;x86_64")
 
