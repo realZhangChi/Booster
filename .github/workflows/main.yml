@@ -31,7 +31,7 @@ jobs:
 
       - name: install package
         shell: pwsh
-        run: $ANDROID_SDK_ROOT/tools/bin/sdkmanager --install "system-images;android-31;google_apis_playstore;x86_64"
+        run: ./script/install-android-package.ps1
 
       # - name: accept licenses
       #   shell: pwsh
