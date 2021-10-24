@@ -11,7 +11,7 @@ Set-Location $emulatorPath
 # ls
 
 Set-Location $platformPath
-Write-Host ("adb devices":)
+Write-Host ("adb devices:")
 adb devices
 
 ls
