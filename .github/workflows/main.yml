@@ -31,9 +31,9 @@ jobs:
           dotnet-version: "6.0.x"
           include-prerelease: true
 
-      - name: install package
-        shell: pwsh
-        run: ./script/install-android-package.ps1
+      # - name: install package
+      #   shell: pwsh
+      #   run: ./script/install-android-package.ps1
 
       - name: maui-check
         shell: pwsh
@@ -44,7 +44,7 @@ jobs:
       # - name: accept licenses
       #   shell: pwsh
       #   run: ./script/sdkmanager-accept-li
-      
+
       # Runs a set of commands using the runners shell
       - name: create avd
         shell: pwsh
