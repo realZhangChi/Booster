@@ -2,7 +2,7 @@
 
 /usr/bin/expect -c '
 set timeout -1;
-spawn '"${ANDROID_HOME}"'/tools/bin/sdkmanager --licenses;
+spawn '"${ANDROID_HOME}"'/tools/bin/sdkmanager --licenses --verbose;
   expect {
     "y/N" { exp_send "y\r" ; exp_continue }
     eof
