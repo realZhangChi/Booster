@@ -1,6 +1,6 @@
-$testDevice = "ios-simulator-64"
-# Write-Host ("installing simulator...")
-# xharness apple simulators install $testDevice --verbosity=Debug
+$testDevice = "ios-simulator_13.4"
+Write-Host ("installing simulator...")
+xharness apple simulators install $testDevice --verbosity=Debug
 
 Get-ChildItem ./test/**/*.DeviceTest/**/*.app | ForEach-Object -Process{
 	if($_ -is [System.IO.System.IO.FileInfo])
