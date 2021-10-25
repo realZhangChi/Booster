@@ -1,9 +1,13 @@
 $rootFolder = (Get-Item -Path "./" -Verbose).FullName
 $sdkRootPath = (Get-Item -Path $Env:ANDROID_SDK_ROOT -Verbose).FullName
 
-# $toolsPath = (Join-Path $sdkRootPath "tools/bin")
+$toolsPath = (Join-Path $sdkRootPath "tools/bin")
 $emulatorPath = (Join-Path $sdkRootPath "emulator")
 $platformPath = (Join-Path $sdkRootPath "platform-tools")
+
+Set-Location $toolsPath
+./avdmanager list avd
+./avdmanager list device
 
 Set-Location $emulatorPath
 Write-Host ($emulatorPath)
