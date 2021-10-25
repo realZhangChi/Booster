@@ -1,22 +1,22 @@
 $rootFolder = (Get-Item -Path "./" -Verbose).FullName
-$sdkRootPath = (Get-Item -Path $Env:ANDROID_SDK_ROOT -Verbose).FullName
-
-$toolsPath = (Join-Path $sdkRootPath "tools/bin")
-$emulatorPath = (Join-Path $sdkRootPath "emulator")
-$platformPath = (Join-Path $sdkRootPath "platform-tools")
-
-Set-Location $toolsPath
-./avdmanager list avd
-./avdmanager list device
-
-Set-Location $emulatorPath
-Write-Host ($emulatorPath)
-ls
-./emulator  -no-boot-anim -accel on -avd Android_Emulator_31 -prop monodroid.avdname=Android_Emulator_31
-
-Set-Location $platformPath
-Write-Host ("adb devices:")
-adb devices
+# $sdkRootPath = (Get-Item -Path $Env:ANDROID_SDK_ROOT -Verbose).FullName
+# 
+# $toolsPath = (Join-Path $sdkRootPath "tools/bin")
+# $emulatorPath = (Join-Path $sdkRootPath "emulator")
+# $platformPath = (Join-Path $sdkRootPath "platform-tools")
+# 
+# Set-Location $toolsPath
+# ./avdmanager list avd
+# ./avdmanager list device
+# 
+# Set-Location $emulatorPath
+# Write-Host ($emulatorPath)
+# ls
+# ./emulator -no-boot-anim -accel on -avd Android_Emulator_31 -prop monodroid.avdname=Android_Emulator_31
+# 
+# Set-Location $platformPath
+# Write-Host ("adb devices:")
+# adb devices
 
 Set-Location $rootFolder
 Get-ChildItem ./test/**/*-Signed.apk -recurse | ForEach-Object -Process{
