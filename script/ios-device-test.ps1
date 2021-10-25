@@ -6,7 +6,7 @@ Get-ChildItem ./test/**/*.app -recurse | ForEach-Object -Process{
         Write-Host ($_.FullName)
 	if($_ -is [System.IO.DirectoryInfo ])
 	{
-		xharness apple test --app=$_.Name --targets=$testDevice --output-directory=out --verbosity=Debug
+		xharness apple test --app=$_ --targets=$testDevice --output-directory=out --verbosity=Debug
 		if (-Not $?) {
 			Write-Host ("Test failed for the app: " + $_.Name)
 			exit $LASTEXITCODE
