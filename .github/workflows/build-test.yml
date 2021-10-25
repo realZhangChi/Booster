@@ -34,18 +34,27 @@ jobs:
         shell: pwsh
         run: |
           & dotnet restore
-          & dotnet build --no-restore -p:EmbedAssembliesIntoApk=true
+          & dotnet build --no-restore -p:EmbedAssembliesIntoApk=true -p:BuildIpa=true
 
       - name: unit test
         shell: pwsh
         run: ./script/unit-test.ps1
 
       - uses: actions/upload-artifact@v2
+        name: upload android artifact
         with:
           name: android-device-test
           path: |
             ./test/**/*.DeviceTest/bin/Debug/net6.0-android/*-Signed.apk
             ./script/**
+
+      - uses: actions/upload-artifact@v2
+        name: upload ios artifact
+        with:
+          name: ios-device-test
+          path: |
+            ./test/**/*.DeviceTest/bin/Debug/net6.0-ios/
+            ./script/
 
   android-device-test:
     runs-on: macos-latest
@@ -74,4 +83,29 @@ jobs:
           api-level: 31
           arch: x86_64
           profile: Nexus 6
-          script: pwsh ./script/device-test.ps1
+          script: pwsh ./script/android-device-test.ps1
+
+  ios-device-test:
+    runs-on: macos-latest
+    needs: build-test
+    steps:
+      - uses: actions/download-artifact@v2
+        name: download artifact
+        with:
+          name: ios-device-test
+          path: .
+
+      - name: setup dotnet 6.0
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: "6.0.x"
+          include-prerelease: true
+
+      - name: install XHarness
+        shell: pwsh
+        run: |
+          & dotnet tool install Microsoft.DotNet.XHarness.CLI --global --add-source https://pkgs.dev.azure.com/dnceng/public/_packaging/dotnet-eng/nuget/v3/index.json --version "1.0.0-prerelease*"
+
+      - name: run device test
+        shell: pwsh
+        run: ./script/ios-device-test.ps1

@@ -1,4 +1,4 @@
-Get-ChildItem ./test/**/*-Signed.apk -recurse | ForEach-Object -Process{
+Get-ChildItem ./test/**/*.DeviceTest/**/*-Signed.apk | ForEach-Object -Process{
 	if($_ -is [System.IO.FileInfo])
 	{
 		$package = $_.Name -replace "-Signed.apk",""
