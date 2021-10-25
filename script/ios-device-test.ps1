@@ -3,6 +3,7 @@ $testDevice = "ios-simulator_13.4"
 # xharness apple simulators install $testDevice --verbosity=Debug
 
 Get-ChildItem ./test/**/*.DeviceTest/**/*.app | ForEach-Object -Process{
+        Write-Host ($_.FullName)
 	if($_ -is [System.IO.DirectoryInfo ])
 	{
 		xharness apple test --app= $_.FullName --targets=$testDevice $testDevice=out $testDevice=Debug
