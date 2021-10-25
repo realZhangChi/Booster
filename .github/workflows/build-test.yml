@@ -75,4 +75,3 @@ jobs:
           arch: x86_64
           profile: Nexus 6
           script: pwsh ./script/device-test.ps1
-
