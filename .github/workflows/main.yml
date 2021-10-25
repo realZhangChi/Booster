@@ -54,9 +54,9 @@ jobs:
       - name: create avd
         shell: pwsh
         run: |
-          C:/Android/android-sdk/emulator/emulator -accel-check
-          & C:/Android/android-sdk/emulator/emulator -no-boot-anim -gpu auto -avd Android_Emulator_31 -prop monodroid.avdname=Android_Emulator_31
-          & C:/Android/android-sdk/Android/sdk/tools/bin/avdmanager list avd
-          & C:/Android/android-sdk/Android/sdk/tools/bin/avdmanager list device
-          & C:/Android/android-sdk/Android/sdk/platform-tools/adb devices -l
-          & ./script/android-emulator.ps1
+          C:\Android\android-sdk\emulator\emulator -accel-check
+          & C:\Android\android-sdk\emulator\emulator -no-boot-anim -gpu auto -avd Android_Emulator_31 -prop monodroid.avdname=Android_Emulator_31
+          & C:\Android\android-sdk\Android\sdk\tools\bin\avdmanager list avd
+          & C:\Android\android-sdk\Android\sdk\tools\bin\avdmanager list device
+          & C:\Android\android-sdk\Android\sdk\platform-tools\adb devices -l
+          & .\script\android-emulator.ps1
