@@ -6,9 +6,9 @@ name: CI
 on:
   # Triggers the workflow on push or pull request events but only for the main branch
   push:
-    branches: [main]
+    branches: [ main ]
   pull_request:
-    branches: [main]
+    branches: [ main ]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -18,17 +18,12 @@ jobs:
   # This workflow contains a single job called "build"
   build:
     # The type of runner that the job will run on
-    runs-on: windows-latest
+    runs-on: macos-latest
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
-
-      - name: setup dotnet 5.0
-        uses: actions/setup-dotnet@v1
-        with:
-          dotnet-version: "5.0.x"
 
       - name: setup dotnet 6.0
         uses: actions/setup-dotnet@v1
@@ -54,9 +49,9 @@ jobs:
       - name: create avd
         shell: pwsh
         run: |
-          C:/Android/android-sdk/emulator/emulator -accel-check
-          & C:/Android/android-sdk/emulator/emulator -no-boot-anim -gpu auto -avd Android_Emulator_31 -prop monodroid.avdname=Android_Emulator_31
-          & C:/Android/android-sdk/tools/bin/avdmanager list avd
-          & C:/Android/android-sdk/tools/bin/avdmanager list device
-          & C:/Android/android-sdk/platform-tools/adb devices -l
+          /Users/runner/Library/Android/sdk/emulator/emulator -no-boot-anim -accel on -avd Android_Emulator_31
+          & /Users/runner/Library/Android/sdk/tools/bin/avdmanager list avd
+          & /Users/runner/Library/Android/sdk/tools/bin/avdmanager list device
+          & /Users/runner/Library/Android/sdk/platform-tools/adb devices -l
           & ./script/android-emulator.ps1
+
