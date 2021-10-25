@@ -87,5 +87,13 @@
 	<ItemGroup>
 	  <_MauiXamlToRemove Remove="out\**" />
 	</ItemGroup>
+
+	<ItemGroup>
+	  <_MauiCompileToAdd Remove="Platforms\iOS\HeadlessRunnerAppDelegate.cs" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Include="Platforms\iOS\HeadlessRunnerAppDelegate.cs" />
+	</ItemGroup>
 	
 </Project>
