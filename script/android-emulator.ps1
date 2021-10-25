@@ -6,7 +6,9 @@ $emulatorPath = (Join-Path $sdkRootPath "emulator")
 $platformPath = (Join-Path $sdkRootPath "platform-tools")
 
 Set-Location $emulatorPath
-./emulator -avd Android_Emulator_31 -no-window -gpu swiftshader_indirect -no-snapshot -noaudio -no-boot-anim
+Write-Host ($emulatorPath)
+ls
+./emulator  -no-boot-anim -accel on -avd Android_Emulator_31 -prop monodroid.avdname=Android_Emulator_31
 
 Set-Location $platformPath
 Write-Host ("adb devices:")
