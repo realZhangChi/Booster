@@ -18,7 +18,7 @@ jobs:
   # This workflow contains a single job called "build"
   build:
     # The type of runner that the job will run on
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -49,9 +49,9 @@ jobs:
       - name: create avd
         shell: pwsh
         run: |
-          /Users/runner/Library/Android/sdk/emulator/emulator -no-boot-anim -accel on -avd Android_Emulator_31
-          & /Users/runner/Library/Android/sdk/tools/bin/avdmanager list avd
-          & /Users/runner/Library/Android/sdk/tools/bin/avdmanager list device
-          & /Users/runner/Library/Android/sdk/platform-tools/adb devices -l
+          /usr/local/lib/android/sdk/emulator/emulator -no-boot-anim -accel on -avd Android_Emulator_31
+          & /usr/local/lib/android/sdk/tools/bin/avdmanager list avd
+          & /usr/local/lib/android/sdk/tools/bin/avdmanager list device
+          & /usr/local/lib/android/sdk/platform-tools/adb devices -l
           & ./script/android-emulator.ps1
 
