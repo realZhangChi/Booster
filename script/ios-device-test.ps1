@@ -1,4 +1,4 @@
-$testDevice = ios-simulator-64_latest
+$testDevice = "ios-simulator-64_latest"
 Write-Host ("installing simulator...")
 xharness apple simulators install $testDevice --verbosity=Debug
 
