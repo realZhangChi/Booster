@@ -1,4 +1,4 @@
-name: ios test
+name: build and unit test
 
 on:
   push:
@@ -28,13 +28,12 @@ jobs:
         shell: pwsh
         run: |
           & dotnet tool update --global redth.net.maui.check
-          & maui-check list
-          & maui-check --ci --non-interactive --fix --force-dotnet --skip xcode --skip edgewebview2 --skip androidemulator
+          & maui-check --ci --non-interactive --fix --force-dotnet --skip vswin --skip xcode --skip edgewebview2 --skip androidemulator
 
       - name: build
         shell: pwsh
-        run: ./script/ios/build.ps1
+        run: ./script/net6.0/build.ps1
 
-      - name: test
+      - name: unit test
         shell: pwsh
-        run: ./script/ios/test.ps1
+        run: ./script/net6.0/test.ps1
