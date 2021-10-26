@@ -34,7 +34,7 @@ jobs:
         shell: pwsh
         run: |
           & dotnet restore
-          & dotnet build --no-restore -p:EmbedAssembliesIntoApk=true -p:BuildIpa=true -p: PublishTrimmed=false
+          & dotnet build --no-restore -p:EmbedAssembliesIntoApk=true -p:BuildIpa=true -p:PublishTrimmed=false
 
       - name: unit test
         shell: pwsh
