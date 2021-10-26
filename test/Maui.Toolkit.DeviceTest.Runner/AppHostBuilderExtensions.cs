@@ -9,7 +9,7 @@ namespace Maui.Toolkit.DeviceTest.Runner
         {
             appHostBuilder.Services.AddSingleton(options);
 
-#if __ANDROID__
+#if __ANDROID__ || __IOS__
             appHostBuilder.Services.AddTransient(sp => new HeadlessTestRunner(sp.GetRequiredService<TestOptions>()));
 #endif
 
