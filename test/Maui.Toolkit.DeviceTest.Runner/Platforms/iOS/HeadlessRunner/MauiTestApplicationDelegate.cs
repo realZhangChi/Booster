@@ -41,6 +41,7 @@ namespace Maui.Toolkit.DeviceTest.Runner
 			foreach (var envvar in EnvVarNames)
 			{
 				EnvVars[envvar] = Environment.GetEnvironmentVariable(envvar);
+				Console.WriteLine($"{envvar}:{EnvVars[envvar]}");
 			}
 		}
 
