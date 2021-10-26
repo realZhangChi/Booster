@@ -43,3 +43,9 @@ jobs:
       - name: test
         shell: pwsh
         run: ./script/ios/test.ps1
+
+      - uses: actions/upload-artifact@v2
+        name: upload test results
+        with:
+          name: test-results
+          path: ./out/
