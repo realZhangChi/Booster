@@ -46,9 +46,7 @@ public static class MauiAppBuilderExtensions
 
         builder.Services.AddTransient<IAuthorizationHandler, DefaultAuthorizationHandler>();
         builder.Services.AddTransient<IAuthorizationService, DefaultAuthorizationService>();
-        builder.Services.AddTransient<ITokenService, DefaultTokenService>();
         builder.Services.AddTransient<ITokenStore, DefaultTokenStore>();
-        builder.Services.AddTransient<IUserInfoService, DefaultUserInfoService>();
         builder.Services.AddTransient<IUserInfoStore, DefaultUserInfoStore>();
 
 #if __ANDROID__
