@@ -24,7 +24,7 @@ public class DefaultWeChatHttpClient : IWeChatHttpClient
         _httpClient = httpClient;
     }
 
-    public async Task<Token?> GetTokenAsync(string appId, string appSecret, string code)
+    public async Task<Token> GetTokenAsync(string appId, string appSecret, string code)
     {
         if (string.IsNullOrWhiteSpace(appId))
             throw new ArgumentNullException(nameof(appId));
@@ -39,10 +39,10 @@ public class DefaultWeChatHttpClient : IWeChatHttpClient
         var content = await response.Content.ReadAsStringAsync();
         CheckErrorCode(content);
 
-        return JsonSerializer.Deserialize<Token>(content);
+        return JsonSerializer.Deserialize<Token>(content)!;
     }
 
-    public async Task<UserInfo?> GetUserInfoAsync(string accessToken, string openId)
+    public async Task<UserInfo> GetUserInfoAsync(string accessToken, string openId)
     {
         if (string.IsNullOrWhiteSpace(accessToken))
             throw new ArgumentNullException(nameof(accessToken));
@@ -55,10 +55,10 @@ public class DefaultWeChatHttpClient : IWeChatHttpClient
         var content = await response.Content.ReadAsStringAsync();
         CheckErrorCode(content);
 
-        return JsonSerializer.Deserialize<UserInfo>(content);
+        return JsonSerializer.Deserialize<UserInfo>(content)!;
     }
 
-    public async Task<Token?> RefreshTokenAsync(string appId, string refreshToken)
+    public async Task<Token> RefreshTokenAsync(string appId, string refreshToken)
     {
         if (string.IsNullOrWhiteSpace(appId))
             throw new ArgumentNullException(nameof(appId));
@@ -71,7 +71,7 @@ public class DefaultWeChatHttpClient : IWeChatHttpClient
         var content = await response.Content.ReadAsStringAsync();
         CheckErrorCode(content);
 
-        return JsonSerializer.Deserialize<Token>(content);
+        return JsonSerializer.Deserialize<Token>(content)!;
     }
 
     private static void CheckErrorCode(string weChatContent)

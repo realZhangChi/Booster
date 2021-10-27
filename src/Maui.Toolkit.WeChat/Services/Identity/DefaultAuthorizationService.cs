@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Maui.Toolkit.WeChat.Services.Http;
+using System;
 using System.Threading.Tasks;
 
 namespace Maui.Toolkit.WeChat.Services.Identity;
@@ -6,23 +7,20 @@ namespace Maui.Toolkit.WeChat.Services.Identity;
 public class DefaultAuthorizationService : IAuthorizationService
 {
     private readonly IAuthorizationHandler _handler;
-    private readonly ITokenService _tokenService;
     private readonly ITokenStore _tokenStore;
-    private readonly IUserInfoService _userInfoService;
     private readonly IUserInfoStore _userInfoStore;
+    private readonly IWeChatHttpClient _weChatHttpClient;
 
     public DefaultAuthorizationService(
         IAuthorizationHandler handler,
-        ITokenService tokenService,
         ITokenStore tokenStore,
-        IUserInfoService userInfoService,
-        IUserInfoStore userInfoStore)
+        IUserInfoStore userInfoStore,
+        IWeChatHttpClient weChatHttpClient)
     {
         _handler = handler;
-        _tokenService = tokenService;
         _tokenStore = tokenStore;
-        _userInfoService = userInfoService;
         _userInfoStore = userInfoStore;
+        _weChatHttpClient = weChatHttpClient;
     }
     public virtual Task<bool> AuthorizeAsync()
     {
@@ -31,18 +29,11 @@ public class DefaultAuthorizationService : IAuthorizationService
 
     public virtual async Task AuthorizeCallbackAsync(string appId, string appSecret, string code)
     {
-        var token = await _tokenService.GetTokenFromWeChatAsync(appId, appSecret, code);
-        if (token == null)
-        {
-            throw new NotImplementedException();
-        }
+        var token = await _weChatHttpClient.GetTokenAsync(appId, appSecret, code);
+        token.IssuedAt = DateTimeOffset.UtcNow.ToUnixTimeSeconds();
         await _tokenStore.SetAsync(token);
 
-        var userInfo = await _userInfoService.GetUserInfoFromWeChatAsync(appId);
-        if (userInfo == null)
-        {
-            throw new NotImplementedException();
-        }
+        var userInfo = await _weChatHttpClient.GetUserInfoAsync(token.AccessToken, token.OpenId);
         await _userInfoStore.SetAsync(userInfo);
     }
 }
