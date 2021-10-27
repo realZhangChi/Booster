@@ -29,6 +29,13 @@ public class DefaultAuthorizationService : IAuthorizationService
 
     public virtual async Task AuthorizeCallbackAsync(string appId, string appSecret, string code)
     {
+        if (string.IsNullOrWhiteSpace(appId))
+            throw new ArgumentNullException(nameof(appId));
+        if (string.IsNullOrWhiteSpace(appSecret))
+            throw new ArgumentNullException(nameof(appSecret));
+        if (string.IsNullOrWhiteSpace(code))
+            throw new ArgumentNullException(nameof(code));
+
         var token = await _weChatHttpClient.GetTokenAsync(appId, appSecret, code);
         token.IssuedAt = DateTimeOffset.UtcNow.ToUnixTimeSeconds();
         await _tokenStore.SetAsync(token);

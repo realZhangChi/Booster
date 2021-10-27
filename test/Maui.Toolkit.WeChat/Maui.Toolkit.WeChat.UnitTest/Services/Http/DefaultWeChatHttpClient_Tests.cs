@@ -1,4 +1,5 @@
-﻿using Shouldly;
+﻿using Maui.Toolkit.WeChat.Mocks;
+using Shouldly;
 using System;
 using System.Collections.Generic;
 using System.Linq;

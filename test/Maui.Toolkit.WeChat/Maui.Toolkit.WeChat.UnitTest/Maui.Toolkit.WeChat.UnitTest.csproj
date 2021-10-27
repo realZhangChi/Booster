@@ -28,8 +28,4 @@
     <ProjectReference Include="..\..\..\src\Maui.Toolkit.WeChat\Maui.Toolkit.WeChat.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Services\Identity\" />
-  </ItemGroup>
-
 </Project>

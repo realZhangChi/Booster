@@ -1,14 +1,11 @@
 ﻿using Maui.Toolkit.WeChat.Models.Identity;
+using Maui.Toolkit.WeChat.Services.Http;
 using RichardSzalay.MockHttp;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http;
-using System.Text;
 using System.Text.Json;
-using System.Threading.Tasks;
 
-namespace Maui.Toolkit.WeChat.Services.Http
+namespace Maui.Toolkit.WeChat.Mocks
 {
     public class MockHttpClient
     {
