@@ -43,9 +43,10 @@ jobs:
       - name: run device test
         uses: reactivecircus/android-emulator-runner@v2
         with:
-          api-level: 30
+          api-level: 31
           arch: x86_64
-          # profile: Nexus 6
+          profile: Nexus 6
+          target: playstore
           script: pwsh ./script/android/test.ps1
 
       - uses: actions/upload-artifact@v2
