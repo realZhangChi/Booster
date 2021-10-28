@@ -45,6 +45,7 @@ jobs:
 
   test:
     runs-on: macos-11
+    needs: build
 
     steps:
       - uses: actions/download-artifact@v2
