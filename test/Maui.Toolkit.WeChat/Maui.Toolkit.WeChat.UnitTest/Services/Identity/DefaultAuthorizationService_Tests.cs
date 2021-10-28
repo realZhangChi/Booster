@@ -50,5 +50,30 @@ namespace Maui.Toolkit.WeChat.Services.Identity
             await Assert.ThrowsAsync<ArgumentNullException>(() => service.AuthorizeCallbackAsync(appId, appSecret, nullCode));
             await Assert.ThrowsAsync<ArgumentNullException>(() => service.AuthorizeCallbackAsync(appId, appSecret, whiteSpaceCode));
         }
+
+        [Fact]
+        public async Task Callback_Should_Set_and_Get_Token_and_UserInfo()
+        {
+            var appId = "AppId";
+            var appSecret = "AppSecret";
+            var code = "Code";
+            var handler = new MockAuthorizationHandler();
+            var userInfoStore = new MockUserInfoStore();
+            var tokenStore = new MockTokenStore();
+            var weChatHttpClient = new MockWeChatHttpClient();
+            var service = new DefaultAuthorizationService(handler, tokenStore, userInfoStore, weChatHttpClient);
+            var now = DateTimeOffset.UtcNow.ToUnixTimeSeconds();
+            await Task.Delay(1000);
+
+            await service.AuthorizeCallbackAsync(appId, appSecret, code);
+            var token = await tokenStore.GetOrNullAsync();
+            var userInfo = await userInfoStore.GetOrNullAsync();
+
+            await Task.Delay(1000);
+            token.ShouldNotBeNull();
+            token.IssuedAt.ShouldBeGreaterThan(now);
+            token.IssuedAt.ShouldBeLessThan(DateTimeOffset.UtcNow.ToUnixTimeSeconds());
+            userInfo.ShouldBeEquivalentTo(MockHttpClient.UserInfo);
+        }
     }
 }

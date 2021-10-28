@@ -12,17 +12,17 @@ namespace Maui.Toolkit.WeChat.Mocks
     {
         public Task<Token> GetTokenAsync(string appId, string appSecret, string code)
         {
-            return Task.FromResult(new Token());
+            return Task.FromResult(MockHttpClient.Token);
         }
 
         public Task<UserInfo> GetUserInfoAsync(string accessToken, string openId)
         {
-            return Task.FromResult(new UserInfo());
+            return Task.FromResult(MockHttpClient.UserInfo);
         }
 
         public Task<Token> RefreshTokenAsync(string appId, string refreshToken)
         {
-            return Task.FromResult(new Token());
+            return Task.FromResult(MockHttpClient.Token);
         }
     }
 }

@@ -2,6 +2,7 @@
 using Maui.Toolkit.WeChat.Services.Http;
 using RichardSzalay.MockHttp;
 using System;
+using System.CodeDom;
 using System.Net.Http;
 using System.Text.Json;
 
@@ -39,6 +40,11 @@ namespace Maui.Toolkit.WeChat.Mocks
         public static Token Token => JsonSerializer.Deserialize<Token>(_token)!;
 
         public static UserInfo UserInfo => JsonSerializer.Deserialize<UserInfo>(_userInfo)!;
+
+        private MockHttpClient()
+        {
+
+        }
 
         private static HttpClient CreateMockHttpClient(bool withSuccess)
         {
