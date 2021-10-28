@@ -8,4 +8,7 @@ namespace Maui.Toolkit.WeChat.Models.Share;
 
 public class ImageMessage : MediaMessageBase
 {
+    public ImageMessage(string title, string description) : base(title, description)
+    {
+    }
 }

@@ -8,5 +8,9 @@ namespace Maui.Toolkit.WeChat.Models.Share;
 
 public class WebPageMessage : MediaMessageBase
 {
+    public WebPageMessage(string title, string description) : base(title, description)
+    {
+    }
+
     public string? WebPageUrl { get; set; }
 }

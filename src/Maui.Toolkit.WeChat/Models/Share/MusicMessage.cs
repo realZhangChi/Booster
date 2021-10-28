@@ -8,6 +8,10 @@ namespace Maui.Toolkit.WeChat.Models.Share;
 
 public class MusicMessage : MediaMessageBase
 {
+    public MusicMessage(string title, string description) : base(title, description)
+    {
+    }
+
     public string? Url { get; set; }
 
     public string? LowBandwidthUrl { get; set; }
