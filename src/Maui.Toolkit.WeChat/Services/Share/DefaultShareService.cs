@@ -13,33 +13,33 @@ public class DefaultShareService : IShareService
 {
     private readonly IShareHandler _shareHandler;
 
-    public DefaultShareService(IShareHandler shareHandler)
+    public DefaultShareService(IShareHandler shareHandler, ShareScene scene)
     {
         _shareHandler = shareHandler;
     }
 
-    public Task ShareImageAsync(ImageMessage message)
+    public Task ShareImageAsync(ImageMessage message, ShareScene scene)
     {
-        return _shareHandler.ShareImageAsync(message);
+        return _shareHandler.ShareImageAsync(message, scene);
     }
 
-    public Task ShareMusicAsync(MusicMessage message)
+    public Task ShareMusicAsync(MusicMessage message, ShareScene scene)
     {
-        return _shareHandler.ShareMusicAsync(message);
+        return _shareHandler.ShareMusicAsync(message, scene);
     }
 
-    public Task ShareTextAsync(TextMessage message)
+    public Task ShareTextAsync(TextMessage message, ShareScene scene)
     {
-        return _shareHandler.ShareTextAsync(message);
+        return _shareHandler.ShareTextAsync(message, scene);
     }
 
-    public Task ShareVideoAsync(VideoMessage message)
+    public Task ShareVideoAsync(VideoMessage message, ShareScene scene)
     {
-        return _shareHandler.ShareVideoAsync(message);
+        return _shareHandler.ShareVideoAsync(message, scene);
     }
 
-    public Task ShareWebPageAsync(WebPageMessage message)
+    public Task ShareWebPageAsync(WebPageMessage message, ShareScene scene)
     {
-        return _shareHandler.ShareWebPageAsync(message);
+        return _shareHandler.ShareWebPageAsync(message, scene);
     }
 }

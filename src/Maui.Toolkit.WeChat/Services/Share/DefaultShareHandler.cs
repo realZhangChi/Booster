@@ -10,27 +10,27 @@ namespace Maui.Toolkit.WeChat.Services.Share;
 
 public class DefaultShareHandler : IShareHandler
 {
-    public Task ShareImageAsync(ImageMessage message)
+    public Task ShareImageAsync(ImageMessage message, ShareScene scene)
     {
         return Task.CompletedTask;
     }
 
-    public Task ShareMusicAsync(MusicMessage message)
+    public Task ShareMusicAsync(MusicMessage message, ShareScene scene)
     {
         return Task.CompletedTask;
     }
 
-    public Task ShareTextAsync(TextMessage message)
+    public Task<bool> ShareTextAsync(TextMessage message, ShareScene scene)
+    {
+        return Task.FromResult(false);
+    }
+
+    public Task ShareVideoAsync(VideoMessage message, ShareScene scene)
     {
         return Task.CompletedTask;
     }
 
-    public Task ShareVideoAsync(VideoMessage message)
-    {
-        return Task.CompletedTask;
-    }
-
-    public Task ShareWebPageAsync(WebPageMessage message)
+    public Task ShareWebPageAsync(WebPageMessage message, ShareScene scene)
     {
         return Task.CompletedTask;
     }

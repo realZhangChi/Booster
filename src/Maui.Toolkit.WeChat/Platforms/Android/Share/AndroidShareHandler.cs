@@ -8,6 +8,7 @@ using Maui.Toolkit.WeChat.Models.Share;
 using Maui.Toolkit.WeChat.Services.Share;
 
 using IWeChatApi = Com.Tencent.MM.Opensdk.Openapi.IWXAPI;
+using WeChatRequest = Com.Tencent.MM.Opensdk.Modelmsg.SendMessageToWX.Req;
 
 namespace Maui.Toolkit.WeChat.Platforms.Android.Share;
 
@@ -20,27 +21,35 @@ public class AndroidShareHandler : IShareHandler
         _weChatApi = weChatApi;
     }
 
-    public Task ShareImageAsync(ImageMessage message)
+    public Task ShareImageAsync(ImageMessage message, ShareScene scene)
     {
         throw new NotImplementedException();
     }
 
-    public Task ShareMusicAsync(MusicMessage message)
+    public Task ShareMusicAsync(MusicMessage message, ShareScene scene)
     {
         throw new NotImplementedException();
     }
 
-    public Task ShareTextAsync(TextMessage message)
+    public Task<bool> ShareTextAsync(TextMessage message, ShareScene scene)
+    {
+        var weChatMessage = message.ToNative();
+
+        var request = new WeChatRequest()
+        {
+            Message = weChatMessage,
+            Scene = (int)scene
+        };
+
+        return Task.FromResult(_weChatApi.SendReq(request));
+    }
+
+    public Task ShareVideoAsync(VideoMessage message, ShareScene scene)
     {
         throw new NotImplementedException();
     }
 
-    public Task ShareVideoAsync(VideoMessage message)
-    {
-        throw new NotImplementedException();
-    }
-
-    public Task ShareWebPageAsync(WebPageMessage message)
+    public Task ShareWebPageAsync(WebPageMessage message, ShareScene scene)
     {
         throw new NotImplementedException();
     }

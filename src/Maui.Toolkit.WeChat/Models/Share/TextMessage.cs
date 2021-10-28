@@ -8,5 +8,14 @@ namespace Maui.Toolkit.WeChat.Models.Share;
 
 public class TextMessage : MediaMessageBase
 {
-    public string? Text { get; set; }
+    public string Text { get; private set; }
+
+    public TextMessage(string title, string description, string text)
+        : base(title, description)
+    {
+        if (string.IsNullOrEmpty(text))
+            throw new ArgumentNullException(nameof(text));
+
+        Text = text;
+    }
 }

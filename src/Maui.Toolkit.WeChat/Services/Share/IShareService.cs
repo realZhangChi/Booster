@@ -10,13 +10,13 @@ namespace Maui.Toolkit.WeChat.Services.Share;
 
 public interface IShareService
 {
-    Task ShareTextAsync(TextMessage message);
+    Task ShareTextAsync(TextMessage message, ShareScene scene);
 
-    Task ShareImageAsync(ImageMessage message);
+    Task ShareImageAsync(ImageMessage message, ShareScene scene);
 
-    Task ShareMusicAsync(MusicMessage message);
+    Task ShareMusicAsync(MusicMessage message, ShareScene scene);
 
-    Task ShareVideoAsync(VideoMessage message);
+    Task ShareVideoAsync(VideoMessage message, ShareScene scene);
 
-    Task ShareWebPageAsync(WebPageMessage message);
+    Task ShareWebPageAsync(WebPageMessage message, ShareScene scene);
 }
