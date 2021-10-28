@@ -49,9 +49,9 @@ jobs:
 
     steps:
       - uses: actions/download-artifact@v2
-        name: build-results
+        name: download artifact
         with:
-          name: android-device-test
+          name: build-results
           path: .
 
       - name: setup dotnet 6.0
