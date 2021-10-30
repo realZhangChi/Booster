@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-	<Import Project="..\..\common.props" />
+	<Import Project="..\..\..\common.props" />
 	
 	<PropertyGroup>
 		<TargetFrameworks>net6.0;net6.0-ios;net6.0-android;net6.0-maccatalyst</TargetFrameworks>
@@ -23,6 +23,6 @@
 	</ItemGroup>
 
 	<ItemGroup Condition="'$(TargetFramework)' == 'net6.0-android'">
-	  <ProjectReference Include="..\..\binding\Booster.Binding.WeChat\Booster.Binding.WeChat.Android\Booster.Binding.WeChat.Android.csproj" />
+	  <ProjectReference Include="..\Booster.WeChat.Binding.Android\Booster.WeChat.Binding.Android.csproj" />
 	</ItemGroup>
 </Project>
