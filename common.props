@@ -2,10 +2,10 @@
   <PropertyGroup>
     <!--<PackageIconUrl></PackageIconUrl>-->
     <Version>1.0.0-alpha.1</Version>
-    <PackageProjectUrl>https://github.com/realZhangChi/Maui.Toolkit</PackageProjectUrl>
+    <PackageProjectUrl>https://github.com/realZhangChi/Booster</PackageProjectUrl>
     <PackageLicenseExpression>LGPL-3.0-only</PackageLicenseExpression>
     <RepositoryType>git</RepositoryType>
-    <RepositoryUrl>https://github.com/realZhangChi/Maui.Toolkit/</RepositoryUrl>
+    <RepositoryUrl>https://github.com/realZhangChi/Booster/</RepositoryUrl>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>
 </Project>
