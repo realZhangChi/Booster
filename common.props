@@ -1,5 +1,6 @@
 <Project>
   <PropertyGroup>
+    <NoWarn>$(NoWarn);CS1591</NoWarn>
     <!--<PackageIconUrl></PackageIconUrl>-->
     <Version>1.0.0-alpha.2.1</Version>
     <PackageProjectUrl>https://github.com/realZhangChi/Booster</PackageProjectUrl>

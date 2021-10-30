@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Xunit;
 using Shouldly;
+using Microsoft.Maui.Essentials;
 
 namespace Booster.WeChat.DeviceTest.Services.Identity
 {
@@ -13,6 +14,7 @@ namespace Booster.WeChat.DeviceTest.Services.Identity
         [Fact]
         public async Task Should_Get_Null_Default()
         {
+            SecureStorage.RemoveAll();
             var _userInfoStore = new DefaultUserInfoStore();
             var token = await _userInfoStore.GetOrNullAsync();
 
