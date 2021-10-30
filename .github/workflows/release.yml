@@ -1,0 +1,24 @@
+name: release
+
+on:
+  push:
+    tags:
+      - "[0-9]+.[0-9]+.[0-9]+-alpha.[0-9]*"
+  pull_request:
+    branches: [ main ]
+    
+jobs:
+  build:
+    runs-on: windows-latest
+    
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: pack
+        shell: pwsh
+        run: ./script/nupkg/pack.ps1
+
+      # Runs a set of commands using the runners shell
+      - name: push
+        shell: pwsh
+        run: ./script/nupkg/push.ps1
