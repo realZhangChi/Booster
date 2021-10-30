@@ -1,11 +1,14 @@
 <Project>
   <PropertyGroup>
     <!--<PackageIconUrl></PackageIconUrl>-->
-    <Version>1.0.0-alpha.1</Version>
+    <Version>1.0.0-alpha.2.0</Version>
     <PackageProjectUrl>https://github.com/realZhangChi/Booster</PackageProjectUrl>
     <PackageLicenseExpression>LGPL-3.0-only</PackageLicenseExpression>
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/realZhangChi/Booster/</RepositoryUrl>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <Authors>Chi Zhang</Authors>
+		<Product>Booster</Product>
+		<PackageTags>maui</PackageTags>
   </PropertyGroup>
 </Project>
