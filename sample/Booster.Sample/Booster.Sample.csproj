@@ -51,7 +51,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\..\src\Booster.WeChat\Booster.WeChat.csproj" />
+	  <PackageReference Include="Booster.WeChat" Version="1.0.0-alpha.1" />
 	</ItemGroup>
 
 	<PropertyGroup Condition="$(TargetFramework.Contains('-windows'))">
