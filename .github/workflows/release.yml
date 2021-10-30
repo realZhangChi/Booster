@@ -38,4 +38,4 @@ jobs:
       # Runs a set of commands using the runners shell
       - name: push
         shell: pwsh
-        run: ./script/nupkg/push.ps1 -k ${NUGET_API_KEY}
+        run: ./script/nupkg/push.ps1 ${NUGET_API_KEY}
