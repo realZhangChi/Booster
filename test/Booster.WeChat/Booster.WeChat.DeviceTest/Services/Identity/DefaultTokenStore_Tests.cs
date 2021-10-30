@@ -9,11 +9,10 @@ namespace Booster.WeChat.DeviceTest.Services.Identity
 {
     public class DefaultTokenStore_Tests
     {
-        private readonly ITokenStore _tokenStore = new DefaultTokenStore();
-
         [Fact]
         public async Task Null_Token_Should_Throw()
         {
+            var _tokenStore = new DefaultTokenStore();
             Token token = null;
 
             await Assert.ThrowsAsync<ArgumentNullException>(() => _tokenStore.SetAsync(token));
@@ -22,6 +21,7 @@ namespace Booster.WeChat.DeviceTest.Services.Identity
         [Fact]
         public async Task Should_Set_And_Get_Token()
         {
+            var _tokenStore = new DefaultTokenStore();
             var token = new Token()
             {
                 AccessToken = "ACCESS TOKEN",
@@ -41,6 +41,7 @@ namespace Booster.WeChat.DeviceTest.Services.Identity
         [Fact]
         public async Task Should_Get_Null_Default()
         {
+            var _tokenStore = new DefaultTokenStore();
             var token = await _tokenStore.GetOrNullAsync();
 
             token.ShouldNotBeNull();
