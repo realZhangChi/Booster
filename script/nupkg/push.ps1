@@ -1,4 +1,5 @@
 $apiKey = $args[0]
+Write-Host ($apiKey)
 
 $rootPath = (Get-Item -Path "./" -Verbose).FullName
 
