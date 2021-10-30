@@ -5,12 +5,12 @@ on:
     tags:
       - "[0-9]+.[0-9]+.[0-9]+-alpha.[0-9]*"
   pull_request:
-    branches: [ main ]
-    
+    branches: [main]
+
 jobs:
-  upload nupkg:
+  upload-nupkg:
     runs-on: windows-latest
-    
+
     steps:
       - uses: actions/checkout@v2
 
