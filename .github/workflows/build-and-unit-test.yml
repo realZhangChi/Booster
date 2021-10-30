@@ -32,7 +32,7 @@ jobs:
 
       - name: build
         shell: pwsh
-        run: ./script/net6.0/build.ps1
+        run: dotnet build
 
       - name: unit test
         shell: pwsh

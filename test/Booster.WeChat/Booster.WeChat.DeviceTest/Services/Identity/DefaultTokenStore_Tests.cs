@@ -13,7 +13,7 @@ namespace Booster.WeChat.DeviceTest.Services.Identity
         [Fact]
         public async Task Should_Get_Null_Default()
         {
-            await SecureStorage.RemoveAll();
+            SecureStorage.RemoveAll();
             var _tokenStore = new DefaultTokenStore();
             var token = await _tokenStore.GetOrNullAsync();
 
