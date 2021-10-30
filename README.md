@@ -1,6 +1,6 @@
-# Maui.Toolkit
+# Booster
 
-Maui.Toolkit is a toolkit that makes [MAUI](https://github.com/dotnet/maui) development easier. Maui.Toolkit creates binding libraries for commonly used third-party SDKs, and uses these binding libraries to develop MAUI libraries to provide out-of-the-box and **SOLID** development experience.
+Booster is a toolkit that makes [MAUI](https://github.com/dotnet/maui) development easier. Booster creates binding libraries for commonly used third-party SDKs, and uses these binding libraries to develop MAUI libraries to provide out-of-the-box and **SOLID** development experience.
 
 ## Getting Started
 
@@ -27,15 +27,14 @@ public static MauiApp CreateMauiApp()
 }
 ```
 
-See the [/sample/Maui.Toolkit.Sample](https://github.com/realZhangChi/Maui.Toolkit/tree/main/sample/Maui.Toolkit.Sample) directory for a complete sample.
+See the [/sample/Booster.Sample](https://github.com/realZhangChi/Booster/tree/main/sample/Booster.Sample) directory for a complete sample.
 
 ## Packages
 
 | Package | Source | SDK Documentation |
 |:-:|:-:|:-:|
-| Maui.Toolkit.WeChat | [Maui.Toolkit.WeChat](https://github.com/realZhangChi/Maui.Toolkit/tree/main/src/Maui.Toolkit.WeChat) | [Documentation](https://developers.weixin.qq.com/doc/oplatform/Mobile_App/Resource_Center_Homepage.html)
+| Booster.WeChat | [Booster.WeChat](https://github.com/realZhangChi/Booster/tree/main/src/Booster.WeChat) | [Documentation](https://developers.weixin.qq.com/doc/oplatform/Mobile_App/Resource_Center_Homepage.html)
 
+## Support the Booster
 
-## Support the Maui.Toolkit
-
-Love Maui.Toolkit? **Please give a star** to this repository :star:
+Love Booster? **Please give a star** to this repository :star:
