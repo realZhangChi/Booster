@@ -1,9 +1,9 @@
 $apiKey = $args[0]
-Write-Host ($apiKey)
 
 $rootPath = (Get-Item -Path "./" -Verbose).FullName
 
 Get-ChildItem ./src/**/bin/Release/*.nupkg -recurse | ForEach-Object -Process {
+	Write-Host ($_)
 	if ($_ -is [System.IO.FileInfo]) {
 		$nupkgPath = $_.Directory
 		Set-Location $nupkgPath
