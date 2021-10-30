@@ -10,11 +10,19 @@ namespace Booster.WeChat.DeviceTest.Services.Identity
 {
     public class DefaultUserInfoStore_Tests
     {
-        private readonly IUserInfoStore _userInfoStore = new DefaultUserInfoStore();
+        [Fact]
+        public async Task Should_Get_Null_Default()
+        {
+            var _userInfoStore = new DefaultUserInfoStore();
+            var token = await _userInfoStore.GetOrNullAsync();
+
+            token.ShouldNotBeNull();
+        }
 
         [Fact]
         public async Task Null_UserInfo_Should_Throw()
         {
+            var _userInfoStore = new DefaultUserInfoStore();
             UserInfo userInfo = null;
 
             await Assert.ThrowsAsync<ArgumentNullException>(() => _userInfoStore.SetAsync(userInfo));
@@ -23,6 +31,7 @@ namespace Booster.WeChat.DeviceTest.Services.Identity
         [Fact]
         public async void Should_Set_And_Get_UserInfo()
         {
+            var _userInfoStore = new DefaultUserInfoStore();
             var userInfo = new UserInfo()
             {
                 OpenId = "OPENID",
@@ -40,14 +49,6 @@ namespace Booster.WeChat.DeviceTest.Services.Identity
 
             var result = await _userInfoStore.GetOrNullAsync();
             result.ShouldBeEquivalentTo(userInfo);
-        }
-
-        [Fact]
-        public async Task Should_Get_Null_Default()
-        {
-            var token = await _userInfoStore.GetOrNullAsync();
-
-            token.ShouldNotBeNull();
         }
     }
 }

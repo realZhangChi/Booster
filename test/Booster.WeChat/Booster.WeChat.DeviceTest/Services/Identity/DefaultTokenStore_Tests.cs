@@ -10,6 +10,15 @@ namespace Booster.WeChat.DeviceTest.Services.Identity
     public class DefaultTokenStore_Tests
     {
         [Fact]
+        public async Task Should_Get_Null_Default()
+        {
+            var _tokenStore = new DefaultTokenStore();
+            var token = await _tokenStore.GetOrNullAsync();
+
+            token.ShouldNotBeNull();
+        }
+
+        [Fact]
         public async Task Null_Token_Should_Throw()
         {
             var _tokenStore = new DefaultTokenStore();
@@ -36,15 +45,6 @@ namespace Booster.WeChat.DeviceTest.Services.Identity
 
             var result = await _tokenStore.GetOrNullAsync();
             result.ShouldBeEquivalentTo(token);
-        }
-
-        [Fact]
-        public async Task Should_Get_Null_Default()
-        {
-            var _tokenStore = new DefaultTokenStore();
-            var token = await _tokenStore.GetOrNullAsync();
-
-            token.ShouldNotBeNull();
         }
     }
 }
