@@ -9,10 +9,27 @@ on:
 
 jobs:
   upload-nupkg:
-    runs-on: windows-latest
+    runs-on: macos-11
 
     steps:
       - uses: actions/checkout@v2
+
+            - name: setup dotnet 5.0
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: "5.0.x"
+
+      - name: setup dotnet 6.0
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: "6.0.x"
+          include-prerelease: true
+
+      - name: maui-check
+        shell: pwsh
+        run: |
+          & dotnet tool update --global redth.net.maui.check
+          & maui-check --ci --non-interactive --fix --force-dotnet --skip vswin --skip xcode --skip edgewebview2 --skip androidemulator
 
       - name: pack
         shell: pwsh
