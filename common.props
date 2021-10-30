@@ -1,0 +1,11 @@
+<Project>
+  <PropertyGroup>
+    <!--<PackageIconUrl></PackageIconUrl>-->
+    <Version>1.0.0-preview1</Version>
+    <PackageProjectUrl>https://github.com/realZhangChi/Maui.Toolkit</PackageProjectUrl>
+    <PackageLicenseExpression>LGPL-3.0-only</PackageLicenseExpression>
+    <RepositoryType>git</RepositoryType>
+    <RepositoryUrl>https://github.com/realZhangChi/Maui.Toolkit/</RepositoryUrl>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+  </PropertyGroup>
+</Project>
