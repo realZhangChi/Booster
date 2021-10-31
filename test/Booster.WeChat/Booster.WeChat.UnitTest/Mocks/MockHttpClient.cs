@@ -1,6 +1,8 @@
 ﻿using Booster.WeChat.Models.Identity;
 using Booster.WeChat.Services.Http;
+
 using RichardSzalay.MockHttp;
+
 using System;
 using System.CodeDom;
 using System.Net.Http;
@@ -36,10 +38,6 @@ namespace Booster.WeChat.Mocks
         public static HttpClient InstanceWithSuccessResponse => CreateMockHttpClient(true);
 
         public static HttpClient InstanceWithFailureResponse => CreateMockHttpClient(false);
-
-        public static Token Token => JsonSerializer.Deserialize<Token>(_token)!;
-
-        public static UserInfo UserInfo => JsonSerializer.Deserialize<UserInfo>(_userInfo)!;
 
         private MockHttpClient()
         {

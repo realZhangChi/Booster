@@ -2,6 +2,7 @@
 
 using Booster.WeChat.Services.Http;
 using Booster.WeChat.Services.Identity;
+using Booster.WeChat.Services.Share;
 using Booster.WeChat.ViewModels;
 using Booster.WeChat.Views;
 
@@ -12,6 +13,7 @@ using Microsoft.Maui.Hosting;
 #if __ANDROID__
 using Booster.WeChat.Platforms.Android;
 using Booster.WeChat.Platforms.Android.Identity;
+using Booster.WeChat.Platforms.Android.Share;
 
 using Com.Tencent.MM.Opensdk.Openapi;
 
@@ -49,6 +51,9 @@ public static class MauiAppBuilderExtensions
         builder.Services.AddTransient<ITokenStore, DefaultTokenStore>();
         builder.Services.AddTransient<IUserInfoStore, DefaultUserInfoStore>();
 
+        builder.Services.AddTransient<IShareService, DefaultShareService>();
+        builder.Services.AddTransient<IShareHandler, DefaultShareHandler>();
+
 #if __ANDROID__
         builder.Services.AddTransient(provider =>
         {
@@ -66,6 +71,13 @@ public static class MauiAppBuilderExtensions
             new ServiceDescriptor(
                 typeof(IAuthorizationHandler),
                 typeof(AndroidAuthorizationHandler),
+                ServiceLifetime.Transient)
+            );
+            
+        builder.Services.Replace(
+            new ServiceDescriptor(
+                typeof(IShareHandler),
+                typeof(AndroidShareHandler),
                 ServiceLifetime.Transient)
             );
 #endif
