@@ -136,7 +136,7 @@ public class DefaultWeChatHttpClient : IWeChatHttpClient
             jsonDoc.RootElement.TryGetProperty("privilege", out var privilegeProperty);
             var privilege = (List<string>)privilegeProperty.Deserialize(typeof(List<string>))!;
 
-            jsonDoc.RootElement.TryGetValue("expires_in").TryGetInt32(out var sexInt);
+            jsonDoc.RootElement.TryGetValue("sex").TryGetInt32(out var sexInt);
             var sex = (Sex)sexInt;
 
             return new UserInfo(
