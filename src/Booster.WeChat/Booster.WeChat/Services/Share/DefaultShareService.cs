@@ -13,7 +13,7 @@ public class DefaultShareService : IShareService
 {
     private readonly IShareHandler _shareHandler;
 
-    public DefaultShareService(IShareHandler shareHandler, ShareScene scene)
+    public DefaultShareService(IShareHandler shareHandler)
     {
         _shareHandler = shareHandler;
     }
@@ -28,7 +28,7 @@ public class DefaultShareService : IShareService
         return _shareHandler.ShareMusicAsync(message, scene);
     }
 
-    public Task ShareTextAsync(TextMessage message, ShareScene scene)
+    public Task<bool> ShareTextAsync(TextMessage message, ShareScene scene)
     {
         return _shareHandler.ShareTextAsync(message, scene);
     }

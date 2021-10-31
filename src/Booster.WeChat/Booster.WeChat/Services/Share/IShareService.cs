@@ -10,7 +10,7 @@ namespace Booster.WeChat.Services.Share;
 
 public interface IShareService
 {
-    Task ShareTextAsync(TextMessage message, ShareScene scene);
+    Task<bool> ShareTextAsync(TextMessage message, ShareScene scene);
 
     Task ShareImageAsync(ImageMessage message, ShareScene scene);
 
