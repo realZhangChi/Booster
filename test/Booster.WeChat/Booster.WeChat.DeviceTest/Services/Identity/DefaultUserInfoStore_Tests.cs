@@ -34,18 +34,16 @@ namespace Booster.WeChat.DeviceTest.Services.Identity
         public async void Should_Set_And_Get_UserInfo()
         {
             var _userInfoStore = new DefaultUserInfoStore();
-            var userInfo = new UserInfo()
-            {
-                OpenId = "OPENID",
-                NickName = "NICKNAME",
-                Sex = Sex.Male,
-                Province = "PROVINCE",
-                City = "CITY",
-                Country = "COUNTRY",
-                HeadImgUrl = "HEADIMGURL",
-                Privilege = new List<string> { "PRIVILEGE" },
-                UnionId = "UNIONID"
-            };
+            var userInfo = new UserInfo(
+                "OPENID",
+                "NICKNAME",
+                Sex.Male,
+                "COUNTRY",
+                "PROVINCE",
+                "CITY",
+                "HEADIMGURL",
+                new List<string> { "PRIVILEGE" },
+                "UNIONID");
 
             await _userInfoStore.SetAsync(userInfo);
 

@@ -34,15 +34,13 @@ namespace Booster.WeChat.DeviceTest.Services.Identity
         public async Task Should_Set_And_Get_Token()
         {
             var _tokenStore = new DefaultTokenStore();
-            var token = new Token()
-            {
-                AccessToken = "ACCESS TOKEN",
-                ExpiresIn = 7200,
-                RefreshToken = "REFRESH TOKEN",
-                OpenId = "OPEN ID",
-                Scope = "SCOPE",
-                IssuedAt = DateTimeOffset.UtcNow.ToUnixTimeSeconds()
-            };
+            var token = new Token(
+                "ACCESS TOKEN",
+                7200,
+                DateTimeOffset.UtcNow.ToUnixTimeSeconds(),
+                "REFRESH TOKEN",
+                "OPEN ID",
+                "SCOPE");
 
             await _tokenStore.SetAsync(token);
 

@@ -37,10 +37,19 @@ public class DefaultAuthorizationService : IAuthorizationService
             throw new ArgumentNullException(nameof(code));
 
         var token = await _weChatHttpClient.GetTokenAsync(appId, appSecret, code);
-        token.IssuedAt = DateTimeOffset.UtcNow.ToUnixTimeSeconds();
+        if(token is null)
+        {
+            // TODO: handle error
+            return;
+        }
         await _tokenStore.SetAsync(token);
 
         var userInfo = await _weChatHttpClient.GetUserInfoAsync(token.AccessToken, token.OpenId);
+        if (userInfo is null)
+        {
+            // TODO: handle error
+            return;
+        }
         await _userInfoStore.SetAsync(userInfo);
     }
 }

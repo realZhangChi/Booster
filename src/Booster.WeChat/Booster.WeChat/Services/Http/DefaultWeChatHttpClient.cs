@@ -6,11 +6,14 @@ using System.Threading.Tasks;
 using System.Web;
 using IdentityModel.Client;
 using Booster.WeChat.Models.Identity;
+using Microsoft.Extensions.Logging;
+using System.Collections.Generic;
 
 namespace Booster.WeChat.Services.Http;
 
 public class DefaultWeChatHttpClient : IWeChatHttpClient
 {
+    private readonly ILogger _logger;
     private readonly HttpClient _httpClient;
 
     public const string BaseAddress = "https://api.weixin.qq.com";
@@ -19,12 +22,14 @@ public class DefaultWeChatHttpClient : IWeChatHttpClient
     public const string RefreshTokenPath = "/sns/oauth2/refresh_token";
 
     public DefaultWeChatHttpClient(
-        HttpClient httpClient)
+        HttpClient httpClient,
+        ILogger<DefaultWeChatHttpClient> logger)
     {
         _httpClient = httpClient;
+        _logger = logger;
     }
 
-    public async Task<Token> GetTokenAsync(string appId, string appSecret, string code)
+    public async Task<Token?> GetTokenAsync(string appId, string appSecret, string code)
     {
         if (string.IsNullOrWhiteSpace(appId))
             throw new ArgumentNullException(nameof(appId));
@@ -39,10 +44,10 @@ public class DefaultWeChatHttpClient : IWeChatHttpClient
         var content = await response.Content.ReadAsStringAsync();
         CheckErrorCode(content);
 
-        return JsonSerializer.Deserialize<Token>(content)!;
+        return DeserializeToken(content);
     }
 
-    public async Task<UserInfo> GetUserInfoAsync(string accessToken, string openId)
+    public async Task<UserInfo?> GetUserInfoAsync(string accessToken, string openId)
     {
         if (string.IsNullOrWhiteSpace(accessToken))
             throw new ArgumentNullException(nameof(accessToken));
@@ -55,10 +60,10 @@ public class DefaultWeChatHttpClient : IWeChatHttpClient
         var content = await response.Content.ReadAsStringAsync();
         CheckErrorCode(content);
 
-        return JsonSerializer.Deserialize<UserInfo>(content)!;
+        return DeserializeUserInfo(content);
     }
 
-    public async Task<Token> RefreshTokenAsync(string appId, string refreshToken)
+    public async Task<Token?> RefreshTokenAsync(string appId, string refreshToken)
     {
         if (string.IsNullOrWhiteSpace(appId))
             throw new ArgumentNullException(nameof(appId));
@@ -71,7 +76,7 @@ public class DefaultWeChatHttpClient : IWeChatHttpClient
         var content = await response.Content.ReadAsStringAsync();
         CheckErrorCode(content);
 
-        return JsonSerializer.Deserialize<Token>(content)!;
+        return DeserializeToken(content);
     }
 
     private static void CheckErrorCode(string weChatContent)
@@ -86,6 +91,69 @@ public class DefaultWeChatHttpClient : IWeChatHttpClient
             {
                 throw new HttpRequestException(jsonDoc.RootElement.ToString());
             }
+        }
+    }
+
+    private Token? DeserializeToken(string content)
+    {
+        try
+        {
+            using var jsonDoc = JsonDocument.Parse(content);
+            var accessToken = jsonDoc.RootElement.TryGetString("access_token");
+            var refreshToken = jsonDoc.RootElement.TryGetString("refresh_token");
+            var openId = jsonDoc.RootElement.TryGetString("openid");
+            var scope = jsonDoc.RootElement.TryGetString("scope");
+            jsonDoc.RootElement.TryGetValue("expires_in").TryGetInt32(out var expiresIn);
+
+            return new Token(
+                accessToken,
+                expiresIn,
+                DateTimeOffset.UtcNow.ToUnixTimeSeconds(),
+                refreshToken,
+                openId,
+                scope);
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Unable to deserialize the response content into Token class!");
+            return null;
+        }
+    }
+
+    private UserInfo? DeserializeUserInfo(string content)
+    {
+        try
+        {
+            using var jsonDoc = JsonDocument.Parse(content);
+            var openId = jsonDoc.RootElement.TryGetString("openid");
+            var nickName = jsonDoc.RootElement.TryGetString("nickname");
+            var country = jsonDoc.RootElement.TryGetString("country");
+            var province = jsonDoc.RootElement.TryGetString("province");
+            var city = jsonDoc.RootElement.TryGetString("city");
+            var headImgUrl = jsonDoc.RootElement.TryGetString("headimgurl");
+            var unionId = jsonDoc.RootElement.TryGetString("unionid");
+
+            jsonDoc.RootElement.TryGetProperty("privilege", out var privilegeProperty);
+            var privilege = (List<string>)privilegeProperty.Deserialize(typeof(List<string>))!;
+
+            jsonDoc.RootElement.TryGetValue("expires_in").TryGetInt32(out var sexInt);
+            var sex = (Sex)sexInt;
+
+            return new UserInfo(
+                openId,
+                nickName,
+                sex,
+                country,
+                province,
+                city,
+                headImgUrl,
+                privilege,
+                unionId);
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Unable to deserialize the response content into Token class!");
+            return null;
         }
     }
 }

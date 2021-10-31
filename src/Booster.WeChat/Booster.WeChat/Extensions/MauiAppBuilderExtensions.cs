@@ -80,12 +80,14 @@ public static class MauiAppBuilderExtensions
                options.AppId = webOptions.AppId;
                options.AppSecret = webOptions.AppSecret;
                options.RedirectUrl = webOptions.RedirectUrl;
-           });
+           })
+           .ValidateDataAnnotations();
         builder.Services.AddOptions<WeChatMobileOptions>()
             .Configure(options =>
             {
                 options.AppId = mobileOptions.AppId;
                 options.AppSecret = mobileOptions.AppSecret;
-            });
+            })
+           .ValidateDataAnnotations();
     }
 }

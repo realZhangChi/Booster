@@ -45,6 +45,7 @@ public abstract class WeChatEntryActivity : MauiAppCompatActivity, IWXAPIEventHa
         throw new NotImplementedException();
     }
 
+    // TODO: use provider pattern
     public async void OnResp(BaseResp? response)
     {
         if (response is null)

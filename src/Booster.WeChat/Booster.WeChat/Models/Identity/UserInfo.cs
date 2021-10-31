@@ -7,35 +7,52 @@ namespace Booster.WeChat.Models.Identity;
 public record UserInfo
 {
     [JsonPropertyName("openid")]
-    public string? OpenId { get; set; }
+    public string? OpenId { get; init; }
 
     [JsonPropertyName("nickname")]
-    public string? NickName { get; set; }
+    public string? NickName { get; init; }
 
     [JsonPropertyName("sex")]
-    public Sex Sex { get; set; }
-
-    [JsonPropertyName("province")]
-    public string? Province { get; set; }
-
-    [JsonPropertyName("city")]
-    public string? City { get; set; }
+    public Sex Sex { get; init; }
 
     [JsonPropertyName("country")]
-    public string? Country { get; set; }
+    public string? Country { get; init; }
+
+    [JsonPropertyName("province")]
+    public string? Province { get; init; }
+
+    [JsonPropertyName("city")]
+    public string? City { get; init; }
 
     [JsonPropertyName("headimgurl")]
-    public string? HeadImgUrl { get; set; }
+    public string? HeadImgUrl { get; init; }
 
     [JsonPropertyName("privilege")]
-    public List<string>? Privilege { get; set; }
+    public List<string>? Privilege { get; init; }
 
     [JsonPropertyName("unionid")]
-    public string? UnionId { get; set; }
+    public string? UnionId { get; init; }
 
-    public UserInfo()
+    public UserInfo(
+        string openId,
+        string nickName,
+        Sex sex,
+        string country,
+        string province,
+        string city,
+        string headImgUrl,
+        List<string> privilege,
+        string unionId)
     {
-        Privilege = new List<string>();
+        OpenId = openId;
+        NickName = nickName;
+        Sex = sex;
+        Country = country;
+        Province = province;
+        City = city;
+        HeadImgUrl = headImgUrl;
+        Privilege = privilege;
+        UnionId = unionId;
     }
 }
 

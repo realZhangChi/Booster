@@ -1,8 +1,12 @@
-﻿namespace Booster.WeChat.Extensions;
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace Booster.WeChat.Extensions;
 
 public class WeChatMobileOptions
 {
-    public string AppId { get; set; }
+    [Required]
+    public string AppId { get; set; } = null!;
 
-    public string AppSecret { get; set; }
+    [Required]
+    public string AppSecret { get; set; } = null!;
 }

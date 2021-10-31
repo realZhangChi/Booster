@@ -1,5 +1,9 @@
 ﻿using Booster.WeChat.Mocks;
+
+using Microsoft.Extensions.Logging.Abstractions;
+
 using Shouldly;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,6 +11,7 @@ using System.Net.Http;
 using System.Net.WebSockets;
 using System.Text;
 using System.Threading.Tasks;
+
 using Xunit;
 
 namespace Booster.WeChat.Services.Http
@@ -17,7 +22,7 @@ namespace Booster.WeChat.Services.Http
         public async Task GetToken_Should_Throw_If_errcode_Not_Zero()
         {
             var httpClient = MockHttpClient.InstanceWithFailureResponse;
-            var weChatClient = new DefaultWeChatHttpClient(httpClient);
+            var weChatClient = new DefaultWeChatHttpClient(httpClient, NullLogger<DefaultWeChatHttpClient>.Instance);
             var appId = "AppId";
             var appSecret = "AppSecret";
             var code = "Code";
@@ -29,7 +34,7 @@ namespace Booster.WeChat.Services.Http
         public async Task GetToken_Should_Throw_If_Argument_Is_Null()
         {
             var httpClient = MockHttpClient.InstanceWithSuccessResponse;
-            var weChatClient = new DefaultWeChatHttpClient(httpClient);
+            var weChatClient = new DefaultWeChatHttpClient(httpClient, NullLogger<DefaultWeChatHttpClient>.Instance);
             var appId = "AppId";
             var nullAppId = (string)null!;
             var whiteSpaceAppId = " ";
@@ -52,7 +57,7 @@ namespace Booster.WeChat.Services.Http
         public async Task GetToken_Should_Success()
         {
             var httpClient = MockHttpClient.InstanceWithSuccessResponse;
-            var weChatClient = new DefaultWeChatHttpClient(httpClient);
+            var weChatClient = new DefaultWeChatHttpClient(httpClient, NullLogger<DefaultWeChatHttpClient>.Instance);
             var appId = "AppId";
             var appSecret = "AppSecret";
             var code = "Code";
@@ -66,7 +71,7 @@ namespace Booster.WeChat.Services.Http
         public async Task GetUserInfo_Should_Throw_If_errcode_Not_Zero()
         {
             var httpClient = MockHttpClient.InstanceWithFailureResponse;
-            var weChatClient = new DefaultWeChatHttpClient(httpClient);
+            var weChatClient = new DefaultWeChatHttpClient(httpClient, NullLogger<DefaultWeChatHttpClient>.Instance);
             var accessToken = "AccessToken";
             var openId = "OpenId";
 
@@ -77,7 +82,7 @@ namespace Booster.WeChat.Services.Http
         public async Task GetUserInfo_Should_Throw_If_Argument_Is_Null()
         {
             var httpClient = MockHttpClient.InstanceWithSuccessResponse;
-            var weChatClient = new DefaultWeChatHttpClient(httpClient);
+            var weChatClient = new DefaultWeChatHttpClient(httpClient, NullLogger<DefaultWeChatHttpClient>.Instance);
             var accessToken = "AccessToken";
             var nullaccessToken = (string)null!;
             var whiteSpaceaccessToken = " ";
@@ -95,7 +100,7 @@ namespace Booster.WeChat.Services.Http
         public async Task GetUserInfo_Should_Success()
         {
             var httpClient = MockHttpClient.InstanceWithSuccessResponse;
-            var weChatClient = new DefaultWeChatHttpClient(httpClient);
+            var weChatClient = new DefaultWeChatHttpClient(httpClient, NullLogger<DefaultWeChatHttpClient>.Instance);
             var accessToken = "AccessToken";
             var openId = "OpenId";
 
@@ -108,7 +113,7 @@ namespace Booster.WeChat.Services.Http
         public async Task RefreshToken_Should_Throw_If_errcode_Not_Zero()
         {
             var httpClient = MockHttpClient.InstanceWithFailureResponse;
-            var weChatClient = new DefaultWeChatHttpClient(httpClient);
+            var weChatClient = new DefaultWeChatHttpClient(httpClient, NullLogger<DefaultWeChatHttpClient>.Instance);
             var appId = "AppId";
             var refreshToken = "RefreshToken";
 
@@ -119,7 +124,7 @@ namespace Booster.WeChat.Services.Http
         public async Task RefreshToken_Should_Throw_If_Argument_Is_Null()
         {
             var httpClient = MockHttpClient.InstanceWithSuccessResponse;
-            var weChatClient = new DefaultWeChatHttpClient(httpClient);
+            var weChatClient = new DefaultWeChatHttpClient(httpClient, NullLogger<DefaultWeChatHttpClient>.Instance);
             var appId = "AppId";
             var nullAppId = (string)null!;
             var whiteSpaceAppId = " ";
@@ -137,7 +142,7 @@ namespace Booster.WeChat.Services.Http
         public async Task RefreshToken_Should_Success()
         {
             var httpClient = MockHttpClient.InstanceWithSuccessResponse;
-            var weChatClient = new DefaultWeChatHttpClient(httpClient);
+            var weChatClient = new DefaultWeChatHttpClient(httpClient, NullLogger<DefaultWeChatHttpClient>.Instance);
             var appId = "AppId";
             var refreshToken = "RefreshToken";
 

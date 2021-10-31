@@ -1,25 +1,32 @@
-﻿using System.Text.Json.Serialization;
+﻿namespace Booster.WeChat.Models.Identity;
 
-namespace Booster.WeChat.Models.Identity;
-
-// TODO: JsonPropertyNameAttribute Shoule Be Remove 
 public record Token
 {
-    [JsonPropertyName("access_token")]
-    public string AccessToken { get; set; } = null!;
+    public string AccessToken { get; init; } 
 
-    [JsonPropertyName("expires_in")]
-    public int ExpiresIn { get; set; }
+    public int ExpiresIn { get; init; }
 
-    [JsonPropertyName("issued_at")]
-    public long IssuedAt { get; set; }
+    public long IssuedAt { get; init; }
 
-    [JsonPropertyName("refresh_token")]
-    public string RefreshToken { get; set; } = null!;
+    public string RefreshToken { get; init; }
 
-    [JsonPropertyName("openid")]
-    public string OpenId { get; set; } = null!;
+    public string OpenId { get; init; }
 
-    [JsonPropertyName("scope")]
-    public string Scope { get; set; } = null!;
+    public string Scope { get; init; }
+
+    public Token(
+        string accessToken,
+        int expiresIn,
+        long issuedAt,
+        string refreshToken,
+        string openId,
+        string scope)
+    {
+        AccessToken = accessToken;
+        ExpiresIn = expiresIn;
+        IssuedAt = issuedAt;
+        RefreshToken = refreshToken;
+        OpenId = openId;
+        Scope = scope;
+    }
 }
