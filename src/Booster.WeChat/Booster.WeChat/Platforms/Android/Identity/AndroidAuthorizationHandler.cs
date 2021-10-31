@@ -7,7 +7,7 @@ using Booster.WeChat.Services.Identity;
 
 namespace Booster.WeChat.Platforms.Android.Identity;
 
-internal class AndroidAuthorizationHandler : IAuthorizationHandler
+public class AndroidAuthorizationHandler : IAuthorizationHandler
 {
     private readonly IWXAPI _wxApi;
 
