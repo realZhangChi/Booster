@@ -8,7 +8,7 @@ on:
 
 jobs:
   build-test:
-    runs-on: macos-11
+    runs-on: windows-latest
 
     steps:
       - uses: actions/checkout@v2
@@ -36,4 +36,4 @@ jobs:
 
       - name: unit test
         shell: pwsh
-        run: ./script/net6.0/test.ps1
+        run: ./unit-test.ps1

@@ -51,6 +51,10 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <PackageReference Include="Booster.WeChat" Version="1.0.0-alpha.3" />
+	</ItemGroup>
+
+	<ItemGroup>
 	  <ProjectReference Include="..\..\src\Booster.WeChat\Booster.WeChat\Booster.WeChat.csproj" />
 	</ItemGroup>
 

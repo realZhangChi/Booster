@@ -5,7 +5,7 @@ Get-ChildItem ./test/**/*.UnitTest.csproj -recurse | ForEach-Object -Process{
 	{
 		$unitTestAbsPath = $_.Directory
 		Set-Location $unitTestAbsPath
-		dotnet test --no-build --no-restore
+		dotnet test
 		if (-Not $?) {
 			Write-Host ("Test failed for the project: " + $_.Name)
 			Set-Location $rootPath

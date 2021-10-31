@@ -18,7 +18,7 @@ namespace Booster.WeChat.DeviceTest.Services.Identity
             var _userInfoStore = new DefaultUserInfoStore();
             var token = await _userInfoStore.GetOrNullAsync();
 
-            token.ShouldNotBeNull();
+            token.ShouldBeNull();
         }
 
         [Fact]

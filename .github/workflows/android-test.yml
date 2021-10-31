@@ -33,7 +33,7 @@ jobs:
 
       - name: build
         shell: pwsh
-        run: ./script/android/build.ps1
+        run: ./script/device-tests/build-android.ps1
 
       - uses: actions/upload-artifact@v2
         name: upload test results
@@ -72,7 +72,7 @@ jobs:
           arch: x86_64
           profile: Nexus 6
           target: playstore
-          script: pwsh ./script/android/test.ps1
+          script: pwsh ./script/device-tests/test-android.ps1
 
       - uses: actions/upload-artifact@v2
         name: upload test results
