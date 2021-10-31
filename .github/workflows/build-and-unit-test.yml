@@ -36,4 +36,4 @@ jobs:
 
       - name: unit test
         shell: pwsh
-        run: ./unit-test.ps1
+        run: ./script/unit-test.ps1
