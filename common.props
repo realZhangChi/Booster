@@ -2,7 +2,7 @@
   <PropertyGroup>
     <NoWarn>$(NoWarn);CS1591</NoWarn>
     <!--<PackageIconUrl></PackageIconUrl>-->
-    <Version>1.0.0-alpha.4</Version>
+    <Version>1.0.0-alpha.5</Version>
     <PackageProjectUrl>https://github.com/realZhangChi/Booster</PackageProjectUrl>
     <PackageLicenseExpression>LGPL-3.0-only</PackageLicenseExpression>
     <RepositoryType>git</RepositoryType>
