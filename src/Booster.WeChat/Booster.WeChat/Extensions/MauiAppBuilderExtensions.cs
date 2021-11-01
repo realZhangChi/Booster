@@ -14,6 +14,7 @@ using Microsoft.Maui.Hosting;
 using Booster.WeChat.Platforms.Android;
 using Booster.WeChat.Platforms.Android.Identity;
 using Booster.WeChat.Platforms.Android.Share;
+using Booster.WeChat.Platforms.Android.WeChatApi;
 
 using Com.Tencent.MM.Opensdk.Openapi;
 
@@ -55,6 +56,10 @@ public static class MauiAppBuilderExtensions
         builder.Services.AddTransient<IShareHandler, DefaultShareHandler>();
 
 #if __ANDROID__
+        builder.Services.AddTransient<IResponseHandler, DefaultResponseHandler>();
+        builder.Services.AddTransient<IResponseHandler, AuthorizationHandler>();
+        builder.Services.AddTransient<IHandlerResolver, DefaultHandlerResolver>();
+
         builder.Services.AddTransient(provider =>
         {
             var api = WXAPIFactory.CreateWXAPI(Application.Context, mobileOptions.AppId, true);

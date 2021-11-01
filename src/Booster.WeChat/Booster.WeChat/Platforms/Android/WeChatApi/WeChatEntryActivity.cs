@@ -1,19 +1,12 @@
 ﻿using System;
-using System.Threading.Tasks;
 
 using Android.Content;
 using Android.OS;
 
-using Com.Tencent.MM.Opensdk.Constants;
 using Com.Tencent.MM.Opensdk.Modelbase;
-using Com.Tencent.MM.Opensdk.Modelmsg;
 using Com.Tencent.MM.Opensdk.Openapi;
 
-using Booster.WeChat.Extensions;
-using Booster.WeChat.Services.Identity;
-
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Options;
 using Microsoft.Maui;
 
 namespace Booster.WeChat.Platforms.Android.WeChatApi;
@@ -21,12 +14,10 @@ namespace Booster.WeChat.Platforms.Android.WeChatApi;
 public abstract class WeChatEntryActivity : MauiAppCompatActivity, IWXAPIEventHandler
 {
     private readonly IWXAPI _wxApi;
-    private readonly WeChatMobileOptions _options;
 
     public WeChatEntryActivity()
     {
         _wxApi = MauiApplication.Current.Services.GetRequiredService<IWXAPI>();
-        _options = MauiApplication.Current.Services.GetRequiredService<IOptions<WeChatMobileOptions>>().Value;
     }
 
     protected override void OnCreate(Bundle? savedInstanceState)
@@ -45,7 +36,6 @@ public abstract class WeChatEntryActivity : MauiAppCompatActivity, IWXAPIEventHa
         throw new NotImplementedException();
     }
 
-    // TODO: use provider pattern
     public async void OnResp(BaseResp? response)
     {
         if (response is null)
@@ -53,33 +43,15 @@ public abstract class WeChatEntryActivity : MauiAppCompatActivity, IWXAPIEventHa
             return;
         }
 
-        switch (response?.Err_Code)
+        if (response.Err_Code is BaseResp.IErrCode.ErrOk)
         {
-            case BaseResp.IErrCode.ErrOk:
-                {
-                    switch (response.Type)
-                    {
-                        case IConstantsAPI.CommandSendauth:
-                            {
-                                if (response is SendAuth.Resp authResponse)
-                                {
-                                    await AuthorizedAsync(authResponse.Code ?? string.Empty);
-                                }
-                                break;
-                            }
-                        default:
-                            throw new NotImplementedException();
-                    }
-                    break;
-                }
-            default:
-                throw new NotImplementedException();
+            var handlerResolver = MauiApplication.Current.Services.GetRequiredService<IHandlerResolver>();
+            var handler = await handlerResolver.ResolveAsync(response.Type);
+            await handler.HandleAsync(response);
         }
-    }
-
-    protected virtual Task AuthorizedAsync(string code)
-    {
-        var authService = MauiApplication.Current.Services.GetRequiredService<IAuthorizationService>();
-        return authService.AuthorizeCallbackAsync(_options.AppId, _options.AppSecret, code);
+        else
+        {
+            throw new NotImplementedException();
+        }
     }
 }
