@@ -1,4 +1,7 @@
 ﻿using Booster.WeChat.Services.Http;
+
+using Microsoft.Maui.Controls;
+
 using System;
 using System.Threading.Tasks;
 
@@ -37,7 +40,7 @@ public class DefaultAuthorizationService : IAuthorizationService
             throw new ArgumentNullException(nameof(code));
 
         var token = await _weChatHttpClient.GetTokenAsync(appId, appSecret, code);
-        if(token is null)
+        if (token is null)
         {
             // TODO: handle error
             return;
@@ -51,5 +54,7 @@ public class DefaultAuthorizationService : IAuthorizationService
             return;
         }
         await _userInfoStore.SetAsync(userInfo);
+
+        MessagingCenter.Send((IAuthorizationHandler)this, "Authorized!");
     }
 }
