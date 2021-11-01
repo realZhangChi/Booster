@@ -28,6 +28,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\Booster.WeChat.SourceGenerator\Booster.WeChat.SourceGenerator.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false"/>
+	  <!--<ProjectReference Include="..\Booster.WeChat.SourceGenerator\Booster.WeChat.SourceGenerator.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false"/>-->
 	</ItemGroup>
 </Project>

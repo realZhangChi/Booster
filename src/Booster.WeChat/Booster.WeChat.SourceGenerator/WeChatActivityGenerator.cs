@@ -20,6 +20,10 @@ namespace Booster.WeChat.SourceGenerator
             if (!context.AnalyzerConfigOptions.GlobalOptions.TryGetValue("build_property.TargetFramework", out var targetFramework))
                 return;
 
+            if (!targetFramework.Contains("-android", StringComparison.OrdinalIgnoreCase))
+            {
+                return;
+            }
             Context = context;
             TargetFramework = targetFramework;
 
