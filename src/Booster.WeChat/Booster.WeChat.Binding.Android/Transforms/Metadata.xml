@@ -8,4 +8,5 @@
   -->
 	<attr path="/api/package[@name='com.tencent.mm.opensdk.modelbase']/class[@name='BaseResp']/field[@name='errCode']" name="managedName">Err_Code</attr>
 	<attr path="/api/package[@name='com.tencent.mm.opensdk.modelmsg']/class[@name='WXMediaMessage']/field[@name='mediaObject']" name="managedName">Media_Object</attr>
+
 </metadata>

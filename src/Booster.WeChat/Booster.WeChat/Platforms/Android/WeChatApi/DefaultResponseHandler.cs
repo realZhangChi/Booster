@@ -7,7 +7,7 @@ namespace Booster.WeChat.Platforms.Android.WeChatApi
 {
     public class DefaultResponseHandler : IResponseHandler
     {
-        public int ResponseType => IConstantsAPI.CommandUnknown;
+        public int ResponseType => ConstantsAPI.CommandUnknown;
 
         public Task HandleAsync(BaseResp response)
         {

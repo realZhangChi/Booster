@@ -14,7 +14,7 @@ namespace Booster.WeChat.Platforms.Android.WeChatApi
 {
     public class AuthorizationHandler : IResponseHandler
     {
-        public int ResponseType => IConstantsAPI.CommandSendauth;
+        public int ResponseType => ConstantsAPI.CommandSendauth;
 
         private readonly IAuthorizationService _authorizationService;
         private readonly WeChatMobileOptions _options;

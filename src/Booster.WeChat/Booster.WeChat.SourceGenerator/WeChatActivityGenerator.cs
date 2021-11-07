@@ -95,7 +95,7 @@ public class WeChatEntryActivity : MauiAppCompatActivity, IWXAPIEventHandler
             return;
         }
 
-        if (response.Err_Code is BaseResp.IErrCode.ErrOk)
+        if (response.Err_Code is BaseResp.ErrCode.ErrOk)
         {
             var handlerResolver = MauiApplication.Current.Services.GetRequiredService<IHandlerResolver>();
             var handler = await handlerResolver.ResolveAsync(response.Type);
