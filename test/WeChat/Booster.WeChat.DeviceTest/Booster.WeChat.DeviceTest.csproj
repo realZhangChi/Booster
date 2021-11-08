@@ -92,8 +92,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\..\..\src\Booster.WeChat\Booster.WeChat\Booster.WeChat.csproj" />
 	  <ProjectReference Include="..\..\Booster.DeviceTest.Runner\Booster.DeviceTest.Runner.csproj" />
 	</ItemGroup>
-	
 </Project>
