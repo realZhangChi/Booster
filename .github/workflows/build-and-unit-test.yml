@@ -6,22 +6,17 @@ on:
   pull_request:
     branches: [main]
 
-env:
-  DOTNETVERSION: 6.0.100-rc.2.21505.57
-
 jobs:
   build-test:
-    runs-on: windows-latest
+    runs-on: macos-11
 
     steps:
       - uses: actions/checkout@v2
 
-      - name: Install Visual Studio Preview
-        shell: pwsh
-        run: ./script/install-vs.ps1
-
-      - name: Add msbuild to PATH
-        uses: microsoft/setup-msbuild@v1.1
+      - name: setup dotnet 6.0
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: "6.0.x"
 
       - name: maui-check
         shell: pwsh
@@ -31,8 +26,8 @@ jobs:
 
       - name: build
         shell: pwsh
-        run: ./script/build/build.ps1
+        run: dotnet build
 
       - name: unit test
         shell: pwsh
-        run: ./script/build/unit-test.ps1
+        run: ./script/unit-test.ps1
