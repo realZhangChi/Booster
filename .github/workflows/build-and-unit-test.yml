@@ -18,11 +18,11 @@ jobs:
         with:
           dotnet-version: "6.0.x"
 
-      - name: maui-check
-        shell: pwsh
-        run: |
-          & dotnet tool install -g Redth.Net.Maui.Check
-          & maui-check --ci --non-interactive --fix --force-dotnet --skip vswin --skip xcode --skip edgewebview2 --skip androidemulator
+      # - name: maui-check
+      #   shell: pwsh
+      #   run: |
+      #     & dotnet tool install -g Redth.Net.Maui.Check
+      #     & maui-check --ci --non-interactive --fix --force-dotnet --skip vswin --skip xcode --skip edgewebview2 --skip androidemulator
 
       - name: build
         shell: pwsh
