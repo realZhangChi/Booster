@@ -56,9 +56,10 @@ public static class MauiAppBuilderExtensions
         builder.Services.AddTransient<IShareHandler, DefaultShareHandler>();
 
 #if __ANDROID__
-        builder.Services.AddTransient<IResponseHandler, DefaultResponseHandler>();
-        builder.Services.AddTransient<IResponseHandler, AuthorizationHandler>();
-        builder.Services.AddTransient<IHandlerResolver, DefaultHandlerResolver>();
+        builder.Services.AddTransient<IResponseProcessor, DefaultResponseHandler>();
+        builder.Services.AddTransient<IResponseProcessor, AuthorizationResponseProcessor>();
+        builder.Services.AddTransient<IResponseProcessorResolver, DefaultResponseResponseProcessorResolver>();
+        builder.Services.AddTransient<IResponseManager, DefaultResponseManager>();
 
         builder.Services.AddTransient(provider =>
         {

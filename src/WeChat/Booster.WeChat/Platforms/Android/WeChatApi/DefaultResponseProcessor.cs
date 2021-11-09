@@ -5,7 +5,7 @@ using Com.Tencent.MM.Opensdk.Modelbase;
 
 namespace Booster.WeChat.Platforms.Android.WeChatApi
 {
-    public class DefaultResponseHandler : IResponseHandler
+    public class DefaultResponseHandler : IResponseProcessor
     {
         public int ResponseType => IConstantsAPI.CommandUnknown;
 

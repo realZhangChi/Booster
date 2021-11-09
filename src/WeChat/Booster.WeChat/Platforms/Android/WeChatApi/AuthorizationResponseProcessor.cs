@@ -12,7 +12,7 @@ using Microsoft.Extensions.Options;
 
 namespace Booster.WeChat.Platforms.Android.WeChatApi
 {
-    public class AuthorizationHandler : IResponseHandler
+    public class AuthorizationResponseProcessor : ResponseProcessorBase, IResponseProcessor
     {
         public int ResponseType => IConstantsAPI.CommandSendauth;
 
@@ -20,7 +20,7 @@ namespace Booster.WeChat.Platforms.Android.WeChatApi
         private readonly WeChatMobileOptions _options;
 
 
-        public AuthorizationHandler(
+        public AuthorizationResponseProcessor(
             IAuthorizationService authorizationService,
             IOptions<WeChatMobileOptions> options)
         {
@@ -30,6 +30,8 @@ namespace Booster.WeChat.Platforms.Android.WeChatApi
 
         public Task HandleAsync(BaseResp response)
         {
+            EnsureSuccessResponse(response);
+
             if (response is not SendAuth.Resp authResponse)
             {
                 throw new ArgumentException("response is not SendAuth.Resp!");

@@ -8,6 +8,7 @@
 		<UseMaui>true</UseMaui>
 		<SingleProject>true</SingleProject>
 		<EnablePreviewMsixTooling>true</EnablePreviewMsixTooling>
+		<Nullable>enable</Nullable>
 
 		<!-- Display name -->
 		<ApplicationTitle>Booster.Sample</ApplicationTitle>
@@ -51,7 +52,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <PackageReference Include="Booster.WeChat" Version="1.0.0-alpha.8" />
+	  <PackageReference Include="Booster.WeChat" Version="1.0.0-alpha.10" />
 	</ItemGroup>
 
 	<PropertyGroup Condition="$(TargetFramework.Contains('-windows'))">

@@ -4,10 +4,10 @@ using Com.Tencent.MM.Opensdk.Modelbase;
 
 namespace Booster.WeChat.Platforms.Android.WeChatApi
 {
-    public interface IResponseHandler
+    public interface IResponseProcessor
     {
         public int ResponseType { get; }
 
-        Task HandleAsync(BaseResp response);
+        Task HandleAsync(BaseResp? response);
     }
 }
