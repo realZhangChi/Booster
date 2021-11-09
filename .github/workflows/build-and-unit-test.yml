@@ -25,7 +25,7 @@ jobs:
       #     & maui-check --ci --non-interactive --fix --force-dotnet --skip vswin --skip xcode --skip edgewebview2 --skip androidemulator
 
       - name: install workload
-        shell: pash
+        shell: pwsh
         run: |
           dotnet workload install maui
           dotnet workload install android-aot
