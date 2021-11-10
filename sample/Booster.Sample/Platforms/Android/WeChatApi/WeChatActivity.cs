@@ -41,7 +41,7 @@ namespace Booster.Sample.Platforms.Android.WeChatApi
 
         public async void OnResp(BaseResp? response)
         {
-            var processorManager = MauiApplication.Current.Services.GetRequiredService<IResponseProcessorManager>();
+            var processorManager = MauiApplication.Current.Services.GetRequiredService<IResponseManager>();
             await processorManager.HandleAsync(response);
         }
     }

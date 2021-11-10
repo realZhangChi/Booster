@@ -15,7 +15,6 @@
 		<SupportedOSPlatformVersion Condition="'$(TargetFramework)' == 'net6.0-android'">21.0</SupportedOSPlatformVersion>
 		<SupportedOSPlatformVersion Condition="$(TargetFramework.Contains('-windows'))">10.0.18362.0</SupportedOSPlatformVersion>
 
-		<TargetsForTfmSpecificBuildOutput>$(TargetsForTfmSpecificBuildOutput);CopyProjectReferencesToPackage</TargetsForTfmSpecificBuildOutput>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -26,13 +25,6 @@
 	</ItemGroup>
 
 	<ItemGroup Condition="$(TargetFramework.Contains('-android'))">
-		<ProjectReference Include="..\Booster.WeChat.Binding.Android\Booster.WeChat.Binding.Android.csproj">
-			<PrivateAssets>all</PrivateAssets>
-		</ProjectReference>
+		<ProjectReference Include="..\Booster.WeChat.Binding.Android\Booster.WeChat.Binding.Android.csproj" />
 	</ItemGroup>
-	<Target Name="CopyProjectReferencesToPackage" DependsOnTargets="ResolveReferences">
-		<ItemGroup>
-			<BuildOutputInPackage Include="@(ReferenceCopyLocalPaths-&gt;WithMetadataValue('ReferenceSourceTarget', 'ProjectReference')-&gt;WithMetadataValue('PrivateAssets', 'all'))" />
-		</ItemGroup>
-	</Target>
 </Project>

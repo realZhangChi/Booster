@@ -51,8 +51,16 @@
 		<PackageReference Include="Microsoft.Graphics.Win2D" Version="1.0.0.29-preview3" />
 	</ItemGroup>
 
+	<!-- <ItemGroup>
+		<ProjectReference Include="..\..\src\WeChat\Booster.WeChat\Booster.WeChat.csproj" />
+	</ItemGroup>
+
+	<ItemGroup Condition="'$(TargetFramework)' == 'net6.0-android'">
+		<ProjectReference Include="..\..\src\WeChat\Booster.WeChat.Binding.Android\Booster.WeChat.Binding.Android.csproj" />
+	</ItemGroup> -->
+
 	<ItemGroup>
-	  <PackageReference Include="Booster.WeChat" Version="1.0.0-alpha.10" />
+	  <PackageReference Include="Booster.WeChat" Version="1.0.0-alpha.11" />
 	</ItemGroup>
 
 	<PropertyGroup Condition="$(TargetFramework.Contains('-windows'))">
