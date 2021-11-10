@@ -1,11 +1,7 @@
 <Project>
   <PropertyGroup>
     <NoWarn>$(NoWarn);CS1591</NoWarn>
-    <PublishRepositoryUrl>true</PublishRepositoryUrl>
-    <EmbedUntrackedSources>true</EmbedUntrackedSources>
-    <IncludeSymbols>true</IncludeSymbols>
-    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
-    <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <NuspecProperties>version=1.0.0-alpha.13</NuspecProperties>
   </PropertyGroup>
   <ItemGroup>

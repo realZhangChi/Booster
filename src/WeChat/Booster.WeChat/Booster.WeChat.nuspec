@@ -57,6 +57,7 @@
   <files>
     <file src="bin\Release\net6.0\Booster.WeChat.dll" target="lib\net6.0"/>
     <file src="bin\Release\net6.0\Booster.WeChat.pdb" target="lib\net6.0"/>
+    <file src="bin\Release\net6.0\Booster.WeChat.xml" target="lib\net6.0"/>
 
     <file src="bin\Release\net6.0-android\Booster.WeChat.dll" target="lib\net6.0-android31.0"/>
     <file src="bin\Release\net6.0-android\Booster.WeChat.pdb" target="lib\net6.0-android31.0"/>
@@ -69,8 +70,10 @@
 
     <file src="bin\Release\net6.0\Booster.WeChat.dll" target="lib\net6.0-ios15.0"/>
     <file src="bin\Release\net6.0\Booster.WeChat.pdb" target="lib\net6.0-ios15.0"/>
+    <file src="bin\Release\net6.0\Booster.WeChat.xml" target="lib\net6.0-ios15.0"/>
 
     <file src="bin\Release\net6.0\Booster.WeChat.dll" target="lib\net6.0-maccatalyst15.0"/>
     <file src="bin\Release\net6.0\Booster.WeChat.pdb" target="lib\net6.0-maccatalyst15.0"/>
+    <file src="bin\Release\net6.0\Booster.WeChat.xml" target="lib\net6.0-maccatalyst15.0"/>
   </files>
 </package>
