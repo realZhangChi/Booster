@@ -8,11 +8,11 @@ using Microsoft.Maui.Controls;
 
 namespace Booster.WeChat.Services.Identity;
 
-public class DefaultAuthorizationHandler : IAuthorizationHandler
+public class DefaultPlatformAuthorizer : IPlatformAuthorizer
 {
     private readonly IServiceProvider _serviceProvider;
 
-    public DefaultAuthorizationHandler(IServiceProvider serviceProvider)
+    public DefaultPlatformAuthorizer(IServiceProvider serviceProvider)
     {
         _serviceProvider = serviceProvider;
     }

@@ -1,12 +1,11 @@
 ﻿using Booster.WeChat.Models.Identity;
 using Booster.WeChat.Services.Identity;
-using System.Threading.Tasks;
 
-namespace Booster.WeChat.Mocks
+namespace Booster.WeChat.Test.Mock
 {
-    internal class MockTokenStore : ITokenStore
+    public class MockTokenStore : ITokenStore
     {
-        private static Token? _token = null;
+        private static Token? _token;
 
         public Task<Token?> GetOrNullAsync() => Task.FromResult(_token);
 

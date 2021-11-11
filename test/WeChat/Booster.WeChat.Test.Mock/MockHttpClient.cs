@@ -1,14 +1,7 @@
-﻿using Booster.WeChat.Models.Identity;
-using Booster.WeChat.Services.Http;
-
+﻿using Booster.WeChat.Services.Http;
 using RichardSzalay.MockHttp;
 
-using System;
-using System.CodeDom;
-using System.Net.Http;
-using System.Text.Json;
-
-namespace Booster.WeChat.Mocks
+namespace Booster.WeChat.Test.Mock
 {
     public class MockHttpClient
     {

@@ -1,4 +1,5 @@
-﻿using Booster.WeChat.Mocks;
+﻿
+using Booster.WeChat.Test.Mock;
 
 using Microsoft.Extensions.Logging.Abstractions;
 
@@ -84,14 +85,14 @@ namespace Booster.WeChat.Services.Http
             var httpClient = MockHttpClient.InstanceWithSuccessResponse;
             var weChatClient = new DefaultWeChatHttpClient(httpClient, NullLogger<DefaultWeChatHttpClient>.Instance);
             var accessToken = "AccessToken";
-            var nullaccessToken = (string)null!;
-            var whiteSpaceaccessToken = " ";
+            var nullAccessToken = (string)null!;
+            var whiteSpaceAccessToken = " ";
             var openId = "OpenId";
             var nullOpenId = (string)null!;
             var whiteSpaceOpenId = " ";
 
-            await Assert.ThrowsAsync<ArgumentNullException>(() => weChatClient.GetUserInfoAsync(nullaccessToken, openId));
-            await Assert.ThrowsAsync<ArgumentNullException>(() => weChatClient.GetUserInfoAsync(whiteSpaceaccessToken, openId));
+            await Assert.ThrowsAsync<ArgumentNullException>(() => weChatClient.GetUserInfoAsync(nullAccessToken, openId));
+            await Assert.ThrowsAsync<ArgumentNullException>(() => weChatClient.GetUserInfoAsync(whiteSpaceAccessToken, openId));
             await Assert.ThrowsAsync<ArgumentNullException>(() => weChatClient.GetUserInfoAsync(accessToken, nullOpenId));
             await Assert.ThrowsAsync<ArgumentNullException>(() => weChatClient.GetUserInfoAsync(accessToken, whiteSpaceOpenId));
         }

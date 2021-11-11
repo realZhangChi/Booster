@@ -1,10 +1,9 @@
 ﻿using Booster.WeChat.Models.Identity;
 using Booster.WeChat.Services.Identity;
-using System.Threading.Tasks;
 
-namespace Booster.WeChat.Mocks
+namespace Booster.WeChat.Test.Mock
 {
-    internal class MockUserInfoStore : IUserInfoStore
+    public class MockUserInfoStore : IUserInfoStore
     {
         private static UserInfo? _userInfo = null;
 

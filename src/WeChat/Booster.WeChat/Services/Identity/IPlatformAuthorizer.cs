@@ -2,7 +2,7 @@
 
 namespace Booster.WeChat.Services.Identity;
 
-public interface IAuthorizationHandler
+public interface IPlatformAuthorizer
 {
     Task<bool> AuthorizeAsync();
 }

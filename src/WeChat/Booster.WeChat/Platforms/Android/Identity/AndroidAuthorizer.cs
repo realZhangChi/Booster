@@ -7,11 +7,11 @@ using Booster.WeChat.Services.Identity;
 
 namespace Booster.WeChat.Platforms.Android.Identity;
 
-public class AndroidAuthorizationHandler : IAuthorizationHandler
+public class AndroidAuthorizer : IPlatformAuthorizer
 {
     private readonly IWXAPI _wxApi;
 
-    public AndroidAuthorizationHandler(IWXAPI wxApi)
+    public AndroidAuthorizer(IWXAPI wxApi)
     {
         _wxApi = wxApi;
     }

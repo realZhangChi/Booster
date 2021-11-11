@@ -23,6 +23,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Booster.WeChat", "src\WeCha
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Booster.WeChat.SourceGenerator", "src\WeChat\Booster.WeChat.SourceGenerator\Booster.WeChat.SourceGenerator.csproj", "{50BABD77-FAA8-44D6-BB96-8AE50F97A2A5}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Booster.WeChat.SourceGenerator", "src\WeChat\Booster.WeChat.SourceGenerator\Booster.WeChat.SourceGenerator.csproj", "{50BABD77-FAA8-44D6-BB96-8AE50F97A2A5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Booster.WeChat.Test.Mock", "test\WeChat\Booster.WeChat.Test.Mock\Booster.WeChat.Test.Mock.csproj", "{0E157C09-3082-4680-89D5-AF61C2626A4C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -55,6 +59,10 @@ Global
 		{50BABD77-FAA8-44D6-BB96-8AE50F97A2A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{50BABD77-FAA8-44D6-BB96-8AE50F97A2A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{50BABD77-FAA8-44D6-BB96-8AE50F97A2A5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0E157C09-3082-4680-89D5-AF61C2626A4C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0E157C09-3082-4680-89D5-AF61C2626A4C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0E157C09-3082-4680-89D5-AF61C2626A4C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0E157C09-3082-4680-89D5-AF61C2626A4C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -68,6 +76,7 @@ Global
 		{FA982D89-FCA7-4102-9348-9A438E160218} = {C732828A-D1A6-4430-AE8A-0D8FABB46101}
 		{EF056591-D782-4617-912E-AD986AD6B3BF} = {C732828A-D1A6-4430-AE8A-0D8FABB46101}
 		{50BABD77-FAA8-44D6-BB96-8AE50F97A2A5} = {C732828A-D1A6-4430-AE8A-0D8FABB46101}
+		{0E157C09-3082-4680-89D5-AF61C2626A4C} = {E8D0F965-DB11-45F9-A9D9-689518BFF281}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {33B25A3B-2AB6-446B-90AC-D7D0F63B969E}
