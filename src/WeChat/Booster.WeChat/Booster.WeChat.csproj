@@ -29,4 +29,8 @@
 			<PrivateAssets>all</PrivateAssets>
 		</ProjectReference>
 	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\Booster.WeChat.SourceGenerator\Booster.WeChat.SourceGenerator.csproj" />
+	</ItemGroup>
 </Project>

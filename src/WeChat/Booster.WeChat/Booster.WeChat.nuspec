@@ -55,10 +55,13 @@
     </dependencies>
   </metadata>
   <files>
+    <!-- net6.0 -->
     <file src="bin\Release\net6.0\Booster.WeChat.dll" target="lib\net6.0"/>
     <file src="bin\Release\net6.0\Booster.WeChat.pdb" target="lib\net6.0"/>
     <file src="bin\Release\net6.0\Booster.WeChat.xml" target="lib\net6.0"/>
+    <file src="bin\Release\net6.0\Booster.WeChat.SourceGenerator.dll" target="lib\net6.0"/>
 
+    <!-- net6.0-android31.0 -->
     <file src="bin\Release\net6.0-android\Booster.WeChat.dll" target="lib\net6.0-android31.0"/>
     <file src="bin\Release\net6.0-android\Booster.WeChat.pdb" target="lib\net6.0-android31.0"/>
     <file src="bin\Release\net6.0-android\Booster.WeChat.xml" target="lib\net6.0-android31.0"/>
@@ -68,12 +71,17 @@
     <file src="bin\Release\net6.0-android\Booster.WeChat.Binding.Android.xml" target="lib\net6.0-android31.0"/>
     <file src="bin\Release\net6.0-android\wechat-sdk-android-without-mta-6.8.0.aar" target="lib\net6.0-android31.0"/>
 
+    <!-- net6.0-ios15.0 -->
     <file src="bin\Release\net6.0\Booster.WeChat.dll" target="lib\net6.0-ios15.0"/>
     <file src="bin\Release\net6.0\Booster.WeChat.pdb" target="lib\net6.0-ios15.0"/>
     <file src="bin\Release\net6.0\Booster.WeChat.xml" target="lib\net6.0-ios15.0"/>
 
+    <!-- net6.0-maccatalyst15.0 -->
     <file src="bin\Release\net6.0\Booster.WeChat.dll" target="lib\net6.0-maccatalyst15.0"/>
     <file src="bin\Release\net6.0\Booster.WeChat.pdb" target="lib\net6.0-maccatalyst15.0"/>
     <file src="bin\Release\net6.0\Booster.WeChat.xml" target="lib\net6.0-maccatalyst15.0"/>
+
+    <!-- analyzers -->
+    <file src="bin\Release\net6.0\Booster.WeChat.SourceGenerator.dll" target="analyzers/dotnet/cs"/>
   </files>
 </package>
