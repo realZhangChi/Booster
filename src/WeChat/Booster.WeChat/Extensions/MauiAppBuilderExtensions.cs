@@ -47,7 +47,7 @@ public static class MauiAppBuilderExtensions
 
         builder.Services.AddTransient<IWeChatHttpClient, DefaultWeChatHttpClient>();
 
-        builder.Services.AddTransient<IAuthorizationHandler, DefaultAuthorizationHandler>();
+        builder.Services.AddTransient<IPlatformAuthorizer, DefaultPlatformAuthorizer>();
         builder.Services.AddTransient<IAuthorizationService, DefaultAuthorizationService>();
         builder.Services.AddTransient<ITokenStore, DefaultTokenStore>();
         builder.Services.AddTransient<IUserInfoStore, DefaultUserInfoStore>();
@@ -75,8 +75,8 @@ public static class MauiAppBuilderExtensions
 
         builder.Services.Replace(
             new ServiceDescriptor(
-                typeof(IAuthorizationHandler),
-                typeof(AndroidAuthorizationHandler),
+                typeof(IPlatformAuthorizer),
+                typeof(AndroidAuthorizer),
                 ServiceLifetime.Transient)
             );
             

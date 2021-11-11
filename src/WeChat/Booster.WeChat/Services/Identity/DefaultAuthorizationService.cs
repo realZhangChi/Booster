@@ -9,13 +9,13 @@ namespace Booster.WeChat.Services.Identity;
 
 public class DefaultAuthorizationService : IAuthorizationService
 {
-    private readonly IAuthorizationHandler _handler;
+    private readonly IPlatformAuthorizer _handler;
     private readonly ITokenStore _tokenStore;
     private readonly IUserInfoStore _userInfoStore;
     private readonly IWeChatHttpClient _weChatHttpClient;
 
     public DefaultAuthorizationService(
-        IAuthorizationHandler handler,
+        IPlatformAuthorizer handler,
         ITokenStore tokenStore,
         IUserInfoStore userInfoStore,
         IWeChatHttpClient weChatHttpClient)
@@ -39,22 +39,21 @@ public class DefaultAuthorizationService : IAuthorizationService
         if (string.IsNullOrWhiteSpace(code))
             throw new ArgumentNullException(nameof(code));
 
+
         var token = await _weChatHttpClient.GetTokenAsync(appId, appSecret, code);
         if (token is null)
         {
-            // TODO: handle error
+            MessagingCenter.Send((IAuthorizationService)this, AuthorizationFailedEvent.Name);
             return;
         }
         await _tokenStore.SetAsync(token);
 
         var userInfo = await _weChatHttpClient.GetUserInfoAsync(token.AccessToken, token.OpenId);
-        if (userInfo is null)
+        if (userInfo is not null)
         {
-            // TODO: handle error
-            return;
+            await _userInfoStore.SetAsync(userInfo);
         }
-        await _userInfoStore.SetAsync(userInfo);
 
-        MessagingCenter.Send((IAuthorizationHandler)this, "Authorized!");
+        MessagingCenter.Send((IAuthorizationService)this, AuthorizationSuccessEvent.Name);
     }
 }

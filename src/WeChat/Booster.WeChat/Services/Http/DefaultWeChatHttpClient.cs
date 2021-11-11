@@ -84,13 +84,13 @@ public class DefaultWeChatHttpClient : IWeChatHttpClient
         using var jsonDoc = JsonDocument.Parse(weChatContent);
 
         var hasErrorCode = jsonDoc.RootElement.TryGetProperty("errcode", out var errorCodeElement);
-        if (hasErrorCode)
+        if (!hasErrorCode)
+            return;
+
+        var errorCode = errorCodeElement.GetInt32();
+        if (errorCode != 0)
         {
-            var errorCode = errorCodeElement.GetInt32();
-            if (errorCode != 0)
-            {
-                throw new HttpRequestException(jsonDoc.RootElement.ToString());
-            }
+            throw new HttpRequestException(jsonDoc.RootElement.ToString());
         }
     }
 
