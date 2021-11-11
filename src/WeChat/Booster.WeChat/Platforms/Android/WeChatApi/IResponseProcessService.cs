@@ -8,8 +8,8 @@ using System.Threading.Tasks;
 
 namespace Booster.WeChat.Platforms.Android.WeChatApi
 {
-    public interface IResponseManager
+    public interface IResponseProcessService
     {
-        Task HandleAsync(BaseResp? response);
+        Task ProcessResponseAsync(BaseResp? response);
     }
 }

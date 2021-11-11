@@ -19,7 +19,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Booster.WeChat.DeviceTest",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Booster.WeChat.Binding.Android", "src\WeChat\Booster.WeChat.Binding.Android\Booster.WeChat.Binding.Android.csproj", "{FA982D89-FCA7-4102-9348-9A438E160218}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Booster.WeChat", "src\WeChat\Booster.WeChat\Booster.WeChat.csproj", "{EF056591-D782-4617-912E-AD986AD6B3BF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Booster.WeChat", "src\WeChat\Booster.WeChat\Booster.WeChat.csproj", "{EF056591-D782-4617-912E-AD986AD6B3BF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Booster.WeChat.SourceGenerator", "src\WeChat\Booster.WeChat.SourceGenerator\Booster.WeChat.SourceGenerator.csproj", "{50BABD77-FAA8-44D6-BB96-8AE50F97A2A5}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Booster.WeChat.SourceGenerator", "src\WeChat\Booster.WeChat.SourceGenerator\Booster.WeChat.SourceGenerator.csproj", "{50BABD77-FAA8-44D6-BB96-8AE50F97A2A5}"
 EndProject
