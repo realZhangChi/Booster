@@ -9,7 +9,7 @@ namespace Booster.WeChat.Platforms.Android.WeChatApi
     {
         public int ResponseType => IConstantsAPI.CommandUnknown;
 
-        public Task HandleAsync(BaseResp response)
+        public Task ProcessResponseAsync(BaseResp? response)
         {
             return Task.CompletedTask;
         }

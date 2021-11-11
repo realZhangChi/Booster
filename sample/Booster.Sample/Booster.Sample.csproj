@@ -40,6 +40,8 @@
 
 		<!-- Custom Fonts -->
 		<MauiFont Include="Resources\Fonts\*" />
+
+		<CompilerVisibleProperty Include="ApplicationId" />
 	</ItemGroup>
 
 	<ItemGroup Condition="$(TargetFramework.Contains('-windows'))">
@@ -54,6 +56,15 @@
 	<ItemGroup>
 	  <PackageReference Include="Booster.WeChat" Version="1.0.0-alpha.13" />
 	</ItemGroup>
+
+	<!-- <ItemGroup>
+		<ProjectReference Include="..\..\src\WeChat\Booster.WeChat\Booster.WeChat.csproj" />
+		<ProjectReference Include="..\..\src\WeChat\Booster.WeChat.SourceGenerator\Booster.WeChat.SourceGenerator.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
+	</ItemGroup>
+
+	<ItemGroup Condition="'$(TargetFramework)' == 'net6.0-android'">
+		<ProjectReference Include="..\..\src\WeChat\Booster.WeChat.Binding.Android\Booster.WeChat.Binding.Android.csproj" />
+	</ItemGroup> -->
 
 	<PropertyGroup Condition="$(TargetFramework.Contains('-windows'))">
 		<OutputType>WinExe</OutputType>
