@@ -28,18 +28,12 @@ namespace Booster.WeChat.Test.Mock
 }
 ";
 
-        public static HttpClient InstanceWithSuccessResponse => CreateMockHttpClient(true);
+        public static HttpClient InstanceWithSuccessResponse => CreateHttpClientWithSuccess();
 
-        public static HttpClient InstanceWithFailureResponse => CreateMockHttpClient(false);
+        public static HttpClient InstanceWithFailureResponse => CreateHttpClientWithFailure();
 
         private MockHttpClient()
         {
-
-        }
-
-        private static HttpClient CreateMockHttpClient(bool withSuccess)
-        {
-            return withSuccess ? CreateHttpClientWithSuccess() : CreateHttpClientWithFailure();
         }
 
         private static HttpClient CreateHttpClientWithSuccess()
@@ -71,7 +65,13 @@ namespace Booster.WeChat.Test.Mock
   ""errmsg"": ""WECHAT ERRORMESSAGE""
 }";
             mockHttpMessageHandler
-                .When($"{DefaultWeChatHttpClient.BaseAddress}/*")
+                .When(DefaultWeChatHttpClient.BaseAddress + DefaultWeChatHttpClient.AccessTokenPath)
+                .Respond("application/json", errorResponse);
+            mockHttpMessageHandler
+                .When(DefaultWeChatHttpClient.BaseAddress + DefaultWeChatHttpClient.RefreshTokenPath)
+                .Respond("application/json", errorResponse);
+            mockHttpMessageHandler
+                .When(DefaultWeChatHttpClient.BaseAddress + DefaultWeChatHttpClient.UserInfoPath)
                 .Respond("application/json", errorResponse);
 
             var httpClient = mockHttpMessageHandler.ToHttpClient();

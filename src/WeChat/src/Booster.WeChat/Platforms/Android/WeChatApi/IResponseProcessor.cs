@@ -8,6 +8,6 @@ namespace Booster.WeChat.Platforms.Android.WeChatApi
     {
         public int ResponseType { get; }
 
-        Task ProcessResponseAsync(BaseResp? response);
+        Task ProcessResponseAsync(BaseResp response);
     }
 }

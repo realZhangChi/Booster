@@ -11,7 +11,7 @@ using Xunit;
 
 namespace Booster.WeChat.DeviceTest.Platforms.Android.Identity
 {
-    public class AndroidAuthorizationHandler_Tests
+    public class AndroidAuthorizer_Tests
     {
         [Fact]
         public async Task Authorize_Should_Return_False()

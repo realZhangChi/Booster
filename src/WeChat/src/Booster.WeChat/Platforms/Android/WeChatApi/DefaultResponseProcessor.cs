@@ -5,11 +5,11 @@ using Com.Tencent.MM.Opensdk.Modelbase;
 
 namespace Booster.WeChat.Platforms.Android.WeChatApi
 {
-    public class DefaultResponseHandler : IResponseProcessor
+    public class DefaultResponseProcessor : IResponseProcessor
     {
         public int ResponseType => IConstantsAPI.CommandUnknown;
 
-        public Task ProcessResponseAsync(BaseResp? response)
+        public Task ProcessResponseAsync(BaseResp response)
         {
             return Task.CompletedTask;
         }

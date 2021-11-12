@@ -4,11 +4,11 @@ using System.Threading.Tasks;
 
 namespace Booster.WeChat.Platforms.Android.WeChatApi
 {
-    public class DefaultResponseResponseProcessorResolver : IResponseProcessorResolver
+    public class DefaultResponseProcessorResolver : IResponseProcessorResolver
     {
         private readonly IEnumerable<IResponseProcessor> _handlers;
 
-        public DefaultResponseResponseProcessorResolver(
+        public DefaultResponseProcessorResolver(
             IEnumerable<IResponseProcessor> handlers)
         {
             _handlers = handlers;
@@ -16,11 +16,7 @@ namespace Booster.WeChat.Platforms.Android.WeChatApi
 
         public Task<IResponseProcessor> ResolveAsync(int responseType)
         {
-            var handler = _handlers.FirstOrDefault(h => h.ResponseType == responseType);
-            if (handler == null)
-            {
-                handler = new DefaultResponseHandler();
-            }
+            var handler = _handlers.FirstOrDefault(h => h.ResponseType == responseType) ?? new DefaultResponseProcessor();
 
             return Task.FromResult(handler);
         }

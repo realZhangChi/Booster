@@ -28,7 +28,7 @@ namespace Booster.WeChat.Platforms.Android.WeChatApi
             _options = options.Value;
         }
 
-        public Task ProcessResponseAsync(BaseResp? response)
+        public Task ProcessResponseAsync(BaseResp response)
         {
             EnsureSuccessResponse(response);
 
