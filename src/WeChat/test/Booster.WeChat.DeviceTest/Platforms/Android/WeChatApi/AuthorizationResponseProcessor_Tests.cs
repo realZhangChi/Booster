@@ -12,8 +12,15 @@ using Xunit;
 
 namespace Booster.WeChat.DeviceTest.Platforms.Android.WeChatApi
 {
-    public class AuthorizationResponseProcessor_Tests
+    public class AuthorizationResponseProcessor_Tests : ResponseProcessorTestBase
     {
+        public AuthorizationResponseProcessor_Tests()
+        {
+            Processor = new AuthorizationResponseProcessor(
+                new MockAuthorizationService(),
+                new OptionsWrapper<WeChatMobileOptions>(new WeChatMobileOptions()));
+        }
+
         [Fact]
         public async Task WeChatResponse_not_AuthResponse_Should_Throw()
         {
@@ -34,16 +41,6 @@ namespace Booster.WeChat.DeviceTest.Platforms.Android.WeChatApi
             var response = new Com.Tencent.MM.Opensdk.Modelmsg.SendAuth.Resp();
 
             await processor.ProcessResponseAsync(response);
-        }
-
-        class DummyWeChatResponse : Com.Tencent.MM.Opensdk.Modelbase.BaseResp
-        {
-            public override int Type => throw new NotImplementedException();
-
-            public override bool CheckArgs()
-            {
-                throw new NotImplementedException();
-            }
         }
     }
 }

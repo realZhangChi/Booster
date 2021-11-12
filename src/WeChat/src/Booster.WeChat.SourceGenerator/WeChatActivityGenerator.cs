@@ -85,8 +85,13 @@ public class WeChatActivity : MauiAppCompatActivity, IWXAPIEventHandler
 
     public async void OnResp(BaseResp? response)
     {
-        var processService = MauiApplication.Current.Services.GetRequiredService<IResponseProcessService>();
-        await processService.ProcessResponseAsync(response);
+        if (response is null)
+                return;
+
+        var responseProcessorResolver = MauiApplication.Current.Services.GetRequiredService<IResponseProcessorResolver>();
+        var processor = await responseProcessorResolver.ResolveAsync(response.Type);
+
+        await processor.ProcessResponseAsync(response);
     }
 }
 ";

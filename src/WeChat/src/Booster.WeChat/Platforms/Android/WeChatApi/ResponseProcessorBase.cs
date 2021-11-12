@@ -1,4 +1,8 @@
-﻿using Com.Tencent.MM.Opensdk.Modelbase;
+﻿using Booster.WeChat.Services.Identity;
+
+using Com.Tencent.MM.Opensdk.Modelbase;
+
+using Microsoft.Maui.Controls;
 
 using System;
 using System.Collections.Generic;
@@ -12,7 +16,18 @@ namespace Booster.WeChat.Platforms.Android.WeChatApi
     {
         public bool EnsureSuccessResponse(BaseResp response)
         {
-            return response.Err_Code is BaseResp.IErrCode.ErrOk;
+            if (response.Err_Code is not BaseResp.IErrCode.ErrOk)
+            {
+                MessagingCenter.Send(
+                    (IResponseProcessor)this,
+                    AuthorizationMessages.Failed,
+                    AuthorizationMessageArgs.FailedInstance(
+                        response.Err_Code,
+                        response.ErrStr ?? string.Empty));
+                return false;
+            }
+
+            return true;
         }
     }
 }
