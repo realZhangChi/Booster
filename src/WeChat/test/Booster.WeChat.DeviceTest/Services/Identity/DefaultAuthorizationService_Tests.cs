@@ -4,6 +4,9 @@ using System.Threading.Tasks;
 using Booster.WeChat.Services.Identity;
 using Booster.WeChat.Test.Mock;
 
+using Microsoft.Maui.Controls;
+using Microsoft.Maui.Essentials;
+
 using Shouldly;
 
 using Xunit;
@@ -27,7 +30,7 @@ namespace Booster.WeChat.DeviceTest.Services.Identity
             var handler = new MockPlatformAuthorizer();
             var userInfoStore = new MockUserInfoStore();
             var tokenStore = new MockTokenStore();
-            var weChatHttpClient = new MockWeChatHttpClient();
+            var weChatHttpClient = MockWeChatHttpClient.SuccessInstance;
             var service = new DefaultAuthorizationService(handler, tokenStore, userInfoStore, weChatHttpClient);
 
             await Assert.ThrowsAsync<ArgumentNullException>(() => service.AuthorizeCallbackAsync(nullAppId, appSecret, code));
@@ -36,6 +39,9 @@ namespace Booster.WeChat.DeviceTest.Services.Identity
             await Assert.ThrowsAsync<ArgumentNullException>(() => service.AuthorizeCallbackAsync(appId, whiteSpaceAppSecret, code));
             await Assert.ThrowsAsync<ArgumentNullException>(() => service.AuthorizeCallbackAsync(appId, appSecret, nullCode));
             await Assert.ThrowsAsync<ArgumentNullException>(() => service.AuthorizeCallbackAsync(appId, appSecret, whiteSpaceCode));
+            
+            // clean
+            SecureStorage.RemoveAll();
         }
 
         [Fact]
@@ -47,7 +53,7 @@ namespace Booster.WeChat.DeviceTest.Services.Identity
             var handler = new MockPlatformAuthorizer();
             var userInfoStore = new MockUserInfoStore();
             var tokenStore = new MockTokenStore();
-            var weChatHttpClient = new MockWeChatHttpClient();
+            var weChatHttpClient = MockWeChatHttpClient.SuccessInstance;
             var service = new DefaultAuthorizationService(handler, tokenStore, userInfoStore, weChatHttpClient);
             var now = DateTimeOffset.UtcNow.ToUnixTimeSeconds();
             await Task.Delay(1000);
@@ -61,6 +67,61 @@ namespace Booster.WeChat.DeviceTest.Services.Identity
             token.IssuedAt.ShouldBeGreaterThan(now);
             token.IssuedAt.ShouldBeLessThan(DateTimeOffset.UtcNow.ToUnixTimeSeconds());
             userInfo.ShouldNotBeNull();
+
+            // clean
+            SecureStorage.RemoveAll();
+        }
+
+        [Fact]
+        public async Task Authorization_Success_Should_Get_Message()
+        {
+            var appId = "AppId";
+            var appSecret = "AppSecret";
+            var code = "Code";
+            var handler = new MockPlatformAuthorizer();
+            var userInfoStore = new MockUserInfoStore();
+            var tokenStore = new MockTokenStore();
+            var weChatHttpClient = MockWeChatHttpClient.SuccessInstance;
+            var service = new DefaultAuthorizationService(handler, tokenStore, userInfoStore, weChatHttpClient);
+            AuthorizationMessageArgs message = null;
+            MessagingCenter.Subscribe<IAuthorizationService, AuthorizationMessageArgs>(
+                this,
+                AuthorizationMessages.Success,
+                (_, args) => message = args);
+
+            await service.AuthorizeCallbackAsync(appId, appSecret, code);
+
+            message.ShouldBe(AuthorizationMessageArgs.SuccessInstance());
+            
+            // clean
+            MessagingCenter.Unsubscribe<IAuthorizationService, AuthorizationMessageArgs>(this, AuthorizationMessages.Success);
+            SecureStorage.RemoveAll();
+        }
+
+        [Fact]
+        public async Task Authorization_Fail_Should_Get_Message()
+        {
+            var appId = "AppId";
+            var appSecret = "AppSecret";
+            var code = "Code";
+            var handler = new MockPlatformAuthorizer();
+            var userInfoStore = new MockUserInfoStore();
+            var tokenStore = new MockTokenStore();
+            var weChatHttpClient = MockWeChatHttpClient.FailInstance;
+            var service = new DefaultAuthorizationService(handler, tokenStore, userInfoStore, weChatHttpClient);
+            AuthorizationMessageArgs message = null;
+            MessagingCenter.Subscribe<IAuthorizationService, AuthorizationMessageArgs>(
+                this,
+                AuthorizationMessages.Failed,
+                (_, args) => message = args);
+
+            await service.AuthorizeCallbackAsync(appId, appSecret, code);
+
+            message.IsSuccess.ShouldBeFalse();
+            
+            // clean
+            MessagingCenter.Unsubscribe<IAuthorizationService, AuthorizationMessageArgs>(this, AuthorizationMessages.Failed);
+            SecureStorage.RemoveAll();
         }
     }
 }

@@ -4,6 +4,7 @@ using Microsoft.Maui.Controls;
 
 using System;
 using System.Threading.Tasks;
+using Booster.WeChat.Models.Identity;
 
 namespace Booster.WeChat.Services.Identity;
 
@@ -39,14 +40,28 @@ public class DefaultAuthorizationService : IAuthorizationService
         if (string.IsNullOrWhiteSpace(code))
             throw new ArgumentNullException(nameof(code));
 
-
-        var token = await _weChatHttpClient.GetTokenAsync(appId, appSecret, code);
-        if (token is null)
+        Token? token;
+        try
         {
-            MessagingCenter.Send((IAuthorizationService)this, AuthorizationFailedEvent.Name);
+            token = await _weChatHttpClient.GetTokenAsync(appId, appSecret, code);
+            if (token is null)
+            {
+                MessagingCenter.Send(
+                    (IAuthorizationService)this,
+                    AuthorizationMessages.Failed,
+                    AuthorizationMessageArgs.FailedInstance("Token is NULL!"));
+                return;
+            }
+            await _tokenStore.SetAsync(token);
+        }
+        catch (Exception e)
+        {
+            MessagingCenter.Send(
+                (IAuthorizationService)this,
+                AuthorizationMessages.Failed,
+                AuthorizationMessageArgs.FailedInstance(e.Message, e));
             return;
         }
-        await _tokenStore.SetAsync(token);
 
         var userInfo = await _weChatHttpClient.GetUserInfoAsync(token.AccessToken, token.OpenId);
         if (userInfo is not null)
@@ -54,6 +69,6 @@ public class DefaultAuthorizationService : IAuthorizationService
             await _userInfoStore.SetAsync(userInfo);
         }
 
-        MessagingCenter.Send((IAuthorizationService)this, AuthorizationSuccessEvent.Name);
+        MessagingCenter.Send((IAuthorizationService)this, AuthorizationMessages.Success, AuthorizationMessageArgs.SuccessInstance());
     }
 }

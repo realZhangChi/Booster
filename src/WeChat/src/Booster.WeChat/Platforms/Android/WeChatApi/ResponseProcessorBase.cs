@@ -10,19 +10,9 @@ namespace Booster.WeChat.Platforms.Android.WeChatApi
 {
     public abstract class ResponseProcessorBase
     {
-        public bool EnsureSuccessResponse(BaseResp? response)
+        public bool EnsureSuccessResponse(BaseResp response)
         {
-            if (response is null)
-            {
-                return false;
-            }
-
-            if (response.Err_Code is not BaseResp.IErrCode.ErrOk)
-            {
-                return false;
-            }
-
-            return true;
+            return response.Err_Code is BaseResp.IErrCode.ErrOk;
         }
     }
 }

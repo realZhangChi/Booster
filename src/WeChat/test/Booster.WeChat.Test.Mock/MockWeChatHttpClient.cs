@@ -6,7 +6,11 @@ namespace Booster.WeChat.Test.Mock
 {
     public class MockWeChatHttpClient : DefaultWeChatHttpClient
     {
-        public MockWeChatHttpClient() : base(MockHttpClient.InstanceWithSuccessResponse, NullLogger<DefaultWeChatHttpClient>.Instance)
+        public static MockWeChatHttpClient SuccessInstance => new MockWeChatHttpClient(MockHttpClient.InstanceWithSuccessResponse);
+
+        public static MockWeChatHttpClient FailInstance => new MockWeChatHttpClient(MockHttpClient.InstanceWithFailureResponse);
+
+        public MockWeChatHttpClient(HttpClient httpClient) : base(httpClient, NullLogger<DefaultWeChatHttpClient>.Instance)
         {
         }
     }

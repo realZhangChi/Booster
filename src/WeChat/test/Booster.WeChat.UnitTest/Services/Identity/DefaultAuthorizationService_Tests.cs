@@ -13,7 +13,7 @@ namespace Booster.WeChat.Services.Identity
             var handler = new MockPlatformAuthorizer();
             var userInfoStore = new MockUserInfoStore();
             var tokenStore = new MockTokenStore();
-            var weChatHttpClient = new MockWeChatHttpClient();
+            var weChatHttpClient = MockWeChatHttpClient.SuccessInstance;
             var service = new DefaultAuthorizationService(handler, tokenStore, userInfoStore, weChatHttpClient);
 
             var result = await service.AuthorizeAsync();
