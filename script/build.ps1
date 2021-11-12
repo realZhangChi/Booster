@@ -1,11 +1,12 @@
 $rootPath = (Get-Item -Path "./" -Verbose).FullName
 
-Get-ChildItem ./src/**/*.UnitTest.csproj -recurse | ForEach-Object -Process{
+Get-ChildItem ./src/**/*.sln -recurse | ForEach-Object -Process{
 	if($_ -is [System.IO.FileInfo])
 	{
-		$unitTestAbsPath = $_.Directory
-		Set-Location $unitTestAbsPath
-		dotnet test
+		$projectPath = $_.Directory
+		Set-Location $projectPath
+		dotnet clean
+		& dotnet build
 		if (-Not $?) {
 			Write-Host ("Test failed for the project: " + $_.Name)
 			Set-Location $rootPath

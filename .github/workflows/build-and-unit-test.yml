@@ -34,7 +34,7 @@ jobs:
 
       - name: build
         shell: pwsh
-        run: dotnet build
+        run: ./script/build.ps1
 
       - name: unit test
         shell: pwsh

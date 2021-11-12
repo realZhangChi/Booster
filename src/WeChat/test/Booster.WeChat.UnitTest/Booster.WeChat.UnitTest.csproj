@@ -25,7 +25,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\src\WeChat\Booster.WeChat\Booster.WeChat.csproj" />
+    <ProjectReference Include="..\..\src\Booster.WeChat\Booster.WeChat.csproj" />
     <ProjectReference Include="..\Booster.WeChat.Test.Mock\Booster.WeChat.Test.Mock.csproj" />
   </ItemGroup>
 
