@@ -92,13 +92,13 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\..\..\src\WeChat\Booster.WeChat\Booster.WeChat.csproj" />
-	  <ProjectReference Include="..\..\Booster.DeviceTest.Runner\Booster.DeviceTest.Runner.csproj" />
+	  <ProjectReference Include="..\..\..\DeviceTest\src\Booster.DeviceTest.Runner\Booster.DeviceTest.Runner.csproj" />
+	  <ProjectReference Include="..\..\src\Booster.WeChat\Booster.WeChat.csproj" />
 	  <ProjectReference Include="..\Booster.WeChat.Test.Mock\Booster.WeChat.Test.Mock.csproj" />
 	</ItemGroup>
 
 
 	<ItemGroup Condition="$(TargetFramework.Contains('-android'))">
-		<ProjectReference Include="..\..\..\src\WeChat\Booster.WeChat.Binding.Android\Booster.WeChat.Binding.Android.csproj" />
+		<ProjectReference Include="..\..\src\Booster.WeChat.Binding.Android\Booster.WeChat.Binding.Android.csproj" />
 	</ItemGroup>
 </Project>
