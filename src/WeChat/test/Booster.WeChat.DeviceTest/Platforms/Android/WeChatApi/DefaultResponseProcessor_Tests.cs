@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 
 using Booster.WeChat.Platforms.Android.WeChatApi;
 
@@ -10,14 +6,19 @@ using Xunit;
 
 namespace Booster.WeChat.DeviceTest.Platforms.Android.WeChatApi
 {
-    public class DefaultResponseProcessor_Tests
+    public class DefaultResponseProcessor_Tests : ResponseProcessorTestBase
     {
+        public DefaultResponseProcessor_Tests()
+        {
+            Processor = new DefaultResponseProcessor();
+        }
+
         [Fact]
         public async Task ProcessResponse_Should_Success()
         {
-            var processor = new DefaultResponseProcessor();
+            var weChatResponse = new DummyWeChatResponse();
 
-            await processor.ProcessResponseAsync((Com.Tencent.MM.Opensdk.Modelbase.BaseResp)null);
+            await Processor.ProcessResponseAsync(weChatResponse);
         }
     }
 }

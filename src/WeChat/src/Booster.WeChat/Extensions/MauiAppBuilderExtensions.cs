@@ -59,7 +59,6 @@ public static class MauiAppBuilderExtensions
         builder.Services.AddTransient<IResponseProcessor, DefaultResponseProcessor>();
         builder.Services.AddTransient<IResponseProcessor, AuthorizationResponseProcessor>();
         builder.Services.AddTransient<IResponseProcessorResolver, DefaultResponseProcessorResolver>();
-        builder.Services.AddTransient<IResponseProcessService, DefaultResponseProcessService>();
 
         builder.Services.AddTransient(provider =>
         {

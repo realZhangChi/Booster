@@ -30,7 +30,10 @@ namespace Booster.WeChat.Platforms.Android.WeChatApi
 
         public Task ProcessResponseAsync(BaseResp response)
         {
-            EnsureSuccessResponse(response);
+            if (!EnsureSuccessResponse(response))
+            {
+                return Task.CompletedTask;
+            }
 
             if (response is not SendAuth.Resp authResponse)
             {
