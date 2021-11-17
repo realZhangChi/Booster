@@ -3,7 +3,7 @@ name: release
 on:
   push:
     tags:
-      - "[0-9]+.[0-9]+.[0-9]+-alpha|preview.[0-9]*"
+      - "[0-9]+.[0-9]+.[0-9]+-preview.[0-9]*"
 
   workflow_dispatch:
 
