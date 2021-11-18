@@ -5,6 +5,8 @@ using Microsoft.Maui.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Options;
+using Booster.Sample.ViewModels;
+using Booster.WeChat.Extensions;
 
 namespace Booster.Sample
 {
@@ -16,13 +18,26 @@ namespace Booster.Sample
 
             builder
                 .UseMauiApp<App>()
+                .UseWeChat(
+                    new WeChatWebOptions()
+                    {
+                        AppId = "AppId",
+                        AppSecret = "AppSecret",
+                        RedirectUrl = "RedirectUrl"
+                    },
+                    new WeChatMobileOptions()
+                    {
+                        AppId = "AppId",
+                        AppSecret = "AppSecret",
+                    })
                 .ConfigureFonts(fonts =>
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                 });
 
 
-            builder.Services.AddSingleton<MainPage>();
+            builder.Services.AddTransient<MainPage>();
+            builder.Services.AddTransient<MainPageViewModel>();
 
             return builder.Build();
         }

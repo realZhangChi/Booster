@@ -1,6 +1,8 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Booster.Sample.MainPage"
+             xmlns:mct="clr-namespace:CommunityToolkit.Maui.Behaviors;assembly=CommunityToolkit.Maui"
+             xmlns:vm="clr-namespace:Booster.Sample.ViewModels"
              BackgroundColor="{DynamicResource SecondaryColor}">
 
     <ScrollView>
@@ -8,42 +10,32 @@
               Padding="{OnPlatform iOS='30,60,30,30', Default='30'}">
 
             <Label 
-                Text="Hello, World!"
+                Text="Hello,"
                 Grid.Row="0"
                 SemanticProperties.HeadingLevel="Level1"
                 FontSize="32"
                 HorizontalOptions="Center" />
 
             <Label 
-                Text="Welcome to .NET Multi-platform App UI"
+                Text="{Binding Name}"
                 Grid.Row="1"
                 SemanticProperties.HeadingLevel="Level1"
-                SemanticProperties.Description="Welcome to dot net Multi platform App U I"
+                SemanticProperties.Description="Welcome to Booster"
                 FontSize="18"
-                HorizontalOptions="Center" />
-
-            <Label 
-                Text="Current count: 0"
-                Grid.Row="2"
-                FontSize="18"
-                FontAttributes="Bold"
-                x:Name="CounterLabel"
                 HorizontalOptions="Center" />
 
             <Button 
-                Text="Click me"
+                Text="Login"
                 FontAttributes="Bold"
                 Grid.Row="3"
                 SemanticProperties.Hint="Counts the number of times you click"
-                Clicked="OnCounterClicked"
-                HorizontalOptions="Center" />
-
-            <Image Grid.Row="4"
-                Source="dotnet_bot.png"
-                SemanticProperties.Description="Cute dot net bot waving hi to you!"
-                WidthRequest="250"
-                HeightRequest="310"
-                HorizontalOptions="Center" />
+                HorizontalOptions="Center" >
+                <Button.Behaviors>
+                    <mct:EventToCommandBehavior
+                        EventName="Clicked"
+                        Command="{Binding LoginCommand}"/>
+                </Button.Behaviors>
+            </Button>
 
         </Grid>
     </ScrollView>
