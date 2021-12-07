@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<Import Project="..\..\..\..\common.props" />
 
@@ -30,6 +30,12 @@
 		</ProjectReference>
 	</ItemGroup>
 
+	<ItemGroup Condition="$(TargetFramework.Contains('-ios'))">
+		<ProjectReference Include="..\Booster.WeChat.Binding.iOS\Booster.WeChat.Binding.iOS.csproj">
+			<PrivateAssets>all</PrivateAssets>
+		</ProjectReference>
+	</ItemGroup>
+	
 	<ItemGroup>
 	  <ProjectReference Include="..\Booster.WeChat.SourceGenerator\Booster.WeChat.SourceGenerator.csproj" />
 	</ItemGroup>

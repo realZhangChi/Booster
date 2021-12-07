@@ -85,7 +85,15 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Remove="Platforms\iOS\Info.plist" />
+	</ItemGroup>
+
+	<ItemGroup>
 	  <_MauiCompileToAdd Remove="Platforms\iOS\HeadlessRunnerAppDelegate.cs" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <BundleResource Include="Platforms\iOS\Info.plist" />
 	</ItemGroup>
 
 	<ItemGroup>

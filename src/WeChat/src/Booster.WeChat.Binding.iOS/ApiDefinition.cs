@@ -7,7 +7,7 @@ using ObjCRuntime;
 namespace Booster.WeChat.Binding.iOS
 {
 	// typedef void (^WXLogBolock)(int *);
-	unsafe delegate void WXLogBolock(int* arg0);
+	unsafe delegate void WXLogBolock(IntPtr arg0);
 
 	// @interface WXCheckULStepResult
 	interface WXCheckULStepResult
@@ -18,11 +18,11 @@ namespace Booster.WeChat.Binding.iOS
 
 		// @property (nonatomic, strong) int * errorInfo;
 		[Export("errorInfo", ArgumentSemantic.Strong)]
-		unsafe int* ErrorInfo { get; set; }
+		unsafe IntPtr ErrorInfo { get; set; }
 
 		// @property (nonatomic, strong) int * suggestion;
 		[Export("suggestion", ArgumentSemantic.Strong)]
-		unsafe int* Suggestion { get; set; }
+		unsafe IntPtr Suggestion { get; set; }
 
 		// -(instancetype)initWithCheckResult:(id)success errorInfo:(id)errorInfo suggestion:(id)suggestion;
 		[Export("initWithCheckResult:errorInfo:suggestion:")]
@@ -33,6 +33,7 @@ namespace Booster.WeChat.Binding.iOS
 	delegate void WXCheckULCompletion(int arg0, WXCheckULStepResult arg1);
 
 	// @interface BaseReq
+	[BaseType(typeof(NSObject))]
 	interface BaseReq
 	{
 		// @property (assign, nonatomic) int type;
@@ -41,10 +42,11 @@ namespace Booster.WeChat.Binding.iOS
 
 		// @property (copy, nonatomic) int * openID;
 		[Export("openID", ArgumentSemantic.Copy)]
-		unsafe int* OpenID { get; set; }
+		unsafe IntPtr OpenID { get; set; }
 	}
 
 	// @interface BaseResp
+	[BaseType(typeof(NSObject))]
 	interface BaseResp
 	{
 		// @property (assign, nonatomic) int errCode;
@@ -53,7 +55,7 @@ namespace Booster.WeChat.Binding.iOS
 
 		// @property (copy, nonatomic) int * errStr;
 		[Export("errStr", ArgumentSemantic.Copy)]
-		unsafe int* ErrStr { get; set; }
+		unsafe IntPtr ErrStr { get; set; }
 
 		// @property (assign, nonatomic) int type;
 		[Export("type")]
@@ -66,15 +68,15 @@ namespace Booster.WeChat.Binding.iOS
 	{
 		// @property (copy, nonatomic) int * partnerId;
 		[Export("partnerId", ArgumentSemantic.Copy)]
-		unsafe int* PartnerId { get; set; }
+		unsafe IntPtr PartnerId { get; set; }
 
 		// @property (copy, nonatomic) int * prepayId;
 		[Export("prepayId", ArgumentSemantic.Copy)]
-		unsafe int* PrepayId { get; set; }
+		unsafe IntPtr PrepayId { get; set; }
 
 		// @property (copy, nonatomic) int * nonceStr;
 		[Export("nonceStr", ArgumentSemantic.Copy)]
-		unsafe int* NonceStr { get; set; }
+		unsafe IntPtr NonceStr { get; set; }
 
 		// @property (assign, nonatomic) int timeStamp;
 		[Export("timeStamp")]
@@ -82,11 +84,11 @@ namespace Booster.WeChat.Binding.iOS
 
 		// @property (copy, nonatomic) int * package;
 		[Export("package", ArgumentSemantic.Copy)]
-		unsafe int* Package { get; set; }
+		unsafe IntPtr Package { get; set; }
 
 		// @property (copy, nonatomic) int * sign;
 		[Export("sign", ArgumentSemantic.Copy)]
-		unsafe int* Sign { get; set; }
+		unsafe IntPtr Sign { get; set; }
 	}
 
 	// @interface PayResp : BaseResp
@@ -95,7 +97,7 @@ namespace Booster.WeChat.Binding.iOS
 	{
 		// @property (copy, nonatomic) int * returnKey;
 		[Export("returnKey", ArgumentSemantic.Copy)]
-		unsafe int* ReturnKey { get; set; }
+		unsafe IntPtr ReturnKey { get; set; }
 	}
 
 	// @interface WXOfflinePayReq : BaseReq
@@ -116,7 +118,7 @@ namespace Booster.WeChat.Binding.iOS
 	{
 		// @property (copy, nonatomic) int * urlString;
 		[Export("urlString", ArgumentSemantic.Copy)]
-		unsafe int* UrlString { get; set; }
+		unsafe IntPtr UrlString { get; set; }
 	}
 
 	// @interface WXNontaxPayResp : BaseResp
@@ -125,7 +127,7 @@ namespace Booster.WeChat.Binding.iOS
 	{
 		// @property (copy, nonatomic) int * wxOrderId;
 		[Export("wxOrderId", ArgumentSemantic.Copy)]
-		unsafe int* WxOrderId { get; set; }
+		unsafe IntPtr WxOrderId { get; set; }
 	}
 
 	// @interface WXPayInsuranceReq : BaseReq
@@ -134,7 +136,7 @@ namespace Booster.WeChat.Binding.iOS
 	{
 		// @property (copy, nonatomic) int * urlString;
 		[Export("urlString", ArgumentSemantic.Copy)]
-		unsafe int* UrlString { get; set; }
+		unsafe IntPtr UrlString { get; set; }
 	}
 
 	// @interface WXPayInsuranceResp : BaseResp
@@ -143,7 +145,7 @@ namespace Booster.WeChat.Binding.iOS
 	{
 		// @property (copy, nonatomic) int * wxOrderId;
 		[Export("wxOrderId", ArgumentSemantic.Copy)]
-		unsafe int* WxOrderId { get; set; }
+		unsafe IntPtr WxOrderId { get; set; }
 	}
 
 	// @interface SendAuthReq : BaseReq
@@ -152,11 +154,11 @@ namespace Booster.WeChat.Binding.iOS
 	{
 		// @property (copy, nonatomic) int * scope;
 		[Export("scope", ArgumentSemantic.Copy)]
-		unsafe int* Scope { get; set; }
+		unsafe IntPtr Scope { get; set; }
 
 		// @property (copy, nonatomic) int * state;
 		[Export("state", ArgumentSemantic.Copy)]
-		unsafe int* State { get; set; }
+		unsafe IntPtr State { get; set; }
 	}
 
 	// @interface SendAuthResp : BaseResp
@@ -165,22 +167,23 @@ namespace Booster.WeChat.Binding.iOS
 	{
 		// @property (copy, nonatomic) int * _Nullable code;
 		[NullAllowed, Export("code", ArgumentSemantic.Copy)]
-		unsafe int* Code { get; set; }
+		unsafe IntPtr Code { get; set; }
 
 		// @property (copy, nonatomic) int * _Nullable state;
 		[NullAllowed, Export("state", ArgumentSemantic.Copy)]
-		unsafe int* State { get; set; }
+		unsafe IntPtr State { get; set; }
 
 		// @property (copy, nonatomic) int * _Nullable lang;
 		[NullAllowed, Export("lang", ArgumentSemantic.Copy)]
-		unsafe int* Lang { get; set; }
+		unsafe IntPtr Lang { get; set; }
 
 		// @property (copy, nonatomic) int * _Nullable country;
 		[NullAllowed, Export("country", ArgumentSemantic.Copy)]
-		unsafe int* Country { get; set; }
+		unsafe IntPtr Country { get; set; }
 	}
 
 	// @interface WXStateJumpInfo
+	[BaseType(typeof(NSObject))]
 	interface WXStateJumpInfo
 	{
 	}
@@ -191,10 +194,11 @@ namespace Booster.WeChat.Binding.iOS
 	{
 		// @property (copy, nonatomic) int * url;
 		[Export("url", ArgumentSemantic.Copy)]
-		unsafe int* Url { get; set; }
+		unsafe IntPtr Url { get; set; }
 	}
 
 	// @interface WXSceneDataObject
+	[BaseType(typeof(NSObject))]
 	interface WXSceneDataObject
 	{
 	}
@@ -205,15 +209,15 @@ namespace Booster.WeChat.Binding.iOS
 	{
 		// @property (copy, nonatomic) int * stateId;
 		[Export("stateId", ArgumentSemantic.Copy)]
-		unsafe int* StateId { get; set; }
+		unsafe IntPtr StateId { get; set; }
 
 		// @property (copy, nonatomic) int * stateTitle;
 		[Export("stateTitle", ArgumentSemantic.Copy)]
-		unsafe int* StateTitle { get; set; }
+		unsafe IntPtr StateTitle { get; set; }
 
 		// @property (copy, nonatomic) int * token;
 		[Export("token", ArgumentSemantic.Copy)]
-		unsafe int* Token { get; set; }
+		unsafe IntPtr Token { get; set; }
 
 		// @property (nonatomic, strong) WXStateJumpInfo * stateJumpDataInfo;
 		[Export("stateJumpDataInfo", ArgumentSemantic.Strong)]
@@ -226,7 +230,7 @@ namespace Booster.WeChat.Binding.iOS
 	{
 		// @property (copy, nonatomic) int * text;
 		[Export("text", ArgumentSemantic.Copy)]
-		unsafe int* Text { get; set; }
+		unsafe IntPtr Text { get; set; }
 
 		// @property (nonatomic, strong) WXMediaMessage * message;
 		[Export("message", ArgumentSemantic.Strong)]
@@ -242,7 +246,7 @@ namespace Booster.WeChat.Binding.iOS
 
 		// @property (copy, nonatomic) int * _Nullable toUserOpenId;
 		[NullAllowed, Export("toUserOpenId", ArgumentSemantic.Copy)]
-		unsafe int* ToUserOpenId { get; set; }
+		unsafe IntPtr ToUserOpenId { get; set; }
 
 		// @property (nonatomic, strong) WXSceneDataObject * sceneDataObject;
 		[Export("sceneDataObject", ArgumentSemantic.Strong)]
@@ -255,11 +259,11 @@ namespace Booster.WeChat.Binding.iOS
 	{
 		// @property (copy, nonatomic) int * lang;
 		[Export("lang", ArgumentSemantic.Copy)]
-		unsafe int* Lang { get; set; }
+		unsafe IntPtr Lang { get; set; }
 
 		// @property (copy, nonatomic) int * country;
 		[Export("country", ArgumentSemantic.Copy)]
-		unsafe int* Country { get; set; }
+		unsafe IntPtr Country { get; set; }
 	}
 
 	// @interface GetMessageFromWXReq : BaseReq
@@ -268,11 +272,11 @@ namespace Booster.WeChat.Binding.iOS
 	{
 		// @property (nonatomic, strong) int * lang;
 		[Export("lang", ArgumentSemantic.Strong)]
-		unsafe int* Lang { get; set; }
+		unsafe IntPtr Lang { get; set; }
 
 		// @property (nonatomic, strong) int * country;
 		[Export("country", ArgumentSemantic.Strong)]
-		unsafe int* Country { get; set; }
+		unsafe IntPtr Country { get; set; }
 	}
 
 	// @interface GetMessageFromWXResp : BaseResp
@@ -281,7 +285,7 @@ namespace Booster.WeChat.Binding.iOS
 	{
 		// @property (nonatomic, strong) int * text;
 		[Export("text", ArgumentSemantic.Strong)]
-		unsafe int* Text { get; set; }
+		unsafe IntPtr Text { get; set; }
 
 		// @property (nonatomic, strong) WXMediaMessage * message;
 		[Export("message", ArgumentSemantic.Strong)]
@@ -302,11 +306,11 @@ namespace Booster.WeChat.Binding.iOS
 
 		// @property (copy, nonatomic) int * lang;
 		[Export("lang", ArgumentSemantic.Copy)]
-		unsafe int* Lang { get; set; }
+		unsafe IntPtr Lang { get; set; }
 
 		// @property (copy, nonatomic) int * country;
 		[Export("country", ArgumentSemantic.Copy)]
-		unsafe int* Country { get; set; }
+		unsafe IntPtr Country { get; set; }
 	}
 
 	// @interface ShowMessageFromWXResp : BaseResp
@@ -325,11 +329,11 @@ namespace Booster.WeChat.Binding.iOS
 
 		// @property (copy, nonatomic) int * lang;
 		[Export("lang", ArgumentSemantic.Copy)]
-		unsafe int* Lang { get; set; }
+		unsafe IntPtr Lang { get; set; }
 
 		// @property (copy, nonatomic) int * country;
 		[Export("country", ArgumentSemantic.Copy)]
-		unsafe int* Country { get; set; }
+		unsafe IntPtr Country { get; set; }
 	}
 
 	// @interface OpenWebviewReq : BaseReq
@@ -338,7 +342,7 @@ namespace Booster.WeChat.Binding.iOS
 	{
 		// @property (copy, nonatomic) int * url;
 		[Export("url", ArgumentSemantic.Copy)]
-		unsafe int* Url { get; set; }
+		unsafe IntPtr Url { get; set; }
 	}
 
 	// @interface OpenWebviewResp : BaseResp
@@ -357,7 +361,7 @@ namespace Booster.WeChat.Binding.iOS
 
 		// @property (nonatomic, strong) int * _Nullable queryInfoDic;
 		[NullAllowed, Export("queryInfoDic", ArgumentSemantic.Strong)]
-		unsafe int* QueryInfoDic { get; set; }
+		unsafe IntPtr QueryInfoDic { get; set; }
 	}
 
 	// @interface WXOpenBusinessWebViewResp : BaseResp
@@ -366,7 +370,7 @@ namespace Booster.WeChat.Binding.iOS
 	{
 		// @property (copy, nonatomic) int * result;
 		[Export("result", ArgumentSemantic.Copy)]
-		unsafe int* Result { get; set; }
+		unsafe IntPtr Result { get; set; }
 
 		// @property (assign, nonatomic) int businessType;
 		[Export("businessType")]
@@ -390,11 +394,11 @@ namespace Booster.WeChat.Binding.iOS
 	{
 		// @property (copy, nonatomic) int * cardId;
 		[Export("cardId", ArgumentSemantic.Copy)]
-		unsafe int* CardId { get; set; }
+		unsafe IntPtr CardId { get; set; }
 
 		// @property (copy, nonatomic) int * _Nullable extMsg;
 		[NullAllowed, Export("extMsg", ArgumentSemantic.Copy)]
-		unsafe int* ExtMsg { get; set; }
+		unsafe IntPtr ExtMsg { get; set; }
 
 		// @property (assign, nonatomic) int cardState;
 		[Export("cardState")]
@@ -402,11 +406,11 @@ namespace Booster.WeChat.Binding.iOS
 
 		// @property (copy, nonatomic) int * encryptCode;
 		[Export("encryptCode", ArgumentSemantic.Copy)]
-		unsafe int* EncryptCode { get; set; }
+		unsafe IntPtr EncryptCode { get; set; }
 
 		// @property (copy, nonatomic) int * appID;
 		[Export("appID", ArgumentSemantic.Copy)]
-		unsafe int* AppID { get; set; }
+		unsafe IntPtr AppID { get; set; }
 	}
 
 	// @interface WXInvoiceItem
@@ -414,11 +418,11 @@ namespace Booster.WeChat.Binding.iOS
 	{
 		// @property (copy, nonatomic) int * cardId;
 		[Export("cardId", ArgumentSemantic.Copy)]
-		unsafe int* CardId { get; set; }
+		unsafe IntPtr CardId { get; set; }
 
 		// @property (copy, nonatomic) int * _Nullable extMsg;
 		[NullAllowed, Export("extMsg", ArgumentSemantic.Copy)]
-		unsafe int* ExtMsg { get; set; }
+		unsafe IntPtr ExtMsg { get; set; }
 
 		// @property (assign, nonatomic) int cardState;
 		[Export("cardState")]
@@ -426,11 +430,11 @@ namespace Booster.WeChat.Binding.iOS
 
 		// @property (copy, nonatomic) int * encryptCode;
 		[Export("encryptCode", ArgumentSemantic.Copy)]
-		unsafe int* EncryptCode { get; set; }
+		unsafe IntPtr EncryptCode { get; set; }
 
 		// @property (copy, nonatomic) int * appID;
 		[Export("appID", ArgumentSemantic.Copy)]
-		unsafe int* AppID { get; set; }
+		unsafe IntPtr AppID { get; set; }
 	}
 
 	// @interface AddCardToWXCardPackageReq : BaseReq
@@ -439,7 +443,7 @@ namespace Booster.WeChat.Binding.iOS
 	{
 		// @property (nonatomic, strong) int * cardAry;
 		[Export("cardAry", ArgumentSemantic.Strong)]
-		unsafe int* CardAry { get; set; }
+		unsafe IntPtr CardAry { get; set; }
 	}
 
 	// @interface AddCardToWXCardPackageResp : BaseResp
@@ -448,7 +452,7 @@ namespace Booster.WeChat.Binding.iOS
 	{
 		// @property (nonatomic, strong) int * cardAry;
 		[Export("cardAry", ArgumentSemantic.Strong)]
-		unsafe int* CardAry { get; set; }
+		unsafe IntPtr CardAry { get; set; }
 	}
 
 	// @interface WXChooseCardReq : BaseReq
@@ -457,7 +461,7 @@ namespace Booster.WeChat.Binding.iOS
 	{
 		// @property (copy, nonatomic) int * appID;
 		[Export("appID", ArgumentSemantic.Copy)]
-		unsafe int* AppID { get; set; }
+		unsafe IntPtr AppID { get; set; }
 
 		// @property (assign, nonatomic) int shopID;
 		[Export("shopID")]
@@ -469,19 +473,19 @@ namespace Booster.WeChat.Binding.iOS
 
 		// @property (copy, nonatomic) int * cardType;
 		[Export("cardType", ArgumentSemantic.Copy)]
-		unsafe int* CardType { get; set; }
+		unsafe IntPtr CardType { get; set; }
 
 		// @property (copy, nonatomic) int * cardTpID;
 		[Export("cardTpID", ArgumentSemantic.Copy)]
-		unsafe int* CardTpID { get; set; }
+		unsafe IntPtr CardTpID { get; set; }
 
 		// @property (copy, nonatomic) int * signType;
 		[Export("signType", ArgumentSemantic.Copy)]
-		unsafe int* SignType { get; set; }
+		unsafe IntPtr SignType { get; set; }
 
 		// @property (copy, nonatomic) int * cardSign;
 		[Export("cardSign", ArgumentSemantic.Copy)]
-		unsafe int* CardSign { get; set; }
+		unsafe IntPtr CardSign { get; set; }
 
 		// @property (assign, nonatomic) int timeStamp;
 		[Export("timeStamp")]
@@ -489,7 +493,7 @@ namespace Booster.WeChat.Binding.iOS
 
 		// @property (copy, nonatomic) int * nonceStr;
 		[Export("nonceStr", ArgumentSemantic.Copy)]
-		unsafe int* NonceStr { get; set; }
+		unsafe IntPtr NonceStr { get; set; }
 	}
 
 	// @interface WXChooseCardResp : BaseResp
@@ -498,7 +502,7 @@ namespace Booster.WeChat.Binding.iOS
 	{
 		// @property (nonatomic, strong) int * cardAry;
 		[Export("cardAry", ArgumentSemantic.Strong)]
-		unsafe int* CardAry { get; set; }
+		unsafe IntPtr CardAry { get; set; }
 	}
 
 	// @interface WXChooseInvoiceReq : BaseReq
@@ -507,7 +511,7 @@ namespace Booster.WeChat.Binding.iOS
 	{
 		// @property (copy, nonatomic) int * appID;
 		[Export("appID", ArgumentSemantic.Copy)]
-		unsafe int* AppID { get; set; }
+		unsafe IntPtr AppID { get; set; }
 
 		// @property (assign, nonatomic) int shopID;
 		[Export("shopID")]
@@ -515,11 +519,11 @@ namespace Booster.WeChat.Binding.iOS
 
 		// @property (copy, nonatomic) int * signType;
 		[Export("signType", ArgumentSemantic.Copy)]
-		unsafe int* SignType { get; set; }
+		unsafe IntPtr SignType { get; set; }
 
 		// @property (copy, nonatomic) int * cardSign;
 		[Export("cardSign", ArgumentSemantic.Copy)]
-		unsafe int* CardSign { get; set; }
+		unsafe IntPtr CardSign { get; set; }
 
 		// @property (assign, nonatomic) int timeStamp;
 		[Export("timeStamp")]
@@ -527,7 +531,7 @@ namespace Booster.WeChat.Binding.iOS
 
 		// @property (copy, nonatomic) int * nonceStr;
 		[Export("nonceStr", ArgumentSemantic.Copy)]
-		unsafe int* NonceStr { get; set; }
+		unsafe IntPtr NonceStr { get; set; }
 	}
 
 	// @interface WXChooseInvoiceResp : BaseResp
@@ -536,7 +540,7 @@ namespace Booster.WeChat.Binding.iOS
 	{
 		// @property (nonatomic, strong) int * cardAry;
 		[Export("cardAry", ArgumentSemantic.Strong)]
-		unsafe int* CardAry { get; set; }
+		unsafe IntPtr CardAry { get; set; }
 	}
 
 	// @interface WXSubscribeMsgReq : BaseReq
@@ -549,11 +553,11 @@ namespace Booster.WeChat.Binding.iOS
 
 		// @property (copy, nonatomic) int * templateId;
 		[Export("templateId", ArgumentSemantic.Copy)]
-		unsafe int* TemplateId { get; set; }
+		unsafe IntPtr TemplateId { get; set; }
 
 		// @property (copy, nonatomic) int * _Nullable reserved;
 		[NullAllowed, Export("reserved", ArgumentSemantic.Copy)]
-		unsafe int* Reserved { get; set; }
+		unsafe IntPtr Reserved { get; set; }
 	}
 
 	// @interface WXSubscribeMsgResp : BaseResp
@@ -562,7 +566,7 @@ namespace Booster.WeChat.Binding.iOS
 	{
 		// @property (copy, nonatomic) int * templateId;
 		[Export("templateId", ArgumentSemantic.Copy)]
-		unsafe int* TemplateId { get; set; }
+		unsafe IntPtr TemplateId { get; set; }
 
 		// @property (assign, nonatomic) int scene;
 		[Export("scene")]
@@ -570,15 +574,15 @@ namespace Booster.WeChat.Binding.iOS
 
 		// @property (copy, nonatomic) int * action;
 		[Export("action", ArgumentSemantic.Copy)]
-		unsafe int* Action { get; set; }
+		unsafe IntPtr Action { get; set; }
 
 		// @property (copy, nonatomic) int * reserved;
 		[Export("reserved", ArgumentSemantic.Copy)]
-		unsafe int* Reserved { get; set; }
+		unsafe IntPtr Reserved { get; set; }
 
 		// @property (copy, nonatomic) int * _Nullable openId;
 		[NullAllowed, Export("openId", ArgumentSemantic.Copy)]
-		unsafe int* OpenId { get; set; }
+		unsafe IntPtr OpenId { get; set; }
 	}
 
 	// @interface WXSubscribeMiniProgramMsgReq : BaseReq
@@ -587,7 +591,7 @@ namespace Booster.WeChat.Binding.iOS
 	{
 		// @property (copy, nonatomic) int * miniProgramAppid;
 		[Export("miniProgramAppid", ArgumentSemantic.Copy)]
-		unsafe int* MiniProgramAppid { get; set; }
+		unsafe IntPtr MiniProgramAppid { get; set; }
 	}
 
 	// @interface WXSubscribeMiniProgramMsgResp : BaseResp
@@ -596,15 +600,15 @@ namespace Booster.WeChat.Binding.iOS
 	{
 		// @property (copy, nonatomic) int * openId;
 		[Export("openId", ArgumentSemantic.Copy)]
-		unsafe int* OpenId { get; set; }
+		unsafe IntPtr OpenId { get; set; }
 
 		// @property (copy, nonatomic) int * unionId;
 		[Export("unionId", ArgumentSemantic.Copy)]
-		unsafe int* UnionId { get; set; }
+		unsafe IntPtr UnionId { get; set; }
 
 		// @property (copy, nonatomic) int * nickName;
 		[Export("nickName", ArgumentSemantic.Copy)]
-		unsafe int* NickName { get; set; }
+		unsafe IntPtr NickName { get; set; }
 	}
 
 	// @interface WXInvoiceAuthInsertReq : BaseReq
@@ -613,7 +617,7 @@ namespace Booster.WeChat.Binding.iOS
 	{
 		// @property (copy, nonatomic) int * urlString;
 		[Export("urlString", ArgumentSemantic.Copy)]
-		unsafe int* UrlString { get; set; }
+		unsafe IntPtr UrlString { get; set; }
 	}
 
 	// @interface WXInvoiceAuthInsertResp : BaseResp
@@ -622,41 +626,41 @@ namespace Booster.WeChat.Binding.iOS
 	{
 		// @property (copy, nonatomic) int * wxOrderId;
 		[Export("wxOrderId", ArgumentSemantic.Copy)]
-		unsafe int* WxOrderId { get; set; }
+		unsafe IntPtr WxOrderId { get; set; }
 	}
 
 	// @interface WXMediaMessage
+	[BaseType(typeof(NSObject))]
 	interface WXMediaMessage
 	{
 		// +(WXMediaMessage *)message;
 		[Static]
 		[Export("message")]
-		[Verify(MethodToProperty)]
 		WXMediaMessage Message { get; }
 
 		// @property (copy, nonatomic) int * title;
 		[Export("title", ArgumentSemantic.Copy)]
-		unsafe int* Title { get; set; }
+		unsafe IntPtr Title { get; set; }
 
 		// @property (copy, nonatomic) int * description;
 		[Export("description", ArgumentSemantic.Copy)]
-		unsafe int* Description { get; set; }
+		unsafe IntPtr Description { get; set; }
 
 		// @property (nonatomic, strong) int * _Nullable thumbData;
 		[NullAllowed, Export("thumbData", ArgumentSemantic.Strong)]
-		unsafe int* ThumbData { get; set; }
+		unsafe IntPtr ThumbData { get; set; }
 
 		// @property (copy, nonatomic) int * _Nullable mediaTagName;
 		[NullAllowed, Export("mediaTagName", ArgumentSemantic.Copy)]
-		unsafe int* MediaTagName { get; set; }
+		unsafe IntPtr MediaTagName { get; set; }
 
 		// @property (copy, nonatomic) int * _Nullable messageExt;
 		[NullAllowed, Export("messageExt", ArgumentSemantic.Copy)]
-		unsafe int* MessageExt { get; set; }
+		unsafe IntPtr MessageExt { get; set; }
 
 		// @property (copy, nonatomic) int * _Nullable messageAction;
 		[NullAllowed, Export("messageAction", ArgumentSemantic.Copy)]
-		unsafe int* MessageAction { get; set; }
+		unsafe IntPtr MessageAction { get; set; }
 
 		// @property (nonatomic, strong) id mediaObject;
 		[Export("mediaObject", ArgumentSemantic.Strong)]
@@ -673,12 +677,11 @@ namespace Booster.WeChat.Binding.iOS
 		// +(WXImageObject *)object;
 		[Static]
 		[Export("object")]
-		[Verify(MethodToProperty)]
 		WXImageObject Object { get; }
 
 		// @property (nonatomic, strong) int * imageData;
 		[Export("imageData", ArgumentSemantic.Strong)]
-		unsafe int* ImageData { get; set; }
+		unsafe IntPtr ImageData { get; set; }
 	}
 
 	// @interface WXMusicObject
@@ -687,32 +690,31 @@ namespace Booster.WeChat.Binding.iOS
 		// +(WXMusicObject *)object;
 		[Static]
 		[Export("object")]
-		[Verify(MethodToProperty)]
 		WXMusicObject Object { get; }
 
 		// @property (copy, nonatomic) int * musicUrl;
 		[Export("musicUrl", ArgumentSemantic.Copy)]
-		unsafe int* MusicUrl { get; set; }
+		unsafe IntPtr MusicUrl { get; set; }
 
 		// @property (copy, nonatomic) int * musicLowBandUrl;
 		[Export("musicLowBandUrl", ArgumentSemantic.Copy)]
-		unsafe int* MusicLowBandUrl { get; set; }
+		unsafe IntPtr MusicLowBandUrl { get; set; }
 
 		// @property (copy, nonatomic) int * musicDataUrl;
 		[Export("musicDataUrl", ArgumentSemantic.Copy)]
-		unsafe int* MusicDataUrl { get; set; }
+		unsafe IntPtr MusicDataUrl { get; set; }
 
 		// @property (copy, nonatomic) int * musicLowBandDataUrl;
 		[Export("musicLowBandDataUrl", ArgumentSemantic.Copy)]
-		unsafe int* MusicLowBandDataUrl { get; set; }
+		unsafe IntPtr MusicLowBandDataUrl { get; set; }
 
 		// @property (copy, nonatomic) int * songAlbumUrl;
 		[Export("songAlbumUrl", ArgumentSemantic.Copy)]
-		unsafe int* SongAlbumUrl { get; set; }
+		unsafe IntPtr SongAlbumUrl { get; set; }
 
 		// @property (copy, nonatomic) int * _Nullable songLyric;
 		[NullAllowed, Export("songLyric", ArgumentSemantic.Copy)]
-		unsafe int* SongLyric { get; set; }
+		unsafe IntPtr SongLyric { get; set; }
 	}
 
 	// @interface WXMusicVideoObject
@@ -721,20 +723,19 @@ namespace Booster.WeChat.Binding.iOS
 		// +(WXMusicVideoObject *)object;
 		[Static]
 		[Export("object")]
-		[Verify(MethodToProperty)]
 		WXMusicVideoObject Object { get; }
 
 		// @property (copy, nonatomic) int * musicUrl;
 		[Export("musicUrl", ArgumentSemantic.Copy)]
-		unsafe int* MusicUrl { get; set; }
+		unsafe IntPtr MusicUrl { get; set; }
 
 		// @property (copy, nonatomic) int * musicDataUrl;
 		[Export("musicDataUrl", ArgumentSemantic.Copy)]
-		unsafe int* MusicDataUrl { get; set; }
+		unsafe IntPtr MusicDataUrl { get; set; }
 
 		// @property (copy, nonatomic) int * singerName;
 		[Export("singerName", ArgumentSemantic.Copy)]
-		unsafe int* SingerName { get; set; }
+		unsafe IntPtr SingerName { get; set; }
 
 		// @property (assign, nonatomic) int duration;
 		[Export("duration")]
@@ -742,19 +743,19 @@ namespace Booster.WeChat.Binding.iOS
 
 		// @property (copy, nonatomic) int * songLyric;
 		[Export("songLyric", ArgumentSemantic.Copy)]
-		unsafe int* SongLyric { get; set; }
+		unsafe IntPtr SongLyric { get; set; }
 
 		// @property (nonatomic, strong) int * hdAlbumThumbData;
 		[Export("hdAlbumThumbData", ArgumentSemantic.Strong)]
-		unsafe int* HdAlbumThumbData { get; set; }
+		unsafe IntPtr HdAlbumThumbData { get; set; }
 
 		// @property (copy, nonatomic) int * _Nullable albumName;
 		[NullAllowed, Export("albumName", ArgumentSemantic.Copy)]
-		unsafe int* AlbumName { get; set; }
+		unsafe IntPtr AlbumName { get; set; }
 
 		// @property (copy, nonatomic) int * _Nullable musicGenre;
 		[NullAllowed, Export("musicGenre", ArgumentSemantic.Copy)]
-		unsafe int* MusicGenre { get; set; }
+		unsafe IntPtr MusicGenre { get; set; }
 
 		// @property (assign, nonatomic) int issueDate;
 		[Export("issueDate")]
@@ -762,11 +763,11 @@ namespace Booster.WeChat.Binding.iOS
 
 		// @property (copy, nonatomic) int * _Nullable identification;
 		[NullAllowed, Export("identification", ArgumentSemantic.Copy)]
-		unsafe int* Identification { get; set; }
+		unsafe IntPtr Identification { get; set; }
 
 		// @property (copy, nonatomic) int * _Nullable musicOperationUrl;
 		[NullAllowed, Export("musicOperationUrl", ArgumentSemantic.Copy)]
-		unsafe int* MusicOperationUrl { get; set; }
+		unsafe IntPtr MusicOperationUrl { get; set; }
 	}
 
 	// @interface WXVideoObject
@@ -775,16 +776,15 @@ namespace Booster.WeChat.Binding.iOS
 		// +(WXVideoObject *)object;
 		[Static]
 		[Export("object")]
-		[Verify(MethodToProperty)]
 		WXVideoObject Object { get; }
 
 		// @property (copy, nonatomic) int * videoUrl;
 		[Export("videoUrl", ArgumentSemantic.Copy)]
-		unsafe int* VideoUrl { get; set; }
+		unsafe IntPtr VideoUrl { get; set; }
 
 		// @property (copy, nonatomic) int * videoLowBandUrl;
 		[Export("videoLowBandUrl", ArgumentSemantic.Copy)]
-		unsafe int* VideoLowBandUrl { get; set; }
+		unsafe IntPtr VideoLowBandUrl { get; set; }
 	}
 
 	// @interface WXWebpageObject
@@ -793,12 +793,11 @@ namespace Booster.WeChat.Binding.iOS
 		// +(WXWebpageObject *)object;
 		[Static]
 		[Export("object")]
-		[Verify(MethodToProperty)]
 		WXWebpageObject Object { get; }
 
 		// @property (copy, nonatomic) int * webpageUrl;
 		[Export("webpageUrl", ArgumentSemantic.Copy)]
-		unsafe int* WebpageUrl { get; set; }
+		unsafe IntPtr WebpageUrl { get; set; }
 	}
 
 	// @interface WXAppExtendObject
@@ -807,20 +806,19 @@ namespace Booster.WeChat.Binding.iOS
 		// +(WXAppExtendObject *)object;
 		[Static]
 		[Export("object")]
-		[Verify(MethodToProperty)]
 		WXAppExtendObject Object { get; }
 
 		// @property (copy, nonatomic) int * url;
 		[Export("url", ArgumentSemantic.Copy)]
-		unsafe int* Url { get; set; }
+		unsafe IntPtr Url { get; set; }
 
 		// @property (copy, nonatomic) int * _Nullable extInfo;
 		[NullAllowed, Export("extInfo", ArgumentSemantic.Copy)]
-		unsafe int* ExtInfo { get; set; }
+		unsafe IntPtr ExtInfo { get; set; }
 
 		// @property (nonatomic, strong) int * _Nullable fileData;
 		[NullAllowed, Export("fileData", ArgumentSemantic.Strong)]
-		unsafe int* FileData { get; set; }
+		unsafe IntPtr FileData { get; set; }
 	}
 
 	// @interface WXEmoticonObject
@@ -829,12 +827,11 @@ namespace Booster.WeChat.Binding.iOS
 		// +(WXEmoticonObject *)object;
 		[Static]
 		[Export("object")]
-		[Verify(MethodToProperty)]
 		WXEmoticonObject Object { get; }
 
 		// @property (nonatomic, strong) int * emoticonData;
 		[Export("emoticonData", ArgumentSemantic.Strong)]
-		unsafe int* EmoticonData { get; set; }
+		unsafe IntPtr EmoticonData { get; set; }
 	}
 
 	// @interface WXFileObject
@@ -843,16 +840,15 @@ namespace Booster.WeChat.Binding.iOS
 		// +(WXFileObject *)object;
 		[Static]
 		[Export("object")]
-		[Verify(MethodToProperty)]
 		WXFileObject Object { get; }
 
 		// @property (copy, nonatomic) int * fileExtension;
 		[Export("fileExtension", ArgumentSemantic.Copy)]
-		unsafe int* FileExtension { get; set; }
+		unsafe IntPtr FileExtension { get; set; }
 
 		// @property (nonatomic, strong) int * fileData;
 		[Export("fileData", ArgumentSemantic.Strong)]
-		unsafe int* FileData { get; set; }
+		unsafe IntPtr FileData { get; set; }
 	}
 
 	// @interface WXLocationObject
@@ -861,7 +857,6 @@ namespace Booster.WeChat.Binding.iOS
 		// +(WXLocationObject *)object;
 		[Static]
 		[Export("object")]
-		[Verify(MethodToProperty)]
 		WXLocationObject Object { get; }
 
 		// @property (assign, nonatomic) double lng;
@@ -879,12 +874,11 @@ namespace Booster.WeChat.Binding.iOS
 		// +(WXTextObject *)object;
 		[Static]
 		[Export("object")]
-		[Verify(MethodToProperty)]
 		WXTextObject Object { get; }
 
 		// @property (copy, nonatomic) int * contentText;
 		[Export("contentText", ArgumentSemantic.Copy)]
-		unsafe int* ContentText { get; set; }
+		unsafe IntPtr ContentText { get; set; }
 	}
 
 	// @interface WXMiniProgramObject
@@ -893,24 +887,23 @@ namespace Booster.WeChat.Binding.iOS
 		// +(WXMiniProgramObject *)object;
 		[Static]
 		[Export("object")]
-		[Verify(MethodToProperty)]
 		WXMiniProgramObject Object { get; }
 
 		// @property (copy, nonatomic) int * webpageUrl;
 		[Export("webpageUrl", ArgumentSemantic.Copy)]
-		unsafe int* WebpageUrl { get; set; }
+		unsafe IntPtr WebpageUrl { get; set; }
 
 		// @property (copy, nonatomic) int * userName;
 		[Export("userName", ArgumentSemantic.Copy)]
-		unsafe int* UserName { get; set; }
+		unsafe IntPtr UserName { get; set; }
 
 		// @property (copy, nonatomic) int * _Nullable path;
 		[NullAllowed, Export("path", ArgumentSemantic.Copy)]
-		unsafe int* Path { get; set; }
+		unsafe IntPtr Path { get; set; }
 
 		// @property (nonatomic, strong) int * _Nullable hdImageData;
 		[NullAllowed, Export("hdImageData", ArgumentSemantic.Strong)]
-		unsafe int* HdImageData { get; set; }
+		unsafe IntPtr HdImageData { get; set; }
 
 		// @property (assign, nonatomic) int withShareTicket;
 		[Export("withShareTicket")]
@@ -934,7 +927,7 @@ namespace Booster.WeChat.Binding.iOS
 
 		// @property (nonatomic, strong) int * _Nullable extraInfoDic;
 		[NullAllowed, Export("extraInfoDic", ArgumentSemantic.Strong)]
-		unsafe int* ExtraInfoDic { get; set; }
+		unsafe IntPtr ExtraInfoDic { get; set; }
 	}
 
 	// @interface WXGameLiveObject
@@ -943,12 +936,11 @@ namespace Booster.WeChat.Binding.iOS
 		// +(WXGameLiveObject *)object;
 		[Static]
 		[Export("object")]
-		[Verify(MethodToProperty)]
 		WXGameLiveObject Object { get; }
 
 		// @property (nonatomic, strong) int * _Nullable extraInfoDic;
 		[NullAllowed, Export("extraInfoDic", ArgumentSemantic.Strong)]
-		unsafe int* ExtraInfoDic { get; set; }
+		unsafe IntPtr ExtraInfoDic { get; set; }
 	}
 
 	// @interface WXLaunchMiniProgramReq : BaseReq
@@ -958,16 +950,15 @@ namespace Booster.WeChat.Binding.iOS
 		// +(WXLaunchMiniProgramReq *)object;
 		[Static]
 		[Export("object")]
-		[Verify(MethodToProperty)]
 		WXLaunchMiniProgramReq Object { get; }
 
 		// @property (copy, nonatomic) int * userName;
 		[Export("userName", ArgumentSemantic.Copy)]
-		unsafe int* UserName { get; set; }
+		unsafe IntPtr UserName { get; set; }
 
 		// @property (copy, nonatomic) int * _Nullable path;
 		[NullAllowed, Export("path", ArgumentSemantic.Copy)]
-		unsafe int* Path { get; set; }
+		unsafe IntPtr Path { get; set; }
 
 		// @property (assign, nonatomic) int miniProgramType;
 		[Export("miniProgramType")]
@@ -975,11 +966,11 @@ namespace Booster.WeChat.Binding.iOS
 
 		// @property (copy, nonatomic) int * _Nullable extMsg;
 		[NullAllowed, Export("extMsg", ArgumentSemantic.Copy)]
-		unsafe int* ExtMsg { get; set; }
+		unsafe IntPtr ExtMsg { get; set; }
 
 		// @property (copy, nonatomic) int * _Nullable extDic;
 		[NullAllowed, Export("extDic", ArgumentSemantic.Copy)]
-		unsafe int* ExtDic { get; set; }
+		unsafe IntPtr ExtDic { get; set; }
 	}
 
 	// @interface WXLaunchMiniProgramResp : BaseResp
@@ -988,7 +979,7 @@ namespace Booster.WeChat.Binding.iOS
 	{
 		// @property (copy, nonatomic) int * _Nullable extMsg;
 		[NullAllowed, Export("extMsg", ArgumentSemantic.Copy)]
-		unsafe int* ExtMsg { get; set; }
+		unsafe IntPtr ExtMsg { get; set; }
 	}
 
 	// @interface WXOpenBusinessViewReq : BaseReq
@@ -998,24 +989,23 @@ namespace Booster.WeChat.Binding.iOS
 		// +(WXOpenBusinessViewReq *)object;
 		[Static]
 		[Export("object")]
-		[Verify(MethodToProperty)]
 		WXOpenBusinessViewReq Object { get; }
 
 		// @property (copy, nonatomic) int * businessType;
 		[Export("businessType", ArgumentSemantic.Copy)]
-		unsafe int* BusinessType { get; set; }
+		unsafe IntPtr BusinessType { get; set; }
 
 		// @property (copy, nonatomic) int * _Nullable query;
 		[NullAllowed, Export("query", ArgumentSemantic.Copy)]
-		unsafe int* Query { get; set; }
+		unsafe IntPtr Query { get; set; }
 
 		// @property (copy, nonatomic) int * _Nullable extInfo;
 		[NullAllowed, Export("extInfo", ArgumentSemantic.Copy)]
-		unsafe int* ExtInfo { get; set; }
+		unsafe IntPtr ExtInfo { get; set; }
 
 		// @property (nonatomic, strong) int * _Nullable extData;
 		[NullAllowed, Export("extData", ArgumentSemantic.Strong)]
-		unsafe int* ExtData { get; set; }
+		unsafe IntPtr ExtData { get; set; }
 	}
 
 	// @interface WXOpenBusinessViewResp : BaseResp
@@ -1024,11 +1014,11 @@ namespace Booster.WeChat.Binding.iOS
 	{
 		// @property (copy, nonatomic) int * businessType;
 		[Export("businessType", ArgumentSemantic.Copy)]
-		unsafe int* BusinessType { get; set; }
+		unsafe IntPtr BusinessType { get; set; }
 
 		// @property (copy, nonatomic) int * _Nullable extMsg;
 		[NullAllowed, Export("extMsg", ArgumentSemantic.Copy)]
-		unsafe int* ExtMsg { get; set; }
+		unsafe IntPtr ExtMsg { get; set; }
 	}
 
 	// @interface WXOpenCustomerServiceReq : BaseReq
@@ -1038,16 +1028,15 @@ namespace Booster.WeChat.Binding.iOS
 		// +(WXOpenCustomerServiceReq *)object;
 		[Static]
 		[Export("object")]
-		[Verify(MethodToProperty)]
 		WXOpenCustomerServiceReq Object { get; }
 
 		// @property (copy, nonatomic) int * _Nullable url;
 		[NullAllowed, Export("url", ArgumentSemantic.Copy)]
-		unsafe int* Url { get; set; }
+		unsafe IntPtr Url { get; set; }
 
 		// @property (copy, nonatomic) int * _Nullable corpid;
 		[NullAllowed, Export("corpid", ArgumentSemantic.Copy)]
-		unsafe int* Corpid { get; set; }
+		unsafe IntPtr Corpid { get; set; }
 	}
 
 	// @interface WXOpenCustomerServiceResp : BaseResp
@@ -1056,17 +1045,16 @@ namespace Booster.WeChat.Binding.iOS
 	{
 		// @property (copy, nonatomic) int * _Nullable extMsg;
 		[NullAllowed, Export("extMsg", ArgumentSemantic.Copy)]
-		unsafe int* ExtMsg { get; set; }
+		unsafe IntPtr ExtMsg { get; set; }
 	}
 
-	[Static]
-	[Verify(ConstantsInterfaceAssociation)]
-	partial interface Constants
-	{
-		// extern int NS_ASSUME_NONNULL_BEGIN;
-		[Field("NS_ASSUME_NONNULL_BEGIN")]
-		int NS_ASSUME_NONNULL_BEGIN { get; }
-	}
+	//[Static]
+	//partial interface Constants
+	//{
+	//	// extern int NS_ASSUME_NONNULL_BEGIN;
+	//	[Field("NS_ASSUME_NONNULL_BEGIN")]
+	//	int NS_ASSUME_NONNULL_BEGIN { get; }
+	//}
 
 	// @interface WXApi
 	interface WXApi
@@ -1089,37 +1077,31 @@ namespace Booster.WeChat.Binding.iOS
 		// +(id)isWXAppInstalled;
 		[Static]
 		[Export("isWXAppInstalled")]
-		[Verify(MethodToProperty)]
 		NSObject IsWXAppInstalled { get; }
 
 		// +(id)isWXAppSupportApi;
 		[Static]
 		[Export("isWXAppSupportApi")]
-		[Verify(MethodToProperty)]
 		NSObject IsWXAppSupportApi { get; }
 
 		// +(id)isWXAppSupportStateAPI;
 		[Static]
 		[Export("isWXAppSupportStateAPI")]
-		[Verify(MethodToProperty)]
 		NSObject IsWXAppSupportStateAPI { get; }
 
 		// +(id)getWXAppInstallUrl;
 		[Static]
 		[Export("getWXAppInstallUrl")]
-		[Verify(MethodToProperty)]
 		NSObject WXAppInstallUrl { get; }
 
 		// +(id)getApiVersion;
 		[Static]
 		[Export("getApiVersion")]
-		[Verify(MethodToProperty)]
 		NSObject ApiVersion { get; }
 
 		// +(id)openWXApp;
 		[Static]
 		[Export("openWXApp")]
-		[Verify(MethodToProperty)]
 		NSObject OpenWXApp { get; }
 
 		// +(void)sendReq:(BaseReq *)req completion:(void (^ _Nullable)(int))completion;
@@ -1158,14 +1140,13 @@ namespace Booster.WeChat.Binding.iOS
 		void StopLog();
 	}
 
-	[Static]
-	[Verify(ConstantsInterfaceAssociation)]
-	partial interface Constants
-	{
-		// extern int NS_ASSUME_NONNULL_BEGIN;
-		[Field("NS_ASSUME_NONNULL_BEGIN")]
-		int NS_ASSUME_NONNULL_BEGIN { get; }
-	}
+	//[Static]
+	//partial interface Constants
+	//{
+	//	// extern int NS_ASSUME_NONNULL_BEGIN;
+	//	[Field("NS_ASSUME_NONNULL_BEGIN")]
+	//	int NS_ASSUME_NONNULL_BEGIN { get; }
+	//}
 
 	// @protocol WechatAuthAPIDelegate
 	[Protocol, Model(AutoGeneratedName = true)]
@@ -1187,17 +1168,17 @@ namespace Booster.WeChat.Binding.iOS
 	// @interface WechatAuthSDK
 	interface WechatAuthSDK
 	{
-		[Wrap("WeakDelegate")]
-		[NullAllowed]
-		WechatAuthAPIDelegate Delegate { }
+		//[Wrap("WeakDelegate")]
+		//[NullAllowed]
+		//WechatAuthAPIDelegate Delegate { }
 
-		// @property (nonatomic, weak) id<WechatAuthAPIDelegate> _Nullable delegate;
-		[NullAllowed, Export("delegate", ArgumentSemantic.Weak)]
-		NSObject WeakDelegate { }
+		//// @property (nonatomic, weak) id<WechatAuthAPIDelegate> _Nullable delegate;
+		//[NullAllowed, Export("delegate", ArgumentSemantic.Weak)]
+		//NSObject WeakDelegate { }
 
-		// @property (readonly, nonatomic) int * sdkVersion;
-		[Export("sdkVersion")]
-		unsafe int* SdkVersion { }
+		//// @property (readonly, nonatomic) int * sdkVersion;
+		//[Export("sdkVersion")]
+		//unsafe IntPtr SdkVersion { }
 
 		// -(id)Auth:(id)appId nonceStr:(id)nonceStr timeStamp:(id)timeStamp scope:(id)scope signature:(id)signature schemeData:(id)schemeData;
 		[Export("Auth:nonceStr:timeStamp:scope:signature:schemeData:")]
@@ -1205,7 +1186,6 @@ namespace Booster.WeChat.Binding.iOS
 
 		// -(id)StopAuth;
 		[Export("StopAuth")]
-		[Verify(MethodToProperty)]
 		NSObject StopAuth { get; }
 	}
 }
