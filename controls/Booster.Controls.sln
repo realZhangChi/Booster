@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33417.168
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{7270DDB4-02CB-4D5A-A36C-590769504A0F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Booster.Controls.PhotoEditor", "src\Booster.Controls.PhotoEditor\Booster.Controls.PhotoEditor.csproj", "{F317B8AB-2514-4441-B53D-680C7669256B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F317B8AB-2514-4441-B53D-680C7669256B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F317B8AB-2514-4441-B53D-680C7669256B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F317B8AB-2514-4441-B53D-680C7669256B}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{F317B8AB-2514-4441-B53D-680C7669256B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F317B8AB-2514-4441-B53D-680C7669256B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F317B8AB-2514-4441-B53D-680C7669256B}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{F317B8AB-2514-4441-B53D-680C7669256B} = {7270DDB4-02CB-4D5A-A36C-590769504A0F}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3730728B-63B0-45BD-8929-65D2A8EDC6A1}
+	EndGlobalSection
+EndGlobal
