@@ -1,4 +1,6 @@
-﻿namespace Booster.Core.MVVM;
+﻿using Booster.Core.Dialog;
+
+namespace Booster.Core.MVVM;
 
 public abstract partial class ViewModelBase : ObservableObject, IViewModelBase, IDisposable
 {
@@ -10,6 +12,11 @@ public abstract partial class ViewModelBase : ObservableObject, IViewModelBase, 
 
     protected virtual IServiceProvider ServiceProvider =>
         IPlatformApplication.Current!.Services.GetRequiredService<IServiceProvider>();
+
+    private readonly Lazy<IDialogService> _dialogService =
+        new(IPlatformApplication.Current!.Services.GetRequiredService<IDialogService>());
+
+    protected IDialogService DialogService => _dialogService.Value;
 
     public virtual IAsyncRelayCommand InitializeAsyncCommand { get; }
 
