@@ -1,6 +1,6 @@
-﻿using Booster.Core.Dialog;
+﻿using Booster.Dialog;
 
-namespace Booster.Core.ExceptionHandle;
+namespace Booster.ExceptionHandle;
 
 public class DefaultExceptionNotifier(IDialogService dialogService) : IExceptionNotifier
 {

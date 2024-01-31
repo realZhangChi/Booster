@@ -1,12 +1,21 @@
-﻿using Castle.DynamicProxy;
+﻿using Booster.DynamicProxy;
+using Booster.ExceptionHandle;
 
-namespace Booster.Core.MVVM;
+namespace Booster.MVVM;
 
-// ReSharper disable once SuggestBaseTypeForParameterInConstructor
-public class ViewModelInterceptor(ViewModelAsyncInterceptor asyncInterceptor) : IInterceptor
+public class ViewModelInterceptor(IExceptionNotifier exceptionNotifier) : BoosterInterceptor
 {
-    public void Intercept(IInvocation invocation)
+    protected virtual IExceptionNotifier ExceptionNotifier { get; } = exceptionNotifier;
+
+    public override async Task InterceptAsync(IBoosterMethodInvocation invocation)
     {
-        asyncInterceptor.ToInterceptor().Intercept(invocation);
+        try
+        {
+            await invocation.ProcessAsync();
+        }
+        catch (Exception e)
+        {
+            await ExceptionNotifier.NotifyAsync(e);
+        }
     }
 }

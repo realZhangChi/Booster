@@ -1,4 +1,4 @@
-﻿namespace Booster.Core.MVVM;
+﻿namespace Booster.MVVM;
 
 public class ContentPageBase : ContentPage
 {

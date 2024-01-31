@@ -1,7 +1,9 @@
-﻿using Booster.Core.Dialog;
+﻿using Booster.Dialog;
+using Booster.DynamicProxy;
 
-namespace Booster.Core.MVVM;
+namespace Booster.MVVM;
 
+[InterceptBy(typeof(ViewModelInterceptor))]
 public abstract partial class ViewModelBase : ObservableObject, IViewModelBase, IDisposable
 {
     private long _isBusy;

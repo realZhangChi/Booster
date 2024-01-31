@@ -1,4 +1,4 @@
-﻿namespace Booster.Core.Dialog;
+﻿namespace Booster.Dialog;
 
 public interface IDialogService
 {

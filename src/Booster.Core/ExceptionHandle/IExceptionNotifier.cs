@@ -1,4 +1,4 @@
-﻿namespace Booster.Core.ExceptionHandle;
+﻿namespace Booster.ExceptionHandle;
 
 public interface IExceptionNotifier
 {
