@@ -2,9 +2,18 @@
 
 public class DefaultDialogService : IDialogService
 {
-    public Task<bool> DisplayAlertAsync(string title, string message, string accept = "Yes", string cancel = "No")
+    public async Task<bool> DisplayAlertAsync(string title, string message, string? accept = null, string cancel = "No")
     {
-        return Shell.Current.CurrentPage.DisplayAlert(title, message, accept, cancel);
+        if (string.IsNullOrEmpty(accept))
+        {
+            await Shell.Current.CurrentPage.DisplayAlert(title, message, cancel);
+            return false;
+        }
+
+        else
+        {
+            return await Shell.Current.CurrentPage.DisplayAlert(title, message, accept, cancel);
+        }
     }
 
     public Task<string> DisplayPromptAsync(string title, string message, string accept = "OK", string cancel = "Cancel",

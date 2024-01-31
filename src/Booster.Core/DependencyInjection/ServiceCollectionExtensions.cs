@@ -1,12 +1,10 @@
-﻿using System.Linq;
-using System.Reflection;
+﻿using System.Reflection;
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
 using Autofac.Extras.DynamicProxy;
 using Booster.Core.Dialog;
+using Booster.Core.ExceptionHandle;
 using Booster.Core.MVVM;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Maui.Hosting;
 
 namespace Booster.Core.DependencyInjection;
 
@@ -21,9 +19,10 @@ public static class ServiceCollectionExtensions
             containerBuilder.RegisterType<ViewModelAsyncInterceptor>();
             containerBuilder.RegisterType<ViewModelInterceptor>();
 
-            containerBuilder.RegisterViewModels();
+            _ = containerBuilder.RegisterViewModels();
 
             containerBuilder.RegisterType<DefaultDialogService>().As<IDialogService>().InstancePerDependency();
+            containerBuilder.RegisterType<DefaultExceptionNotifier>().As<IExceptionNotifier>().InstancePerDependency();
         })));
         builder.Services.AddTransient<IDialogService, DefaultDialogService>();
         return builder;

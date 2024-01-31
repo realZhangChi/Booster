@@ -1,9 +1,13 @@
-﻿using Castle.DynamicProxy;
+﻿using Booster.Core.ExceptionHandle;
+using Castle.DynamicProxy;
+using Nito.AsyncEx;
 
 namespace Booster.Core.MVVM;
 
-public class ViewModelAsyncInterceptor : IAsyncInterceptor
+public class ViewModelAsyncInterceptor(IExceptionNotifier exceptionNotifier) : IAsyncInterceptor
 {
+    protected virtual IExceptionNotifier ExceptionNotifier { get; } = exceptionNotifier;
+
     public void InterceptSynchronous(IInvocation invocation)
     {
         try
@@ -12,7 +16,8 @@ public class ViewModelAsyncInterceptor : IAsyncInterceptor
         }
         catch (Exception e)
         {
-            throw;
+            // TODO: Test this
+            AsyncContext.Run(async () => await ExceptionNotifier.NotifyAsync(e));
         }
     }
 
@@ -28,7 +33,6 @@ public class ViewModelAsyncInterceptor : IAsyncInterceptor
 
     private async Task InternalInterceptAsynchronous(IInvocation invocation)
     {
-
         try
         {
             invocation.Proceed();
@@ -37,10 +41,10 @@ public class ViewModelAsyncInterceptor : IAsyncInterceptor
         }
         catch (Exception e)
         {
-            throw;
+            await ExceptionNotifier.NotifyAsync(e);
         }
     }
-    
+
     private async Task<TResult?> InternalInterceptAsynchronous<TResult>(IInvocation invocation)
     {
         try
@@ -51,7 +55,9 @@ public class ViewModelAsyncInterceptor : IAsyncInterceptor
         }
         catch (Exception e)
         {
-            throw;
+            await ExceptionNotifier.NotifyAsync(e);
+
+            return default;
         }
     }
 }
