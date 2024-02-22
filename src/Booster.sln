@@ -2,6 +2,8 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Booster.Core", "Booster.Core\Booster.Core.csproj", "{75D937AB-E7D0-4140-8E63-176CB3DF1E90}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Booster.Sample", "Booster.Sample\Booster.Sample.csproj", "{02F57C89-A95E-40CC-A43F-3A47F8F5F093}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +14,9 @@ Global
 		{75D937AB-E7D0-4140-8E63-176CB3DF1E90}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{75D937AB-E7D0-4140-8E63-176CB3DF1E90}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{75D937AB-E7D0-4140-8E63-176CB3DF1E90}.Release|Any CPU.Build.0 = Release|Any CPU
+		{02F57C89-A95E-40CC-A43F-3A47F8F5F093}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{02F57C89-A95E-40CC-A43F-3A47F8F5F093}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{02F57C89-A95E-40CC-A43F-3A47F8F5F093}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{02F57C89-A95E-40CC-A43F-3A47F8F5F093}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

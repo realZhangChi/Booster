@@ -1,9 +1,10 @@
 ﻿using Booster.DynamicProxy;
 using Booster.ExceptionHandle;
 
-namespace Booster.MVVM;
+namespace Booster.Service;
 
-public class ViewModelInterceptor(IExceptionNotifier exceptionNotifier) : BoosterInterceptor
+[InterceptBy(typeof(ServiceInterceptor))]
+public class ServiceInterceptor(IExceptionNotifier exceptionNotifier) : BoosterInterceptor
 {
     public override async Task InterceptAsync(IBoosterMethodInvocation invocation)
     {

@@ -1,6 +1,8 @@
-﻿namespace Booster.Dialog;
+﻿using Booster.Service;
 
-public interface IDialogService
+namespace Booster.Dialog;
+
+public interface IDialogService : IBoosterService
 {
     Task<bool> DisplayAlertAsync(string title, string message, string? accept = null, string cancel = "Cancel");
 
